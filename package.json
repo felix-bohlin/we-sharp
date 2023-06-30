@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/image": "^0.17.1",
     "@astrojs/solid-js": "^2.2.0",
     "astro": "^2.7.2",
     "modern-normalize": "^2.0.0",

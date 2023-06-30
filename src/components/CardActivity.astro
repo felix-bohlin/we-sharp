@@ -1,26 +1,133 @@
 ---
+export type TCardActivity = {
+  activityType: "run" | "walk" | "ride"
+  comments: number
+  description: string
+  duration: number
+  images: string[]
+  location: string
+  likes: number
+  time: number
+  title: string
+  user: {
+    imageUrl: string
+    name: string
+    profileUrl: string
+  }
+}
+
+const {
+  activityType,
+  comments,
+  description,
+  duration,
+  images,
+  location,
+  likes,
+  time,
+  title,
+  user,
+} = Astro.props
+
+const userInitials = user?.name
+  .split(/[ ,]+/)
+  .map((name: string) => name[0])
+  .join("")
 ---
 
-<section>
-  <header>
-    <p>FB</p>
-    <a href="#">Felix Bohlin</a>
-    <p>Today at 08:03 · Stockholm</p>
-  </header>
+<div class="card-activity-container">
+  <section>
+    <header>
+      <p class="avatar">{userInitials}</p>
+      <div>
+        <a href={user?.profileUrl} class="username">{user?.name ?? ""}</a>
+        <p class="subtitle">{time} · {location}</p>
+      </div>
+    </header>
 
-  <div>
-    <p>Cycling</p>
-    <h2><a href="#">Moring Ride</a></h2>
-    <p>
-      I felt great today! Cycling is so much fun! Lorem ipsum dolor sit amet.
-      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-    </p>
+    <div>
+      <p>{activityType}</p>
+      <h2><a href="#">{title}</a></h2>
+      <p>
+        {description}
+      </p>
 
-    <ul>
-      <li><span>Distance</span> 3.60 km</li>
-      <li><span>Time</span> 10m 39s</li>
-    </ul>
-  </div>
+      <ul>
+        <li><span>Time</span> {duration}</li>
+      </ul>
 
-  <footer></footer>
-</section>
+      IMAHEG IMAEG IMAGE IMAGE
+    </div>
+
+    <footer>
+      <button type="button">4 likes</button>
+      <button type="button">Like</button>
+      <button type="button">Comment</button>
+    </footer>
+  </section>
+</div>
+
+<style>
+  .card-activity-container {
+    container-type: inline-size;
+  }
+
+  header {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+
+    & .username {
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    & .subtitle {
+      font-size: 0.75rem;
+      margin: 0;
+    }
+
+    & .avatar {
+      background-color: tomato;
+      border-radius: 100vmax;
+      display: grid;
+      font-weight: 700;
+      height: 40px;
+      margin: 0;
+      place-items: center;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & li {
+      display: flex;
+      flex-direction: column;
+      & span {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  section {
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(13, 13, 18, 0.04);
+    padding-block: 16px;
+    padding-inline: 24px;
+  }
+
+  @container (width <= 400px) {
+    section {
+      background-color: tomato;
+    }
+  }
+</style>
