@@ -10,6 +10,9 @@ dependencies:
   modern-normalize:
     specifier: ^2.0.0
     version: 2.0.0
+  open-props:
+    specifier: ^1.5.10
+    version: 1.5.10
   solid-js:
     specifier: ^1.4.3
     version: 1.7.7
@@ -2263,6 +2266,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       mimic-fn: 4.0.0
+    dev: false
+
+  /open-props@1.5.10:
+    resolution: {integrity: sha512-iE+B7Zo0ytgeUNI38uHiBrxF5Nnv3uX8AzogBXzf7wqeNyG6oqQEEBs1gnAZdRF+h7IRO0zOGM5d9/huiNFR+w==}
     dev: false
 
   /open@9.1.0:

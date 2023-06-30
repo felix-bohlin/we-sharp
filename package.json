@@ -13,6 +13,7 @@
     "@astrojs/solid-js": "^2.2.0",
     "astro": "^2.7.2",
     "modern-normalize": "^2.0.0",
+    "open-props": "^1.5.10",
     "solid-js": "^1.4.3"
   },
   "devDependencies": {

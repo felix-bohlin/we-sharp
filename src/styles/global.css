@@ -1,2 +1,9 @@
+@layer normalize, open-props;
+
 @import "../../node_modules/modern-normalize/modern-normalize.css"
   layer(normalize);
+@import "../../node_modules/open-props/animations.min.css" layer(open-props);
+@import "../../node_modules/open-props/aspects.min.css" layer(open-props);
+@import "../../node_modules/open-props/media.min.css" layer(open-props);
+@import "../../node_modules/open-props/shadows.min.css" layer(open-props);
+@import "../../node_modules/open-props/sizes.min.css" layer(open-props);
