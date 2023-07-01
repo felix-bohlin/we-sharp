@@ -23,8 +23,17 @@ const { title } = Astro.props
   </body>
 </html>
 
-<style>
+<style is:global>
   body {
-    background-color: #f7f7fa;
+    background-color: var(--surface-2);
+    color: var(--text-1);
+    font-family: var(--font-sans);
+    font-size: var(--text-1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--surface-3);
+    }
   }
 </style>

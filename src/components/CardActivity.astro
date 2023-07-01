@@ -45,18 +45,21 @@ const userInitials = user?.name
       </div>
     </header>
 
-    <div>
+    <div class="body">
       <p>{activityType}</p>
-      <h2><a href="#">{title}</a></h2>
-      <p>
-        {description}
-      </p>
 
-      <ul>
-        <li><span>Time</span> {duration}</li>
-      </ul>
+      <div>
+        <h2><a href="#">{title}</a></h2>
+        <p>
+          {description}
+        </p>
 
-      IMAHEG IMAEG IMAGE IMAGE
+        <ul>
+          <li><span>Time</span> {duration}</li>
+        </ul>
+      </div>
+
+      <img src="https://picsum.photos/500" />
     </div>
 
     <footer>
@@ -76,20 +79,20 @@ const userInitials = user?.name
     align-items: center;
     display: grid;
     grid-template-columns: 40px 1fr;
-    gap: 1rem;
+    gap: var(--size-3);
 
     & .username {
       font-size: 0.875rem;
-      margin: 0;
+      font-weight: 500;
     }
 
     & .subtitle {
-      font-size: 0.75rem;
+      font-size: var(--font-size-0);
       margin: 0;
     }
 
     & .avatar {
-      background-color: tomato;
+      background-color: var(--brand);
       border-radius: 100vmax;
       display: grid;
       font-weight: 700;
@@ -101,33 +104,67 @@ const userInitials = user?.name
     }
   }
 
+  .body {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: var(--size-3);
+
+    & img {
+      background: var(--gradient-2);
+      grid-column: 1/-1;
+      height: 100%;
+      margin-block: var(--size-3);
+      max-height: 218px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    & h2 {
+      font-size: var(--font-size-3);
+
+      & + p {
+        font-size: var(--font-size-0);
+        margin-block: 1em;
+      }
+    }
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: var(--size-3);
     list-style: none;
-    margin: 0;
+    margin: 1em 0 0;
     padding: 0;
 
     & li {
       display: flex;
       flex-direction: column;
+      padding: 0;
       & span {
-        font-size: 0.75rem;
+        font-size: var(--font-size-0);
       }
     }
   }
 
   section {
-    border-radius: 4px;
-    box-shadow: 0 8px 24px rgba(13, 13, 18, 0.04);
-    padding-block: 16px;
-    padding-inline: 24px;
+    background-color: var(--surface-1);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
+    padding-block: var(--size-3);
+    padding-inline: var(--size-5);
   }
 
   @container (width <= 400px) {
     section {
       background-color: tomato;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    section {
+      background-color: hsl(var(--gray-9-hsl) / 70%);
     }
   }
 </style>
