@@ -1,0 +1,12 @@
+export type TActivityType =
+  | "ballsport"
+  | "bike"
+  | "climbing"
+  | "golf"
+  | "gym"
+  | "martialarts"
+  | "run"
+  | "swim"
+  | "tennis"
+  | "walk"
+  | "yoga"

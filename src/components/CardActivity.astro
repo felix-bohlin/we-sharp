@@ -1,6 +1,9 @@
 ---
+import type { TActivityType } from "../types/activity"
+import { IconActivity } from "./IconActivity"
+
 export type TCardActivity = {
-  activityType: "run" | "walk" | "ride"
+  activityType: TActivityType
   comments: number
   description: string
   duration: number
@@ -46,7 +49,14 @@ const userInitials = user?.name
     </header>
 
     <div class="body">
-      <p>{activityType}</p>
+      <IconActivity
+        style={{
+          display: "inline-flex",
+          "font-size": "2rem",
+          "justify-content": "center",
+        }}
+        type={activityType as TActivityType}
+      />
 
       <div>
         <h2><a href="#">{title}</a></h2>
@@ -112,6 +122,7 @@ const userInitials = user?.name
 
     & img {
       background: var(--gradient-2);
+      border-radius: var(--radius-3);
       grid-column: 1/-1;
       height: 100%;
       margin-block: var(--size-3);
@@ -150,7 +161,7 @@ const userInitials = user?.name
 
   section {
     background-color: var(--surface-1);
-    border-radius: var(--radius-2);
+    border-radius: var(--radius-3);
     box-shadow: var(--shadow-2);
     padding-block: var(--size-3);
     padding-inline: var(--size-5);
