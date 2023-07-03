@@ -1,36 +1,15 @@
 ---
-import type { TActivityType } from "../types/activity"
+import type { TActivityType, TActivity } from "../types/activity"
+import type { TUser } from "../types/user"
+
 import { IconActivity } from "./IconActivity"
 
-export type TCardActivity = {
-  activityType: TActivityType
-  comments: number
-  description: string
-  duration: number
-  images: string[]
-  location: string
-  likes: number
-  time: number
-  title: string
-  user: {
-    imageUrl: string
-    name: string
-    profileUrl: string
-  }
+type TProps = {
+  activity: TActivity
+  user: TUser
 }
 
-const {
-  activityType,
-  comments,
-  description,
-  duration,
-  images,
-  location,
-  likes,
-  time,
-  title,
-  user,
-} = Astro.props
+const { activity, user } = Astro.props as TProps
 
 const userInitials = user?.name
   .split(/[ ,]+/)
@@ -43,8 +22,8 @@ const userInitials = user?.name
     <header>
       <p class="avatar">{userInitials}</p>
       <div>
-        <a href={user?.profileUrl} class="username">{user?.name ?? ""}</a>
-        <p class="subtitle">{time} · {location}</p>
+        <a href={user?.url} class="username">{user?.name ?? ""}</a>
+        <p class="subtitle">{activity.date} · {activity.location}</p>
       </div>
     </header>
 
@@ -55,17 +34,17 @@ const userInitials = user?.name
           "font-size": "2rem",
           "justify-content": "center",
         }}
-        type={activityType as TActivityType}
+        type={activity.activityType as TActivityType}
       />
 
       <div>
-        <h2><a href="#">{title}</a></h2>
+        <h2><a href="#">{activity.title}</a></h2>
         <p>
-          {description}
+          {activity.description}
         </p>
 
         <ul>
-          <li><span>Time</span> {duration}</li>
+          <li><span>Time</span> {activity.duration}</li>
         </ul>
       </div>
 

@@ -10,3 +10,17 @@ export type TActivityType =
   | "tennis"
   | "walk"
   | "yoga"
+
+export type TActivity = {
+  activityType: TActivityType
+  comments?: number
+  date: string
+  description?: string
+  duration?: number
+  id: string
+  images?: string[]
+  location?: string
+  likes?: number
+  title: string
+  userId: string
+}

@@ -7,14 +7,17 @@ import CardActivity from "../components/CardActivity.astro"
   <main>
     <div class="card-list">
       <CardActivity
-        activityType="bike"
-        comments={4}
-        description="Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
-        duration={30}
-        location="Stockholm"
-        likes={4}
-        time="08:30"
-        title="Morning run"
+        activity={{
+          activityType: "bike",
+          comments: 4,
+          description:
+            "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+          duration: 30,
+          location: "Stockholm",
+          likes: 4,
+          date: "08:30",
+          title: "Morning run",
+        }}
         user={{
           imageUrl: "",
           name: "Felix Bohlin",
@@ -22,14 +25,17 @@ import CardActivity from "../components/CardActivity.astro"
         }}
       />
       <CardActivity
-        activityType="run"
-        comments={4}
-        description="Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
-        duration={30}
-        location="Stockholm"
-        likes={4}
-        time="08:30"
-        title="Morning run"
+        activity={{
+          activityType: "tennis",
+          comments: 4,
+          description:
+            "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+          duration: 30,
+          location: "Stockholm",
+          likes: 4,
+          date: "08:30",
+          title: "Morning run",
+        }}
         user={{
           imageUrl: "",
           name: "Felix Bohlin",
