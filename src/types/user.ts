@@ -1,6 +1,6 @@
 export type TUser = {
   id: string
-  image: string
+  imageUrl: string
   name: string
-  url: string
+  profileUrl: string
 }
