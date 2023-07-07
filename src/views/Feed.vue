@@ -49,3 +49,17 @@ import CardActivity from "@/components/CardActivity.vue"
   gap: var(--size-3);
 }
 </style>
+
+<style>
+.v-popper--theme-dropdown .v-popper__inner {
+  background-color: var(--surface-4);
+  border: 1px solid rgb(var(--text-2) / 0.5);
+  box-shadow: var(--shadow-2);
+  color: var(--text-1);
+  padding: var(--size-2);
+}
+
+.v-popper--theme-dropdown :is(.v-popper__arrow-inner, .v-popper__arrow-outer) {
+  border-color: var(--surface-4);
+}
+</style>

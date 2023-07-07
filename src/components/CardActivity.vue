@@ -2,12 +2,16 @@
 import { ref } from "vue"
 import type { TActivity } from "../types/activity"
 import type { TUser } from "../types/user"
-import Comment from "./icons/Comment.vue"
 
 import Avatar from "./Avatar.vue"
+import ButtonIcon from "./button/ButtonIcon.vue"
+import Card from "./Card.vue"
+import Comment from "./icons/Comment.vue"
 import IconActivity from "./IconActivity.vue"
+import MoreDots from "./icons/MoreDots.vue"
 import ThumbOutlined from "./icons/ThumbOutlined.vue"
 import ThumbFilled from "./icons/ThumbFilled.vue"
+import Clap from "./icons/Clap.vue"
 
 const props = defineProps<{
   activity: TActivity
@@ -15,13 +19,15 @@ const props = defineProps<{
 }>()
 
 const showComments = ref(false)
+const showMenu = ref(false)
 </script>
 
 <template>
-  <div class="card-activity-container">
-    <section>
+  <section>
+    <Card>
       <header>
         <Avatar :image="user?.imageUrl" />
+
         <div>
           <a href="{{user?.url}}" class="username">
             {{ user?.name ?? "" }}
@@ -29,6 +35,17 @@ const showComments = ref(false)
           <p class="subtitle">
             {{ activity?.date }} · {{ activity?.location }}
           </p>
+        </div>
+
+        <ButtonIcon @click="showMenu = !showMenu" text="Menu">
+          <MoreDots />
+        </ButtonIcon>
+
+        <div class="menu" v-if="showMenu">
+          <ul>
+            <li><button type="button">Edit</button></li>
+            <li><button type="button">Delete</button></li>
+          </ul>
         </div>
       </header>
 
@@ -56,15 +73,20 @@ const showComments = ref(false)
           <button type="button">4 likes</button>
 
           <div class="interactions">
-            <button type="button">
-              <ThumbFilled v-if="!!activity?.likes" />
-              <ThumbOutlined v-else />
-              <span>Like</span>
-            </button>
-            <button type="button" @click="showComments = !showComments">
+            <ButtonIcon
+              text="Cheer"
+              :variant="!activity?.likes ? 'contained' : 'outlined'"
+            >
+              <Clap />
+            </ButtonIcon>
+
+            <ButtonIcon
+              @click="showComments = !showComments"
+              text="Comment"
+              variant="outlined"
+            >
               <Comment />
-              <span>Comment</span>
-            </button>
+            </ButtonIcon>
           </div>
         </div>
 
@@ -87,34 +109,26 @@ const showComments = ref(false)
           </div>
         </div>
       </footer>
-    </section>
-  </div>
+    </Card>
+  </section>
 </template>
 
 <style scoped>
-.card-activity-container {
+section {
   container-type: inline-size;
   width: clamp(30ch, 100%, 60ch);
 }
 
-section {
-  --card-bg: hsl(var(--gray-9-hsl) / 70%);
-
-  @media (prefers-color-scheme: light) {
-    --card-bg: var(--surface-1);
-  }
-
-  background-color: var(--card-bg);
-  border-radius: var(--radius-3);
-  box-shadow: var(--shadow-2);
-  padding-block: var(--size-3);
-  padding-inline: var(--size-5);
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-2);
 }
 
 header {
   align-items: center;
   display: grid;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: 40px 1fr 40px;
   gap: var(--size-3);
 
   & .username {
@@ -125,6 +139,22 @@ header {
   & .subtitle {
     font-size: var(--font-size-0);
     margin: 0;
+  }
+}
+
+.menu {
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & button {
+      background: transparent;
+      border: none;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
@@ -185,37 +215,10 @@ footer {
     justify-content: space-between;
 
     & .interactions {
-      display: flex;
+      display: grid;
       gap: var(--size-2);
-
-      & button {
-        background-color: transparent;
-        border: 1px solid var(--text-1);
-        border-radius: var(--radius-2);
-        font-size: var(--font-size-3);
-        padding: var(--size-2);
-
-        &:hover {
-          --hover-opacity: 10%;
-          @media (prefers-color-scheme: light) {
-            --hover-opacity: 0.05%;
-          }
-
-          background-color: color-mix(
-            in srgb,
-            var(--surface-4),
-            var(--text-1) var(--hover-opacity)
-          );
-        }
-
-        & span {
-          display: none;
-        }
-      }
+      grid-template-columns: repeat(2, 40px);
     }
   }
-}
-
-@container (width <= 400px) {
 }
 </style>

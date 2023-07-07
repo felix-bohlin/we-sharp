@@ -16,6 +16,7 @@ import { RouterLink, RouterView } from "vue-router"
 @import "../node_modules/open-props/borders.min.css" layer(setup);
 @import "../node_modules/open-props/colors.min.css" layer(setup);
 @import "../node_modules/open-props/colors-hsl.min.css" layer(setup);
+@import "../node_modules/open-props/easings.min.css" layer(setup);
 @import "../node_modules/open-props/fonts.min.css" layer(setup);
 @import "../node_modules/open-props/gradients.min.css" layer(setup);
 @import "../node_modules/open-props/shadows.min.css" layer(setup);
