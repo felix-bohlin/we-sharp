@@ -1,1 +1,1 @@
-export type TButtonVariant = "outlined" | "contained" | "text"
+export type TButtonVariant = "outlined" | "filled" | "text"

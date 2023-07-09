@@ -29,7 +29,7 @@ const showMenu = ref(false)
         <Avatar :image="user?.imageUrl" />
 
         <div>
-          <a href="{{user?.url}}" class="username">
+          <a :href="user?.url ?? '#'" class="username">
             {{ user?.name ?? "" }}
           </a>
           <p class="subtitle">

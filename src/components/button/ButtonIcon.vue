@@ -31,19 +31,18 @@ button {
     display: none;
   }
 
-  &.contained {
+  &.filled {
     background-color: color-mix(
       in srgb,
       var(--surface-4),
       var(--text-1) var(--contained-opacity)
     );
-    border: 1px solid var(--text-1);
     border-radius: var(--radius-2);
     font-size: var(--font-size-3);
     padding: var(--size-2);
 
     &:hover {
-      background-color: transparent;
+      border: 1px solid color-mix(in srgb, white 20%, var(--surface-4));
     }
   }
 
