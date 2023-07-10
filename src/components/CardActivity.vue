@@ -45,17 +45,19 @@ const showMenu = ref(true)
             v-if="showMenu"
           >
             <ul class="list-none m-0 p-0">
-              <li>
+              <li class="rounded-md p-1.5 hover:bg-zinc-200">
                 <button
-                  class="bg-transparent border-0 text-current m-0 p-0"
+                  class="bg-transparent border-0 text-current m-0 p-0 w-full text-left"
                   type="button"
                 >
                   Edit
                 </button>
               </li>
-              <li>
+              <li
+                class="rounded-md p-1.5 hover:bg-red-700 text-red-700 hover:text-white"
+              >
                 <button
-                  class="bg-transparent border-0 text-current m-0 p-0"
+                  class="bg-transparent border-0 text-current m-0 p-0 w-full text-left"
                   type="button"
                 >
                   Delete
@@ -72,7 +74,7 @@ const showMenu = ref(true)
         </span>
 
         <div>
-          <h2 class="text-xl">
+          <h2 class="text-xl font-black text-amber-700">
             <a href="#">{{ activity?.title }}</a>
           </h2>
           <p class="my-0 text-sm">{{ activity?.description }}</p>
@@ -88,7 +90,7 @@ const showMenu = ref(true)
 
         <img
           src="https://picsum.photos/500"
-          class="h-full w-full max-h-[218px] object-cover my-4 col-[1/-1] rounded-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500"
+          class="h-full w-full max-h-[218px] object-cover my-4 col-[1/-1] rounded-2xl bg-gradient-to-r from-emerald-700 to-emerald-300"
         />
       </div>
 

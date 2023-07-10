@@ -26,8 +26,15 @@ const randomEmoji = computed(() => {
 })
 
 const randomBlob = computed(() => {
-  const randomNumber = Math.floor(Math.random() * 6)
-  return randomNumber === 0 ? "100vmax" : `var(--radius-blob-${randomNumber})`
+  const blobs = [
+    "30% 70% 70% 30% / 53% 30% 70% 47%",
+    "53% 47% 34% 66% / 63% 46% 54% 37%",
+    "37% 63% 56% 44% / 49% 56% 44% 51%",
+    "63% 37% 37% 63% / 43% 37% 63% 57%",
+    "49% 51% 48% 52% / 57% 44% 56% 43%",
+  ]
+
+  return blobs[Math.floor(Math.random() * blobs.length)]
 })
 
 const randomGradient = computed(() => {
@@ -36,39 +43,25 @@ const randomGradient = computed(() => {
     25, 26, 27, 28, 29, 30,
   ]
 
-  // return random from array
-  const randomGradient = Math.floor(Math.random() * gradients.length)
-
-  return `var(--gradient-${randomGradient + 1})`
+  return `var(--gradient-${Math.floor(Math.random() * gradients.length) + 1})`
 })
 </script>
 
 <template>
-  <img v-if="image" :src="image" class="avatar" />
+  <img
+    v-if="image"
+    :src="image"
+    class="blob grid place-items-center h-10 m-0 font-bold w-full"
+  />
 
-  <div v-else class="avatar">
-    <component :is="randomEmoji" />
+  <div v-else class="blob grid place-items-center h-10 m-0 font-bold w-full">
+    <component :is="randomEmoji" class="rounded-full w-8 drop-shadow" />
   </div>
 </template>
 
 <style scoped>
-.avatar {
-  /* background-color: var(--brand); */
+.blob {
   background-image: v-bind(randomGradient);
   border-radius: v-bind(randomBlob);
-  color: var(--card-bg);
-  display: grid;
-  font-weight: 700;
-  height: 40px;
-  margin: 0;
-  place-items: center;
-  text-transform: uppercase;
-  width: 100%;
-
-  & svg {
-    border-radius: 100vmax;
-    filter: drop-shadow(0px 2px 5px var(--gray-12));
-    width: var(--size-5);
-  }
 }
 </style>
