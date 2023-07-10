@@ -6,73 +6,97 @@ import type { TUser } from "../types/user"
 import Avatar from "./Avatar.vue"
 import ButtonIcon from "./button/ButtonIcon.vue"
 import Card from "./Card.vue"
-import Comment from "./icons/Comment.vue"
 import IconActivity from "./IconActivity.vue"
-import MoreDots from "./icons/MoreDots.vue"
-import ThumbOutlined from "./icons/ThumbOutlined.vue"
-import ThumbFilled from "./icons/ThumbFilled.vue"
 import Clap from "./icons/Clap.vue"
+import Comment from "./icons/Comment.vue"
+import MoreDots from "./icons/MoreDots.vue"
 
 const props = defineProps<{
   activity: TActivity
   user: Omit<TUser, "id">
 }>()
 
-const showComments = ref(false)
-const showMenu = ref(false)
+const showComments = ref(true)
+const showMenu = ref(true)
 </script>
 
 <template>
-  <section>
+  <section class="@container w-[clamp(30ch,100%,60ch)]">
     <Card>
-      <header>
+      <header class="items-center grid grid-cols-[40px_1fr_40px] gap-4">
         <Avatar :image="user?.imageUrl" />
 
         <div>
-          <a :href="user?.url ?? '#'" class="username">
+          <a :href="user?.url ?? '#'" class="text-[.875rem] font-medium">
             {{ user?.name ?? "" }}
           </a>
-          <p class="subtitle">
+          <p class="m-0 text-xs">
             {{ activity?.date }} · {{ activity?.location }}
           </p>
         </div>
 
-        <ButtonIcon @click="showMenu = !showMenu" text="Menu">
-          <MoreDots />
-        </ButtonIcon>
+        <div class="relative">
+          <ButtonIcon @click="showMenu = !showMenu" text="Menu">
+            <MoreDots />
+          </ButtonIcon>
 
-        <div class="menu" v-if="showMenu">
-          <ul>
-            <li><button type="button">Edit</button></li>
-            <li><button type="button">Delete</button></li>
-          </ul>
+          <div
+            class="bg-zinc-50 ring-1 ring-slate700/10 @dark:bg-zinc-800 rounded-md shadow-md p-2 absolute right-0 top-[40px] w-[25cqw]"
+            v-if="showMenu"
+          >
+            <ul class="list-none m-0 p-0">
+              <li>
+                <button
+                  class="bg-transparent border-0 text-current m-0 p-0"
+                  type="button"
+                >
+                  Edit
+                </button>
+              </li>
+              <li>
+                <button
+                  class="bg-transparent border-0 text-current m-0 p-0"
+                  type="button"
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
 
-      <div class="body">
-        <span class="icon-activity">
+      <div class="grid gap-4 items-center grid-cols-[40px_1fr]">
+        <span class="text-3xl">
           <IconActivity :icon="activity?.activityType ?? 'run'" />
         </span>
 
         <div>
-          <h2>
+          <h2 class="text-xl">
             <a href="#">{{ activity?.title }}</a>
           </h2>
-          <p>{{ activity?.description }}</p>
+          <p class="my-0 text-sm">{{ activity?.description }}</p>
 
-          <ul>
-            <li><span>Time</span> {{ activity?.duration }}</li>
+          <ul
+            class="grid gap-4 mt-4 mi-0 list-none mb-0 p-0 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
+          >
+            <li class="flex flex-col p-0">
+              <span class="text-xs">Time</span> {{ activity?.duration }}
+            </li>
           </ul>
         </div>
 
-        <img src="https://picsum.photos/500" />
+        <img
+          src="https://picsum.photos/500"
+          class="h-full w-full max-h-[218px] object-cover my-4 col-[1/-1] rounded-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500"
+        />
       </div>
 
       <footer>
-        <div class="actions">
+        <div class="flex items-center gap-2 justify-between">
           <button type="button">4 likes</button>
 
-          <div class="interactions">
+          <div class="grid gap-2 grid-cols-[repeat(2,40px)]">
             <ButtonIcon
               text="Cheer"
               :variant="!activity?.likes ? 'contained' : 'outlined'"
@@ -112,113 +136,3 @@ const showMenu = ref(false)
     </Card>
   </section>
 </template>
-
-<style scoped>
-section {
-  container-type: inline-size;
-  width: clamp(30ch, 100%, 60ch);
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-2);
-}
-
-header {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  gap: var(--size-3);
-
-  & .username {
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  & .subtitle {
-    font-size: var(--font-size-0);
-    margin: 0;
-  }
-}
-
-.menu {
-  & ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    & button {
-      background: transparent;
-      border: none;
-      color: inherit;
-      margin: 0;
-      padding: 0;
-    }
-  }
-}
-
-.body {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: var(--size-3);
-
-  & .icon-activity {
-    font-size: var(--font-size-5);
-  }
-
-  & img {
-    background: var(--gradient-2);
-    border-radius: var(--radius-3);
-    grid-column: 1/-1;
-    height: 100%;
-    margin-block: var(--size-3);
-    max-height: 218px;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  & h2 {
-    font-size: var(--font-size-3);
-
-    & + p {
-      font-size: var(--font-size-0);
-      margin-block: 1em;
-    }
-  }
-
-  & ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--size-3);
-    list-style: none;
-    margin: 1em 0 0;
-    padding: 0;
-
-    & li {
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      & span {
-        font-size: var(--font-size-0);
-      }
-    }
-  }
-}
-
-footer {
-  & .actions {
-    align-items: center;
-    display: flex;
-    gap: var(--size-2);
-    justify-content: space-between;
-
-    & .interactions {
-      display: grid;
-      gap: var(--size-2);
-      grid-template-columns: repeat(2, 40px);
-    }
-  }
-}
-</style>
