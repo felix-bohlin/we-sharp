@@ -6,7 +6,7 @@ import Grin from "@/components/icons/emoji/Grin.vue"
 import StarStruck from "@/components/icons/emoji/StarStruck.vue"
 import Thinking from "@/components/icons/emoji/Thinking.vue"
 import UpsideDown from "@/components/icons/emoji/UpsideDown.vue"
-import WithSunGlasses from "@/components/icons/emoji/WithSunGlasses.vue"
+import WithSunglasses from "@/components/icons/emoji/WithSunglasses.vue"
 
 defineProps<{
   image?: string
