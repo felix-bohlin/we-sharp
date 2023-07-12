@@ -18,7 +18,7 @@ defineProps<{
   user: Omit<TUser, "id">
 }>()
 
-const showComments = ref(true)
+const showEditComment = ref(true)
 const commentValue = ref("")
 </script>
 
@@ -93,7 +93,7 @@ const commentValue = ref("")
         />
       </div>
 
-      <footer>
+      <footer class="grid gap-4">
         <div class="flex items-center gap-2 justify-between">
           <button type="button">4 likes</button>
 
@@ -106,7 +106,7 @@ const commentValue = ref("")
             </ButtonIcon>
 
             <ButtonIcon
-              @click="showComments = !showComments"
+              @click="showEditComment = !showEditComment"
               text="Comment"
               variant="outlined"
             >
@@ -115,8 +115,14 @@ const commentValue = ref("")
           </div>
         </div>
 
-        <div class="flex flex-col gap-4" v-if="showComments">
-          <EditComment v-model="commentValue" :user="user" />
+        <div class="grid gap-4">
+          <Transition>
+            <EditComment
+              v-if="showEditComment"
+              v-model="commentValue"
+              :user="user"
+            />
+          </Transition>
           <ReadComment :user="user" />
           <ReadComment :user="user" />
         </div>
@@ -124,3 +130,16 @@ const commentValue = ref("")
     </Card>
   </section>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  translate: 0 -10px;
+}
+</style>

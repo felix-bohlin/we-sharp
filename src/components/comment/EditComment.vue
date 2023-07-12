@@ -16,7 +16,7 @@ const commentValue = defineModel<string>()
     <Avatar :image="user?.imageUrl" />
 
     <div class="flex flex-col gap-2">
-      <div class="grid gap-2 grid-cols-[1fr_auto] items-center">
+      <div class="grid gap-2 grid-cols-[1fr_auto] items-start">
         <textarea
           class="min-h-12 p-2 text-sm"
           type="text"
