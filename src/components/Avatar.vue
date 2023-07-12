@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue"
 
-import Beaming from "./icons/emoji/Beaming.vue"
-import Grin from "./icons/emoji/Grin.vue"
-import StarStruck from "./icons/emoji/StarStruck.vue"
-import Thinking from "./icons/emoji/Thinking.vue"
-import UpsideDown from "./icons/emoji/UpsideDown.vue"
-import WithSunGlasses from "./icons/emoji/WithSunGlasses.vue"
+import Beaming from "@/components/icons/emoji/Beaming.vue"
+import Grin from "@/components/icons/emoji/Grin.vue"
+import StarStruck from "@/components/icons/emoji/StarStruck.vue"
+import Thinking from "@/components/icons/emoji/Thinking.vue"
+import UpsideDown from "@/components/icons/emoji/UpsideDown.vue"
+import WithSunGlasses from "@/components/icons/emoji/WithSunGlasses.vue"
 
 defineProps<{
   image?: string
