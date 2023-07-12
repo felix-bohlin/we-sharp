@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue"
-import type { TActivity } from "../types/activity"
-import type { TUser } from "../types/user"
+import { ref, watchEffect } from "vue"
+import type { TActivity } from "@/types/activity"
+import type { TUser } from "@/types/user"
 
 import Avatar from "@/components/Avatar.vue"
 import ButtonIcon from "@/components/button/ButtonIcon.vue"
 import Card from "@/components/Card.vue"
-import Comment from "@/components/Comment.vue"
-import Dropdown from "@/components/Dropdown.vue"
-import IconActivity from "@/components/IconActivity.vue"
 import Clap from "@/components/icons/Clap.vue"
 import CommentIcon from "@/components/icons/Comment.vue"
+import Dropdown from "@/components/Dropdown.vue"
+import EditComment from "@/components/comment/EditComment.vue"
+import IconActivity from "@/components/IconActivity.vue"
+import ReadComment from "@/components/comment/ReadComment.vue"
 
 defineProps<{
   activity: TActivity
@@ -18,6 +19,7 @@ defineProps<{
 }>()
 
 const showComments = ref(true)
+const commentValue = ref("")
 </script>
 
 <template>
@@ -113,8 +115,10 @@ const showComments = ref(true)
           </div>
         </div>
 
-        <div v-if="showComments">
-          <Comment :user="user" />
+        <div class="flex flex-col gap-4" v-if="showComments">
+          <EditComment v-model="commentValue" :user="user" />
+          <ReadComment :user="user" />
+          <ReadComment :user="user" />
         </div>
       </footer>
     </Card>
