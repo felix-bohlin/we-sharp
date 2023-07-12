@@ -19,7 +19,7 @@ const randomEmoji = computed(() => {
     StarStruck,
     Thinking,
     UpsideDown,
-    WithSunGlasses,
+    WithSunglasses,
   ]
 
   return emojis[Math.floor(Math.random() * emojis.length)]
