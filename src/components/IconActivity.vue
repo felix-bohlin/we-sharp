@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TActivityType } from "@/types/activity"
+import type { TActivityType } from "@/types/activity"
 import Ballsport from "./icons/Ballsport.vue"
 import Bike from "./icons/Bike.vue"
 import Climbing from "./icons/Climbing.vue"
@@ -21,9 +21,9 @@ defineProps<{
   <Ballsport v-if="icon === 'ballsport'" />
   <Bike v-else-if="icon === 'bike'" />
   <Climbing v-else-if="icon === 'climbing'" />
-  <Dumbell v-else-if="icon === 'dumbell'" />
   <Golf v-else-if="icon === 'golf'" />
-  <MartialArts v-else-if="icon === 'martialArts'" />
+  <Dumbell v-else-if="icon === 'gym'" />
+  <MartialArts v-else-if="icon === 'martialarts'" />
   <Swim v-else-if="icon === 'swim'" />
   <Tennis v-else-if="icon === 'tennis'" />
   <Walk v-else-if="icon === 'walk'" />

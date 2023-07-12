@@ -6,6 +6,7 @@ import CardActivity from "@/components/CardActivity.vue"
   <div class="flex flex-col gap-4">
     <CardActivity
       :activity="{
+        id: '1',
         activityType: 'bike',
         comments: 4,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
@@ -14,6 +15,7 @@ import CardActivity from "@/components/CardActivity.vue"
         likes: 4,
         date: '08:30',
         title: 'Morning run',
+        userId: '1',
       }"
       :user="{
         imageUrl: '',
@@ -26,6 +28,7 @@ import CardActivity from "@/components/CardActivity.vue"
 
     <CardActivity
       :activity="{
+        id: '2',
         activityType: 'yoga',
         comments: 4,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
@@ -34,6 +37,7 @@ import CardActivity from "@/components/CardActivity.vue"
         likes: 0,
         date: '08:30',
         title: 'Morning run',
+        userId: '1',
       }"
       :user="{
         imageUrl: 'https://picsum.photos/500',

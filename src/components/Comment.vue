@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { TUser } from "@/types/user"
+import type { TUser } from "@/types/user"
 import Avatar from "@/components/Avatar.vue"
 
 defineProps<{
-  user: TUser
+  user: Omit<TUser, "id">
 }>()
 </script>
 
@@ -13,7 +13,7 @@ defineProps<{
 
     <div class="flex flex-col gap-2">
       <a
-        :href="user?.url ?? '#'"
+        :href="user?.profileUrl ?? '#'"
         class="text-[.875rem] font-medium hover:text-amber-700"
         >{{ user?.firstName }}</a
       >

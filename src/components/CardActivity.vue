@@ -29,16 +29,13 @@ const showMenu = ref(false)
 
         <div>
           <a
-            :href="user?.url ?? '#'"
+            :href="user?.profileUrl ?? '#'"
             class="text-[.875rem] font-medium hover:text-amber-700"
           >
             {{ user?.firstName ?? "" }} {{ user?.lastName ?? "" }}</a
           >
           ·
-          <a
-            :href="user?.url ?? '#'"
-            class="text-[.875rem] font-medium hover:text-amber-700"
-          >
+          <a href="#" class="text-[.875rem] font-medium hover:text-amber-700">
             {{ user?.group ?? "Group" }}</a
           >
 
@@ -111,7 +108,7 @@ const showMenu = ref(false)
           <div class="grid gap-2 grid-cols-[repeat(2,40px)]">
             <ButtonIcon
               text="Cheer"
-              :variant="!activity?.likes ? 'contained' : 'outlined'"
+              :variant="!activity?.likes ? 'filled' : 'outlined'"
             >
               <Clap />
             </ButtonIcon>

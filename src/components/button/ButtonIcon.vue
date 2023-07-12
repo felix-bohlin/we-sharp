@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TButtonVariant } from "@/types/button"
+import type { TButtonVariant } from "@/types/button"
 
 defineProps<{
   text?: string
