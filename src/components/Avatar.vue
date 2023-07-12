@@ -60,7 +60,7 @@ const randomGradient = computed(() => {
   >
     <component
       :is="randomEmoji"
-      class="aspect-square rounded-full w-[80%] drop-shadow"
+      class="aspect-square rounded-full h-[80%] w-[80%] drop-shadow"
     />
   </div>
 </template>
