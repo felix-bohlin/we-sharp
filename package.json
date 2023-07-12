@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.53.5",
+    "@vueuse/core": "^10.2.1",
     "modern-normalize": "^2.0.0",
     "open-props": "^1.5.10",
     "pinia": "^2.1.3",

@@ -7,10 +7,10 @@ import Avatar from "@/components/Avatar.vue"
 import ButtonIcon from "@/components/button/ButtonIcon.vue"
 import Card from "@/components/Card.vue"
 import Comment from "@/components/Comment.vue"
+import Dropdown from "@/components/Dropdown.vue"
 import IconActivity from "@/components/IconActivity.vue"
 import Clap from "@/components/icons/Clap.vue"
 import CommentIcon from "@/components/icons/Comment.vue"
-import MoreDots from "@/components/icons/MoreDots.vue"
 
 defineProps<{
   activity: TActivity
@@ -18,7 +18,6 @@ defineProps<{
 }>()
 
 const showComments = ref(true)
-const showMenu = ref(false)
 </script>
 
 <template>
@@ -44,35 +43,26 @@ const showMenu = ref(false)
           </p>
         </div>
 
-        <div class="relative w-full h-full grid items-center">
-          <ButtonIcon @click="showMenu = !showMenu" text="Menu" variant="text">
-            <MoreDots />
-          </ButtonIcon>
-
-          <div
-            class="bg-zinc-50 ring-1 ring-slate-500/10 @dark:ring-slate-300/10 @dark:bg-zinc-800 rounded shadow-md @dark:shadow-xl p-2 absolute right-0 top-[42px] w-[25cqw]"
-            v-if="showMenu"
-          >
-            <ul class="list-none m-0 p-0">
-              <li class="">
-                <button
-                  class="rounded p-1.5 hover:bg-zinc-200 @dark:hover:bg-zinc-400/10 bg-transparent border-0 text-current m-0 p-0 w-full text-left"
-                  type="button"
-                >
-                  Edit
-                </button>
-              </li>
-              <li class="">
-                <button
-                  class="rounded p-1.5 hover:bg-red-700 text-red-700 hover:text-white bg-transparent border-0 text-current m-0 p-0 w-full text-left"
-                  type="button"
-                >
-                  Delete
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Dropdown>
+          <ul class="list-none m-0 p-0">
+            <li class="">
+              <button
+                class="rounded p-1.5 hover:bg-zinc-200 @dark:hover:bg-zinc-400/10 bg-transparent border-0 text-current m-0 p-0 w-full text-left"
+                type="button"
+              >
+                Edit
+              </button>
+            </li>
+            <li class="">
+              <button
+                class="rounded p-1.5 hover:bg-red-700 text-red-700 hover:text-white bg-transparent border-0 text-current m-0 p-0 w-full text-left"
+                type="button"
+              >
+                Delete
+              </button>
+            </li>
+          </ul>
+        </Dropdown>
       </header>
 
       <div class="grid gap-4 items-center grid-cols-[40px_1fr]">
