@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineModel, watchEffect } from "vue"
+// import { defineModel } from "vue"
 import type { TUser } from "@/types/user"
 import Avatar from "@/components/Avatar.vue"
 import Button from "@/components/button/Button.vue"
@@ -24,8 +24,7 @@ const commentValue = defineModel<string>()
           v-model="commentValue"
         ></textarea>
 
-        <Button size="small">Post</Button>
-        <button v-show="commentValue" type="button">Post</button>
+        <Button v-show="commentValue" size="small">Post</Button>
       </div>
     </div>
   </div>
