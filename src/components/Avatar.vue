@@ -58,7 +58,10 @@ const randomGradient = computed(() => {
     v-else
     class="blob grid place-items-center aspect-square m-0 font-bold w-full"
   >
-    <component :is="randomEmoji" class="rounded-full w-[80%] drop-shadow" />
+    <component
+      :is="randomEmoji"
+      class="aspect-square rounded-full w-[80%] drop-shadow"
+    />
   </div>
 </template>
 
