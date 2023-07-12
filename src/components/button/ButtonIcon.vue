@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TButtonVariant } from "../../types/button"
+import { TButtonVariant } from "@/types/button"
 
 defineProps<{
   text?: string
@@ -12,80 +12,25 @@ defineEmits(["click"])
 <template>
   <button @click="$emit('click')" type="button" :class="variant ?? 'text'">
     <slot />
-    <span v-if="text">{{ text }}</span>
+    <span class="hidden" v-if="text">{{ text }}</span>
   </button>
 </template>
 
 <style scoped>
 button {
-  --contained-opacity: 10%;
-  @media (prefers-color-scheme: light) {
-    --contained-opacity: 0.05%;
-  }
-
-  display: grid;
-  place-items: center;
-  transition: all 0.15s ease-out;
-
-  & span {
-    display: none;
-  }
+  --uno: grid place-items-center transition-all aspect-[40/35] rounded text-xl
+    p-2 text-zinc-800 @dark:text-zinc-200;
 
   &.filled {
-    background-color: color-mix(
-      in srgb,
-      var(--surface-4),
-      var(--text-1) var(--contained-opacity)
-    );
-    border-radius: var(--radius-2);
-    font-size: var(--font-size-3);
-    padding: var(--size-2);
-
-    &:hover {
-      border: 1px solid color-mix(in srgb, white 20%, var(--surface-4));
-    }
+    --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:hover:ring-zinc-600";
   }
 
   &.outlined {
-    background-color: transparent;
-    border: 1px solid var(--text-1);
-    border-radius: var(--radius-2);
-    font-size: var(--font-size-3);
-    padding: var(--size-2);
-
-    &:hover {
-      --contained-opacity: 10%;
-      @media (prefers-color-scheme: light) {
-        --contained-opacity: 0.05%;
-      }
-
-      background-color: color-mix(
-        in srgb,
-        var(--surface-4),
-        var(--text-1) var(--contained-opacity)
-      );
-    }
+    --uno: "bg-transparent ring-1 ring-solid ring-zinc-600 hover:bg-zinc-400/10";
   }
 
   &.text {
-    background-color: transparent;
-    border: none;
-    border-radius: var(--radius-2);
-    font-size: var(--font-size-3);
-    padding: var(--size-2);
-
-    &:hover {
-      --contained-opacity: 10%;
-      @media (prefers-color-scheme: light) {
-        --contained-opacity: 0.05%;
-      }
-
-      background-color: color-mix(
-        in srgb,
-        var(--surface-4),
-        var(--text-1) var(--contained-opacity)
-      );
-    }
+    --uno: "bg-transparent ring-0 hover:bg-zinc-200 @dark:hover:bg-zinc-400/10";
   }
 }
 </style>

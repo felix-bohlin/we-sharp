@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   class?: string
 }>()
 </script>
 
 <template>
   <div
-    class="bg-zinc-50 @dark:bg-zinc-900 shadow-md py-4 ps-6 pe-6 rounded-2xl"
+    class="bg-white @dark:bg-zinc-800 shadow-md @dark: shadow-lg py-4 ps-6 pe-6 rounded"
     :class="class"
   >
     <slot />

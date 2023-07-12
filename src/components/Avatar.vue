@@ -8,7 +8,7 @@ import Thinking from "./icons/emoji/Thinking.vue"
 import UpsideDown from "./icons/emoji/UpsideDown.vue"
 import WithSunGlasses from "./icons/emoji/WithSunGlasses.vue"
 
-const props = defineProps<{
+defineProps<{
   image?: string
 }>()
 
@@ -51,11 +51,14 @@ const randomGradient = computed(() => {
   <img
     v-if="image"
     :src="image"
-    class="blob grid place-items-center h-10 m-0 font-bold w-full"
+    class="blob grid place-items-center aspect-square m-0 font-bold w-full"
   />
 
-  <div v-else class="blob grid place-items-center h-10 m-0 font-bold w-full">
-    <component :is="randomEmoji" class="rounded-full w-8 drop-shadow" />
+  <div
+    v-else
+    class="blob grid place-items-center aspect-square m-0 font-bold w-full"
+  >
+    <component :is="randomEmoji" class="rounded-full w-[80%] drop-shadow" />
   </div>
 </template>
 

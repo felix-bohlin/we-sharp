@@ -19,15 +19,17 @@ import { RouterLink, RouterView } from "vue-router"
     font-size: inherit;
   }
 
-  :where(a) {
-    margin: 0;
-    padding: 0;
-  }
-
   :focus-visible {
     outline-offset: 2px;
     outline-style: solid;
     outline-width: 2px;
+  }
+}
+
+@layer setup {
+  :where(a),
+  :is(h1, h2, h3, h4, h5, h6, p):has(a) {
+    --uno: "text-amber-500 hover:text-amber-700";
   }
 }
 </style>

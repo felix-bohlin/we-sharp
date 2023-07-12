@@ -3,7 +3,7 @@ import CardActivity from "@/components/CardActivity.vue"
 </script>
 
 <template>
-  <div class="card-list">
+  <div class="flex flex-col gap-4">
     <CardActivity
       :activity="{
         activityType: 'bike',
@@ -17,7 +17,9 @@ import CardActivity from "@/components/CardActivity.vue"
       }"
       :user="{
         imageUrl: '',
-        name: 'Felix Bohlin',
+        firstName: 'Felix',
+        lastName: 'Bohlin',
+        group: 'Devotion',
         profileUrl: '#',
       }"
     />
@@ -35,17 +37,11 @@ import CardActivity from "@/components/CardActivity.vue"
       }"
       :user="{
         imageUrl: 'https://picsum.photos/500',
-        name: 'Felix Bohlin',
+        firstName: 'Felix',
+        lastName: 'Bohlin',
+        group: 'Quality',
         profileUrl: '#',
       }"
     />
   </div>
 </template>
-
-<style scoped>
-.card-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-5);
-}
-</style>
