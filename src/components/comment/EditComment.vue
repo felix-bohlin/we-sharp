@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { defineModel } from "vue"
 import type { TUser } from "@/types/user"
 import Avatar from "@/components/Avatar.vue"
 import Button from "@/components/button/Button.vue"
@@ -18,13 +17,31 @@ const commentValue = defineModel<string>()
     <div class="flex flex-col gap-2">
       <div class="grid gap-2 grid-cols-[1fr_auto] items-start">
         <textarea
-          class="min-h-12 p-2 text-sm"
+          class="min-h-12 p-2 text-sm border-zinc-200 @dark:border-zinc-400/10 rounded"
           type="text"
           placeholder="Add a comment"
           v-model="commentValue"
         ></textarea>
 
-        <Button v-show="commentValue" size="small">Post</Button>
+        <div
+          :style="{
+            display: 'grid',
+            gridTemplateColumns: commentValue ? '1fr' : '0fr',
+            transition: 'grid-template-columns 0.3s ease-out',
+          }"
+        >
+          <Button
+            overflow-hidden
+            :tabindex="commentValue ? 0 : -1"
+            size="small"
+            :style="{
+              paddingInline: commentValue ? '.75rem' : 'initial',
+              pointerEvents: commentValue ? 'all' : 'none',
+            }"
+            variant="filled"
+            >Post</Button
+          >
+        </div>
       </div>
     </div>
   </div>

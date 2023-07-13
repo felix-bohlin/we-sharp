@@ -22,7 +22,7 @@ button {
     p-2 text-zinc-800 @dark:text-zinc-200;
 
   &.filled {
-    --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:hover:ring-zinc-600";
+    --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:bg-zinc-400/10 @dark:hover:ring-zinc-600";
   }
 
   &.outlined {

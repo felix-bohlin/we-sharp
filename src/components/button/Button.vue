@@ -27,11 +27,11 @@ defineEmits(["click"])
 
 <style scoped>
 button {
-  --uno: grid place-items-center transition-all rounded text-xl p-2
-    text-zinc-800 @dark:text-zinc-200;
+  --uno: grid place-items-center transition-all rounded text-zinc-800
+    @dark:text-zinc-200;
 
   &.filled {
-    --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:hover:ring-zinc-600";
+    --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:bg-zinc-400/10 @dark:hover:ring-zinc-600";
   }
 
   &.outlined {
@@ -43,15 +43,15 @@ button {
   }
 
   &.small {
-    --uno: text-sm;
+    --uno: text-sm py-2 ps-3 pe-3;
   }
 
   &.medium {
-    --uno: text-base;
+    --uno: text-base py-2 ps-4 pe-4;
   }
 
   &.large {
-    --uno: text-lg;
+    --uno: text-lg py-3 ps-6 pe-6;
   }
 }
 </style>

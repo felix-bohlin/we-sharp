@@ -18,7 +18,7 @@ defineProps<{
   user: Omit<TUser, "id">
 }>()
 
-const showEditComment = ref(true)
+const showEditComment = ref(false)
 const commentValue = ref("")
 </script>
 
@@ -129,14 +129,24 @@ const commentValue = ref("")
           </div>
         </div>
 
-        <div grid gap-4>
-          <Transition>
-            <EditComment
-              v-if="showEditComment"
-              v-model="commentValue"
-              :user="user"
-            />
-          </Transition>
+        <div flex flex-col gap-4>
+          <div
+            :style="{
+              display: 'grid',
+              gridTemplateRows: showEditComment ? '1fr' : '0fr',
+              transition: 'grid-template-rows 0.3s ease-out',
+            }"
+          >
+            <div
+              :style="{
+                overflow: 'hidden',
+                padding: showEditComment ? '.5rem' : 0,
+                transition: 'padding .3s ease-out',
+              }"
+            >
+              <EditComment v-model="commentValue" :user="user" />
+            </div>
+          </div>
           <div grid gap-4>
             <ReadComment :user="user" />
             <ReadComment :user="user" />
