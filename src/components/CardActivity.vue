@@ -31,12 +31,13 @@ const commentValue = ref("")
         <div>
           <a
             :href="user?.profileUrl ?? '#'"
-            class="text-[.875rem] font-medium hover:text-amber-700"
+            un-text="hover:amber-700 [.875rem]"
+            font-medium
           >
             {{ user?.firstName ?? "" }} {{ user?.lastName ?? "" }}</a
           >
           ·
-          <a href="#" class="text-[.875rem] font-medium hover:text-amber-700">
+          <a href="#" un-text="hover:amber-700 [.875rem]" font-medium>
             {{ user?.group ?? "Group" }}</a
           >
 
@@ -49,7 +50,12 @@ const commentValue = ref("")
           <ul class="list-none m-0 p-0">
             <li class="">
               <button
-                class="rounded p-1.5 hover:bg-zinc-200 @dark:hover:bg-zinc-400/10 bg-transparent border-0 text-current m-0 p-0 w-full text-left"
+                bg="transparent hover:zinc-200 @dark:hover:zinc-400/10"
+                text="current left"
+                border="rounded 0"
+                m-0
+                p-1.5
+                w-full
                 type="button"
               >
                 Edit
@@ -57,7 +63,12 @@ const commentValue = ref("")
             </li>
             <li class="">
               <button
-                class="rounded p-1.5 hover:bg-red-700 text-red-700 hover:text-white bg-transparent border-0 text-current m-0 p-0 w-full text-left"
+                bg="transparent hover:red-700"
+                text="current left hover:white"
+                border="rounded 0"
+                m-0
+                p-1.5
+                w-full
                 type="button"
               >
                 Delete
@@ -79,9 +90,12 @@ const commentValue = ref("")
           <p class="my-0 text-sm">{{ activity?.description }}</p>
 
           <ul
-            class="grid gap-4 mt-4 mi-0 list-none mb-0 p-0 grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
+            grid="~ cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4"
+            m="t-4 i-0 b-0"
+            list-none
+            p-0
           >
-            <li class="flex flex-col p-0">
+            <li flex flex-col p-0>
               <span class="text-xs">Time</span> {{ activity?.duration }}
             </li>
           </ul>
@@ -93,11 +107,11 @@ const commentValue = ref("")
         />
       </div>
 
-      <footer class="grid gap-4">
-        <div class="flex items-center gap-2 justify-between">
+      <footer grid gap-4>
+        <div flex="~ items-center gap-2 justify-between">
           <button type="button">4 likes</button>
 
-          <div class="grid gap-2 grid-cols-[repeat(2,40px)]">
+          <div grid="~ cols-[repeat(2,40px)] gap-2">
             <ButtonIcon
               text="Cheer"
               :variant="!activity?.likes ? 'filled' : 'outlined'"
@@ -115,7 +129,7 @@ const commentValue = ref("")
           </div>
         </div>
 
-        <div class="grid gap-4">
+        <div grid gap-4>
           <Transition>
             <EditComment
               v-if="showEditComment"
@@ -123,8 +137,10 @@ const commentValue = ref("")
               :user="user"
             />
           </Transition>
-          <ReadComment :user="user" />
-          <ReadComment :user="user" />
+          <div grid gap-4>
+            <ReadComment :user="user" />
+            <ReadComment :user="user" />
+          </div>
         </div>
       </footer>
     </Card>

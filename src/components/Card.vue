@@ -6,7 +6,10 @@ defineProps<{
 
 <template>
   <div
-    class="bg-white @dark:bg-zinc-800 shadow-md @dark: shadow-lg py-4 ps-6 pe-6 rounded"
+    bg="white @dark:zinc-800"
+    shadow="md @dark: lg"
+    p="y-4 s-6 e-6"
+    class="rounded"
     :class="class"
   >
     <slot />

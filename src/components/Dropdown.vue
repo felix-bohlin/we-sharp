@@ -33,7 +33,10 @@ onClickOutside(
     <Transition>
       <div
         ref="dropdownRef"
-        class="bg-zinc-50 ring-1 ring-slate-500/10 @dark:ring-slate-300/10 @dark:bg-zinc-800 rounded shadow-md @dark:shadow-xl p-2 absolute right-0 top-[42px] w-[25cqw]"
+        bg="zinc-50 @dark:zinc-800"
+        ring=" 1 slate-500/10 @dark:slate-300/10"
+        shadow="md @dark:xl"
+        class="rounded p-2 absolute right-0 top-[42px] w-[25cqw]"
         v-if="showDropdown"
       >
         <slot />
