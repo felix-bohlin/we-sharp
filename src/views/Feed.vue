@@ -3,7 +3,9 @@ import CardActivity from "@/components/CardActivity.vue"
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <div
+    class="flex flex-col gap-4 w-[clamp(30ch,100%,60ch)] ms-auto me-auto ps-4 pe-4"
+  >
     <CardActivity
       :activity="{
         id: '1',

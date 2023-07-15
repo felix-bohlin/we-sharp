@@ -23,8 +23,8 @@ const commentValue = ref("")
 </script>
 
 <template>
-  <section class="@container w-[clamp(30ch,100%,60ch)]">
-    <Card>
+  <section class="@container">
+    <Card class="grid gap-2">
       <header class="items-center grid grid-cols-[40px_1fr_40px] gap-4">
         <Avatar :image="user?.imageUrl" />
 
@@ -103,7 +103,7 @@ const commentValue = ref("")
 
         <img
           src="https://picsum.photos/500"
-          class="h-full w-full max-h-[218px] object-cover my-4 col-[1/-1] rounded bg-gradient-to-r from-emerald-700 to-emerald-300"
+          class="h-full w-full max-h-[218px] object-cover col-[1/-1] rounded bg-gradient-to-r from-emerald-700 to-emerald-300"
         />
       </div>
 
