@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import { ref, watchEffect } from "vue"
 import type { TActivity } from "@/types/activity"
 import type { TUser } from "@/types/user"
+import { ref } from "vue"
 
 import Avatar from "@/components/Avatar.vue"
 import ButtonIcon from "@/components/button/ButtonIcon.vue"
 import Card from "@/components/Card.vue"
+import EditComment from "@/components/comment/EditComment.vue"
+import ReadComment from "@/components/comment/ReadComment.vue"
+import Dropdown from "@/components/Dropdown.vue"
+import IconActivity from "@/components/IconActivity.vue"
 import Clap from "@/components/icons/Clap.vue"
 import CommentIcon from "@/components/icons/Comment.vue"
-import Dropdown from "@/components/Dropdown.vue"
-import EditComment from "@/components/comment/EditComment.vue"
-import IconActivity from "@/components/IconActivity.vue"
-import ReadComment from "@/components/comment/ReadComment.vue"
+
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core"
 
 defineProps<{
   activity: TActivity
   user: Omit<TUser, "id">
 }>()
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const showEditComment = ref(false)
 const commentValue = ref("")
@@ -128,44 +132,72 @@ const commentValue = ref("")
             </ButtonIcon>
           </div>
         </div>
-
-        <div flex flex-col gap-4>
-          <div
-            :style="{
-              display: 'grid',
-              gridTemplateRows: showEditComment ? '1fr' : '0fr',
-              transition: 'grid-template-rows 0.3s ease-out',
-            }"
-          >
-            <div
-              :style="{
-                overflow: 'hidden',
-                padding: showEditComment ? '.5rem' : 0,
-                transition: 'padding .3s ease-out',
-              }"
-            >
-              <EditComment v-model="commentValue" :user="user" />
-            </div>
-          </div>
-          <div grid gap-4>
-            <ReadComment :user="user" />
-            <ReadComment :user="user" />
-          </div>
-        </div>
       </footer>
     </Card>
   </section>
+
+  <Teleport to="body" :disabled="breakpoints.greaterOrEqual('sm').value">
+    <Transition>
+      <div v-if="showEditComment" fixed inset-0>
+        <div
+          @click="showEditComment = !showEditComment"
+          absolute
+          inset-0
+          z-0
+          bg-transparent
+          backdrop-blur-sm
+          cursor-pointer
+        ></div>
+        <div
+          absolute
+          rounded-t-xl
+          bg="zinc-50 @dark:zinc-800"
+          shadow="md @dark:xl"
+          z-10
+          transition-top
+          :style="{
+            bottom: 0,
+            left: 0,
+            right: 0,
+            top: showEditComment ? '20vh' : '100%',
+          }"
+          class="before:content-[''] before:w-[min(25vw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:-top-3 before:left-1/2 before:transform before:-translate-x-1/2"
+        >
+          <div
+            grid
+            gap-4
+            py-6
+            ps-4
+            pe-4
+            :style="{
+              height: showEditComment ? '80vh' : 'auto',
+            }"
+          >
+            <div grid gap-4 overflow-y-auto pt-1>
+              <EditComment v-model="commentValue" :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
-  translate: 0 -10px;
+  translate: 0 100%;
 }
 </style>
