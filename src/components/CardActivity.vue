@@ -14,16 +14,24 @@ import Clap from "@/components/icons/Clap.vue"
 import CommentIcon from "@/components/icons/Comment.vue"
 
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core"
+import { useUiStore } from "@/stores/ui"
 
 defineProps<{
   activity: TActivity
   user: Omit<TUser, "id">
 }>()
 
+const uiStore = useUiStore()
+
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
 const showEditComment = ref(false)
 const commentValue = ref("")
+
+function handleEditCommentClick() {
+  showEditComment.value = !showEditComment.value
+  uiStore.toggleGlobalScroll()
+}
 </script>
 
 <template>
@@ -124,7 +132,7 @@ const commentValue = ref("")
             </ButtonIcon>
 
             <ButtonIcon
-              @click="showEditComment = !showEditComment"
+              @click="handleEditCommentClick"
               text="Comment"
               variant="outlined"
             >
@@ -140,7 +148,7 @@ const commentValue = ref("")
     <Transition>
       <div v-if="showEditComment" fixed inset-0>
         <div
-          @click="showEditComment = !showEditComment"
+          @click="handleEditCommentClick"
           absolute
           inset-0
           z-0
@@ -173,7 +181,7 @@ const commentValue = ref("")
               height: showEditComment ? '80vh' : 'auto',
             }"
           >
-            <div grid gap-4 overflow-y-auto pt-1>
+            <div grid gap-4 overflow-y-auto p-1>
               <EditComment v-model="commentValue" :user="user" />
               <ReadComment :user="user" />
               <ReadComment :user="user" />
