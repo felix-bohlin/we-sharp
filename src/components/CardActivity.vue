@@ -182,7 +182,7 @@ function handleEditCommentClick() {
               height: showEditComment ? '80vh' : 'auto',
             }"
           >
-            <div grid gap-4 overflow-y-auto p-1>
+            <div grid gap-4 overflow-y-auto pt-1 ps-2 pe-2>
               <EditComment v-model="commentValue" :user="user" />
               <ReadComment :user="user" />
               <ReadComment :user="user" />
