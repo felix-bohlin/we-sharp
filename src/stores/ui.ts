@@ -7,7 +7,7 @@ export const useUiStore = defineStore("ui", () => {
   function toggleGlobalScroll() {
     globalScroll.value = !globalScroll.value
 
-    document.body.style.overflowY = globalScroll.value ? "auto" : "hidden"
+    document.body.style.overflow = globalScroll.value ? "auto" : "hidden"
     document.body.style.height = globalScroll.value ? "auto" : "100vh"
   }
 

@@ -155,6 +155,7 @@ function handleEditCommentClick() {
           bg-transparent
           backdrop-blur-sm
           cursor-pointer
+          overscroll-none
         ></div>
         <div
           absolute
