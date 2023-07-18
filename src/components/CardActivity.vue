@@ -30,7 +30,10 @@ const commentValue = ref("")
 
 function handleEditCommentClick() {
   showEditComment.value = !showEditComment.value
-  uiStore.toggleGlobalScroll()
+
+  if (breakpoints.smaller("sm").value) {
+    uiStore.toggleGlobalScroll()
+  }
 }
 </script>
 
@@ -91,7 +94,7 @@ function handleEditCommentClick() {
       </header>
 
       <div class="grid gap-4 items-center grid-cols-[40px_1fr]">
-        <span class="text-3xl">
+        <span text-3xl flex justify-center>
           <IconActivity :icon="activity?.activityType ?? 'run'" />
         </span>
 
@@ -100,18 +103,18 @@ function handleEditCommentClick() {
             <a href="#">{{ activity?.title }}</a>
           </h2>
           <p class="my-0 text-sm">{{ activity?.description }}</p>
-
-          <ul
-            grid="~ cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4"
-            m="t-4 i-0 b-0"
-            list-none
-            p-0
-          >
-            <li flex flex-col p-0>
-              <span class="text-xs">Time</span> {{ activity?.duration }}
-            </li>
-          </ul>
         </div>
+
+        <ul
+          grid="~ cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4"
+          m="t-4 i-0 b-0"
+          list-none
+          p-0
+        >
+          <li flex flex-col p-0>
+            <span class="text-xs">Time</span> {{ activity?.duration }}
+          </li>
+        </ul>
 
         <img
           src="https://picsum.photos/500"
@@ -140,13 +143,23 @@ function handleEditCommentClick() {
             </ButtonIcon>
           </div>
         </div>
+
+        <div grid gap-4>
+          <EditComment v-model="commentValue" :user="user" />
+          <ReadComment :user="user" />
+          <ReadComment :user="user" />
+        </div>
       </footer>
     </Card>
   </section>
 
   <Teleport to="body" :disabled="breakpoints.greaterOrEqual('sm').value">
     <Transition>
-      <div v-if="showEditComment" fixed inset-0>
+      <div
+        v-if="showEditComment && !breakpoints.greaterOrEqual('sm').value"
+        fixed
+        inset-0
+      >
         <div
           @click="handleEditCommentClick"
           absolute
@@ -170,8 +183,8 @@ function handleEditCommentClick() {
             right: 0,
             top: showEditComment ? '20vh' : '100%',
           }"
-          class="before:content-[''] before:w-[min(25vw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:-top-3 before:left-1/2 before:transform before:-translate-x-1/2"
         >
+          <!-- class="before:content-[''] before:w-[min(25vw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:-top-3 before:left-1/2 before:transform before:-translate-x-1/2" -->
           <div
             grid
             gap-4
@@ -182,15 +195,17 @@ function handleEditCommentClick() {
               height: showEditComment ? '80vh' : 'auto',
             }"
           >
-            <div grid gap-4 overflow-y-auto pt-1 ps-2 pe-2>
+            <div grid gap-4 content-start overflow-y-auto pt-1 ps-2 pe-2>
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+              <ReadComment :user="user" />
+            </div>
+            <div grid content-end>
               <EditComment v-model="commentValue" :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
             </div>
           </div>
         </div>

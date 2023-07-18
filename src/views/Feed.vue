@@ -28,7 +28,7 @@ import CardActivity from "@/components/CardActivity.vue"
       }"
     />
 
-    <!-- <CardActivity
+    <CardActivity
       :activity="{
         id: '2',
         activityType: 'yoga',
@@ -48,6 +48,6 @@ import CardActivity from "@/components/CardActivity.vue"
         group: 'Quality',
         profileUrl: '#',
       }"
-    /> -->
+    />
   </div>
 </template>
