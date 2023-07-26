@@ -24,6 +24,7 @@ defineProps<{
 const uiStore = useUiStore()
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
+const isDesktop = breakpoints.greaterOrEqual("sm")
 
 const showEditComment = ref(false)
 const commentValue = ref("")
@@ -126,7 +127,13 @@ function handleEditCommentClick() {
         <div flex="~ items-center gap-2 justify-between">
           <button type="button">4 likes</button>
 
-          <div grid="~ cols-[repeat(2,40px)] gap-2">
+          <div
+            grid
+            gap-2
+            :style="{
+              gridTemplateColumns: isDesktop ? '40px' : '40px 40px',
+            }"
+          >
             <ButtonIcon
               text="Cheer"
               :variant="!activity?.likes ? 'filled' : 'outlined'"
@@ -135,6 +142,7 @@ function handleEditCommentClick() {
             </ButtonIcon>
 
             <ButtonIcon
+              v-if="!isDesktop"
               @click="handleEditCommentClick"
               text="Comment"
               variant="outlined"
@@ -144,7 +152,7 @@ function handleEditCommentClick() {
           </div>
         </div>
 
-        <div grid gap-4>
+        <div v-if="isDesktop" grid gap-4>
           <EditComment v-model="commentValue" :user="user" />
           <ReadComment :user="user" />
           <ReadComment :user="user" />
@@ -153,13 +161,9 @@ function handleEditCommentClick() {
     </Card>
   </section>
 
-  <Teleport to="body" :disabled="breakpoints.greaterOrEqual('sm').value">
+  <Teleport to="body" :disabled="isDesktop">
     <Transition>
-      <div
-        v-if="showEditComment && !breakpoints.greaterOrEqual('sm').value"
-        fixed
-        inset-0
-      >
+      <div v-if="showEditComment && !isDesktop" fixed inset-0>
         <div
           @click="handleEditCommentClick"
           absolute
