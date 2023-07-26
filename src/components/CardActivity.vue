@@ -185,10 +185,10 @@ function handleEditCommentClick() {
             bottom: 0,
             left: 0,
             right: 0,
-            top: showEditComment ? '20vh' : '100%',
+            top: showEditComment ? '20dvh' : '100%',
           }"
+          class="before:content-[''] before:w-[min(20cqw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:top-2 before:left-1/2 before:transform before:-translate-x-1/2"
         >
-          <!-- class="before:content-[''] before:w-[min(25vw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:-top-3 before:left-1/2 before:transform before:-translate-x-1/2" -->
           <div
             grid
             gap-4
@@ -196,7 +196,7 @@ function handleEditCommentClick() {
             ps-4
             pe-4
             :style="{
-              height: showEditComment ? '80vh' : 'auto',
+              height: showEditComment ? '80dvh' : 'auto',
             }"
           >
             <div grid gap-4 content-start overflow-y-auto pt-1 ps-2 pe-2>
