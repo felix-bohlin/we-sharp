@@ -62,6 +62,7 @@ watchEffect(() => {
 })
 
 // Pull down to close
+// https://github.com/elk-zone/elk/pull/2290/files
 const { dragging, dragDistance } = invoke(() => {
   const triggerDistance = 120
   let scrollTop = 0
