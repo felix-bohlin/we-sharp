@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router"
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -7,7 +7,9 @@ import { RouterLink, RouterView } from "vue-router"
 </template>
 
 <style>
-@layer normalize, base, components;
+@layer normalize,
+base,
+components;
 
 @import "../node_modules/modern-normalize/modern-normalize.css" layer(normalize);
 @import "../node_modules/open-props/gradients.min.css" layer(base);
@@ -23,10 +25,12 @@ import { RouterLink, RouterView } from "vue-router"
 }
 
 @layer base {
+
   :where(a),
   :is(h1, h2, h3, h4, h5, h6, p):has(a) {
     --uno: "text-amber-500 hover:text-amber-700";
   }
+
 }
 
 input,
