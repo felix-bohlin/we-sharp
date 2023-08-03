@@ -30,7 +30,7 @@ defineExpose({
     <Transition>
       <dialog
         v-show="visible" ref="dialog" :open="visible"
-        class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:bg-zinc-800/90 rounded w-[65ch] text-current overflow-hidden shadow-md @dark:shadow-lg"
+        class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded text-current overflow-hidden shadow-md @dark:shadow-lg"
         bg="white @dark:zinc-800" p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
         <h3 v-if="title" text-lg font-bold>
@@ -49,13 +49,15 @@ defineExpose({
 
 <style scoped>
 dialog {
+  animation: var(--animation-scale-down) forwards;
+  animation-timing-function: var(--ease-squish-3);
   max-height: 60dvh;
   min-height: v-bind(dialogMinHeight);
+  max-inline-size: min(90vw, 65ch);
 }
 
 .v-enter-active,
 .v-leave-active {
-  translate: 0 0;
   opacity: 1;
   transition: all .15s ease-out;
 }
@@ -63,6 +65,5 @@ dialog {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-  translate: 0 5%;
 }
 </style>

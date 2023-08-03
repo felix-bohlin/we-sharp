@@ -13,6 +13,7 @@ components;
 
 @import "../node_modules/modern-normalize/modern-normalize.css" layer(normalize);
 @import "../node_modules/open-props/gradients.min.css" layer(base);
+@import "../node_modules/open-props/animations.min.css" layer(base);
 
 @layer normalize {
   :where(p, ul, ol, dl, h6) {
@@ -25,6 +26,11 @@ components;
 }
 
 @layer base {
+
+  html:has(dialog[open]) {
+    height: 100vh;
+    overflow: hidden;
+}
 
   :where(a),
   :is(h1, h2, h3, h4, h5, h6, p):has(a) {

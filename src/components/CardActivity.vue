@@ -14,15 +14,12 @@ import EditComment from '@/components/comment/EditComment.vue'
 import Dialog from '@/components/dialog/Dialog.vue'
 import Clap from '@/components/icons/Clap.vue'
 import CommentIcon from '@/components/icons/Comment.vue'
-
 import { useUiStore } from '@/stores/ui'
 
 defineProps<{
   activity: TActivity
   user: Omit<TUser, 'id'>
 }>()
-
-const uiStore = useUiStore()
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
@@ -32,33 +29,33 @@ const drawerElement = ref<HTMLDivElement>()
 const showEditComment = ref(false)
 const commentValue = ref('')
 
+const uiStore = useUiStore()
+
 function commentsShow() {
   showEditComment.value = true
-  uiStore.toggleGlobalScroll()
 
   if (breakpoints.isGreaterOrEqual('sm'))
     dialog.value?.show()
+
+  else
+    uiStore.toggleGlobalScroll(false)
 }
 
-function commentsClose() {
+function commentsCloseAll() {
   showEditComment.value = false
+  dialog.value?.close()
   uiStore.toggleGlobalScroll(true)
-
-  if (breakpoints.isGreaterOrEqual('sm'))
-    dialog.value?.close()
 }
 
 function onPost(value: string) {
   // console.log(value)
-  commentsClose()
+  commentsCloseAll()
   commentValue.value = ''
 }
 
 watchEffect(() => {
-  if (!breakpoints.greaterOrEqual('sm').value) {
-    commentsClose()
-    showEditComment.value = false
-  }
+  if (!breakpoints.greaterOrEqual('sm').value)
+    dialog.value?.close()
 })
 
 // Pull down to close
@@ -226,7 +223,7 @@ const { dragging, dragDistance } = invoke(() => {
       <div v-if="showEditComment && !isDesktop" fixed inset-0>
         <div
           absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer overscroll-none
-          @click="commentsClose"
+          @click="commentsCloseAll"
         />
         <div
           ref="drawerElement"
@@ -289,15 +286,3 @@ const { dragging, dragDistance } = invoke(() => {
     </template>
   </Dialog>
 </template>
-
-<style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: all 0.3s ease-in-out;
-}
-
-.slide-up-enter-from,
-.slide-up-leave-to {
-  translate: 0 100%;
-}
-</style>
