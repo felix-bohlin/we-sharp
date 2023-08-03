@@ -9,10 +9,16 @@ defineProps<{
 
 const emit = defineEmits(['submit'])
 const commentValue = defineModel<string>()
+
+const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '🐎']
 </script>
 
 <template>
-  <div />
+  <div flex justify-center gap-2 pb-3 text-xl overflow-x-auto>
+    <button v-for="emoji in emojis" :key="emoji" @click="commentValue = `${commentValue ? `${commentValue} ` : ''}${emoji}`">
+      {{ emoji }}
+    </button>
+  </div>
   <div class="grid gap-3 grid-cols-[30px_1fr] items-start pb-1">
     <Avatar :image="user?.imageUrl" />
 

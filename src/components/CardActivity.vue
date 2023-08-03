@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { breakpointsTailwind, invoke, useBreakpoints, useEventListener } from '@vueuse/core'
 import { ref, watchEffect } from 'vue'
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import type { TActivity } from '@/types/activity'
 import type { TUser } from '@/types/user'
 
@@ -9,8 +9,8 @@ import Card from '@/components/Card.vue'
 import Dropdown from '@/components/Dropdown.vue'
 import IconActivity from '@/components/IconActivity.vue'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
+import Comment from '@/components/comment/Comment.vue'
 import EditComment from '@/components/comment/EditComment.vue'
-import ReadComment from '@/components/comment/ReadComment.vue'
 import Dialog from '@/components/dialog/Dialog.vue'
 import Clap from '@/components/icons/Clap.vue'
 import CommentIcon from '@/components/icons/Comment.vue'
@@ -22,17 +22,17 @@ defineProps<{
   user: Omit<TUser, 'id'>
 }>()
 
-const dialog = ref<InstanceType<typeof Dialog>>()
-
 const uiStore = useUiStore()
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
 
+const dialog = ref<InstanceType<typeof Dialog>>()
+const drawerElement = ref<HTMLDivElement>()
 const showEditComment = ref(false)
 const commentValue = ref('')
 
-function handleEditCommentClick() {
+function commentsShow() {
   showEditComment.value = true
   uiStore.toggleGlobalScroll()
 
@@ -40,22 +40,87 @@ function handleEditCommentClick() {
     dialog.value?.show()
 }
 
-function handleDialogClose() {
+function commentsClose() {
   showEditComment.value = false
-  dialog.value?.close()
   uiStore.toggleGlobalScroll(true)
+
+  if (breakpoints.isGreaterOrEqual('sm'))
+    dialog.value?.close()
 }
 
-function handlePost(value: string) {
-  console.log(value)
-  dialog.value?.close()
+function onPost(value: string) {
+  // console.log(value)
+  commentsClose()
   commentValue.value = ''
 }
 
 watchEffect(() => {
   if (!breakpoints.greaterOrEqual('sm').value) {
-    dialog.value?.close()
+    commentsClose()
     showEditComment.value = false
+  }
+})
+
+// Pull down to close
+const { dragging, dragDistance } = invoke(() => {
+  const triggerDistance = 120
+  let scrollTop = 0
+  let beforeTouchPointY = 0
+  const dragDistance = ref(0)
+  const dragging = ref(false)
+
+  useEventListener(drawerElement, 'scroll', (e: Event) => {
+    scrollTop = (e.target as HTMLDivElement).scrollTop
+    // Prevent the page from scrolling when the drawer is being dragged.
+    if (dragDistance.value > 0)
+      (e.target as HTMLDivElement).scrollTop = 0
+  }, { passive: true })
+
+  useEventListener(drawerElement, 'touchstart', (e: TouchEvent) => {
+    if (!showEditComment.value)
+      return
+    beforeTouchPointY = e.touches[0].pageY
+    dragDistance.value = 0
+  }, { passive: true })
+
+  useEventListener(drawerElement, 'touchmove', (e: TouchEvent) => {
+    if (!showEditComment.value)
+      return
+    // Do not move the entire drawer when its contents are not scrolled to the top.
+    if (scrollTop > 0 && dragDistance.value <= 0) {
+      dragging.value = false
+      beforeTouchPointY = e.touches[0].pageY
+      return
+    }
+    const { pageY } = e.touches[0]
+    // Calculate the drag distance.
+    dragDistance.value += pageY - beforeTouchPointY
+    if (dragDistance.value < 0)
+      dragDistance.value = 0
+    beforeTouchPointY = pageY
+    // Marked as dragging.
+    if (dragDistance.value > 1)
+      dragging.value = true
+    // Prevent the page from scrolling when the drawer is being dragged.
+    if (dragDistance.value > 0) {
+      if (e?.cancelable && e?.preventDefault)
+        e.preventDefault()
+      e?.stopPropagation()
+    }
+  }, { passive: true })
+
+  useEventListener(drawerElement, 'touchend', () => {
+    if (!showEditComment.value)
+      return
+    if (dragDistance.value >= triggerDistance)
+      showEditComment.value = false
+    dragging.value = false
+    // code
+  }, { passive: true })
+
+  return {
+    dragDistance,
+    dragging,
   }
 })
 </script>
@@ -139,49 +204,62 @@ watchEffect(() => {
               <Clap />
             </ButtonIcon>
 
-            <ButtonIcon text="Comment" variant="outlined" @click="handleEditCommentClick">
+            <ButtonIcon text="Comment" variant="outlined" @click="commentsShow">
               <CommentIcon />
             </ButtonIcon>
           </div>
         </div>
       </div>
-
-      <!-- <div v-if="isDesktop" grid gap-4>
-        <EditComment v-model="commentValue" :user="user" />
-        <ReadComment v-for="comment in activity?.comments" :user="user" />
-      </div> -->
     </Card>
   </section>
 
   <Teleport to="body" :disabled="isDesktop">
-    <Transition name="slide-up">
+    <Transition
+      enter-active-class="transition duration-250 ease-out"
+      enter-from-class="opacity-0 children:(translate-y-full)"
+      enter-to-class="opacity-100 children:(translate-y-0)"
+      leave-active-class="transition duration-250 ease-in"
+      leave-from-class="opacity-100 children:(translate-y-0)"
+      leave-to-class="opacity-0 children:(translate-y-full)"
+    >
       <div v-if="showEditComment && !isDesktop" fixed inset-0>
         <div
           absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer overscroll-none
-          @click="handleEditCommentClick"
+          @click="commentsClose"
         />
         <div
-          absolute rounded-t-xl bg="zinc-50 @dark:zinc-800" shadow="md @dark:xl" z-10 transition-top :style="{
+          ref="drawerElement"
+          absolute rounded-t-xl bg="zinc-50 @dark:zinc-800" shadow="md @dark:xl" z-10 transition-top
+          :style="{
             bottom: 0,
             left: 0,
             right: 0,
             top: showEditComment ? '20dvh' : '100%',
+            transform: dragging ? `translateY(${dragDistance}px)` : '',
           }"
+          :class="{
+            'duration-0': dragging,
+            'duration-250': !dragging,
+          }"
+          transition="transform ease-in"
           class="before:content-[''] before:w-[min(20cqw,100px)] before:h-1.5 before:bg-zinc-100 before:@dark:bg-zinc-400/50 before:rounded-full before:absolute before:top-2 before:left-1/2 before:transform before:-translate-x-1/2"
         >
           <div
-            grid gap-4 py-6 ps-4 pe-4 :style="{
+            grid gap-4 py-6 ps-4
+            pe-4
+            :style="{
               height: showEditComment ? '80dvh' : 'auto',
+
             }"
           >
             <div grid gap-4 content-start overflow-y-auto pt-1 ps-2 pe-2>
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
-              <ReadComment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
+              <Comment :user="user" />
             </div>
             <div grid content-end>
               <EditComment v-model="commentValue" :user="user" />
@@ -194,18 +272,18 @@ watchEffect(() => {
 
   <Dialog ref="dialog" title="Comments">
     <div grid gap-4 content-start pt-1 ps-2 pe-2>
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
-      <ReadComment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
+      <Comment :user="user" />
     </div>
 
     <template #bottom>
       <EditComment
-        v-model="commentValue" :user="user" @submit="(value) => handlePost(value)"
+        v-model="commentValue" :user="user" @submit="(value) => onPost(value)"
       />
     </template>
   </Dialog>
