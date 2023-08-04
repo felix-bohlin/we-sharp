@@ -43,7 +43,7 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
             size="small"
             :style="{
               paddingInline: commentValue ? '.75rem' : 'initial',
-              // pointerEvents: commentValue ? 'all' : 'none',
+              pointerEvents: commentValue ? 'all' : 'none',
             }"
             variant="filled"
             @click="emit('submit', commentValue)"

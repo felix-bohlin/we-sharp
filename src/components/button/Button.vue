@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { TButtonVariant, TButtonSize } from "@/types/button"
+import type { TButtonSize, TButtonVariant } from '@/types/button'
 
 defineProps<{
   size?: TButtonSize
   variant?: TButtonVariant
 }>()
 
-defineEmits(["click"])
+defineEmits(['click'])
 </script>
 
 <template>
   <button
-    @click="$emit('click')"
     type="button"
     :class="`${variant ?? 'text'} ${size ?? 'medium'}`"
+    @click="$emit('click')"
   >
     <span>
       <slot name="before" />
@@ -21,7 +21,7 @@ defineEmits(["click"])
 
     <slot />
 
-    <span><slot name="after" /></span>
+    <span pointer-events-none><slot name="after" /></span>
   </button>
 </template>
 
