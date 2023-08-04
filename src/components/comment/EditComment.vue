@@ -14,7 +14,7 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
 </script>
 
 <template>
-  <div flex justify-center gap-2 pb-3 text-xl overflow-x-auto>
+  <div flex justify-center gap-2 p="b-2 t-1 md:y-1" text-xl overflow-x-auto>
     <button v-for="emoji in emojis" :key="emoji" @click="commentValue = `${commentValue ? `${commentValue} ` : ''}${emoji}`">
       {{ emoji }}
     </button>
@@ -40,11 +40,10 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
         >
           <Button
             overflow-hidden
-            :tabindex="commentValue ? 0 : -1"
             size="small"
             :style="{
               paddingInline: commentValue ? '.75rem' : 'initial',
-              pointerEvents: commentValue ? 'all' : 'none',
+              // pointerEvents: commentValue ? 'all' : 'none',
             }"
             variant="filled"
             @click="emit('submit', commentValue)"

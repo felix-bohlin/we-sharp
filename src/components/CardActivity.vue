@@ -48,7 +48,7 @@ function commentsCloseAll() {
 }
 
 function onPost(value: string) {
-  // console.log(value)
+  console.log(value)
   commentsCloseAll()
   commentValue.value = ''
 }
@@ -110,10 +110,14 @@ const { dragging, dragDistance } = invoke(() => {
   useEventListener(drawerElement, 'touchend', () => {
     if (!showEditComment.value)
       return
-    if (dragDistance.value >= triggerDistance)
+
+    // Close the drawer when the drag distance exceeds the trigger distance.
+    if (dragDistance.value >= triggerDistance) {
       showEditComment.value = false
+      uiStore.toggleGlobalScroll(true)
+    }
+
     dragging.value = false
-    // code
   }, { passive: true })
 
   return {
@@ -281,7 +285,7 @@ const { dragging, dragDistance } = invoke(() => {
 
     <template #bottom>
       <EditComment
-        v-model="commentValue" :user="user" @submit="(value) => onPost(value)"
+        v-model="commentValue" :user="user" @submit="onPost"
       />
     </template>
   </Dialog>
