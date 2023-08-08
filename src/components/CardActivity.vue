@@ -26,7 +26,6 @@ const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
 
 const dialog = ref<InstanceType<typeof Dialog>>()
-const drawerElement = ref<HTMLDivElement>()
 const showEditComment = ref(false)
 const commentValue = ref('')
 
@@ -58,74 +57,6 @@ watchEffect(() => {
   if (!breakpoints.greaterOrEqual('sm').value)
     dialog.value?.close()
 })
-
-// // Pull down to close
-// // https://github.com/elk-zone/elk/pull/2290/files
-// const { dragging, dragDistance } = invoke(() => {
-//   const triggerDistance = 120
-//   let scrollTop = 0
-//   let beforeTouchPointY = 0
-//   const dragDistance = ref(0)
-//   const dragging = ref(false)
-
-//   useEventListener(drawerElement, 'scroll', (e: Event) => {
-//     scrollTop = (e.target as HTMLDivElement).scrollTop
-//     // Prevent the page from scrolling when the drawer is being dragged.
-//     if (dragDistance.value > 0)
-//       (e.target as HTMLDivElement).scrollTop = 0
-//   }, { passive: true })
-
-//   useEventListener(drawerElement, 'touchstart', (e: TouchEvent) => {
-//     if (!showEditComment.value)
-//       return
-//     beforeTouchPointY = e.touches[0].pageY
-//     dragDistance.value = 0
-//   }, { passive: true })
-
-//   useEventListener(drawerElement, 'touchmove', (e: TouchEvent) => {
-//     if (!showEditComment.value)
-//       return
-//     // Do not move the entire drawer when its contents are not scrolled to the top.
-//     if (scrollTop > 0 && dragDistance.value <= 0) {
-//       dragging.value = false
-//       beforeTouchPointY = e.touches[0].pageY
-//       return
-//     }
-//     const { pageY } = e.touches[0]
-//     // Calculate the drag distance.
-//     dragDistance.value += pageY - beforeTouchPointY
-//     if (dragDistance.value < 0)
-//       dragDistance.value = 0
-//     beforeTouchPointY = pageY
-//     // Marked as dragging.
-//     if (dragDistance.value > 1)
-//       dragging.value = true
-//     // Prevent the page from scrolling when the drawer is being dragged.
-//     if (dragDistance.value > 0) {
-//       if (e?.cancelable && e?.preventDefault)
-//         e.preventDefault()
-//       e?.stopPropagation()
-//     }
-//   }, { passive: true })
-
-//   useEventListener(drawerElement, 'touchend', () => {
-//     if (!showEditComment.value)
-//       return
-
-//     // Close the drawer when the drag distance exceeds the trigger distance.
-//     if (dragDistance.value >= triggerDistance) {
-//       showEditComment.value = false
-//       uiStore.toggleGlobalScroll(true)
-//     }
-
-//     dragging.value = false
-//   }, { passive: true })
-
-//   return {
-//     dragDistance,
-//     dragging,
-//   }
-// })
 </script>
 
 <template>
@@ -217,7 +148,8 @@ watchEffect(() => {
   </section>
 
   <Drawer :show-drawer="showEditComment && !isDesktop" @on-close="commentsCloseAll()">
-    <div grid gap-4 content-start overflow-y-auto pt-1 ps-2 pe-2>
+    <!-- pt-1 ps-2 pe-2 -->
+    <div grid gap-4 content-start overflow-y-auto>
       <Comment :user="user" />
       <Comment :user="user" />
       <Comment :user="user" />
