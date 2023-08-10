@@ -35,7 +35,7 @@ defineEmits(['onClose'])
           <div
             grid gap-4 ps-4 pe-4
             :style="{
-              height: showDrawer ? '70dvh' : 'auto',
+              height: showDrawer ? '60dvh' : 'auto',
             }"
           >
             <slot />

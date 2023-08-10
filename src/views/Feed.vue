@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import CardActivity from "@/components/CardActivity.vue"
+import CardActivity from '@/components/CardActivity.vue'
 </script>
 
 <template>
   <div
-    class="grid md:grid-cols-2 gap-4 w-[clamp(30ch,100%,120ch)] ms-auto me-auto ps-4 pe-4"
+    class="grid grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] gap-4 w-[clamp(30ch,100%,120ch)] ms-auto me-auto ps-4 pe-4"
   >
     <CardActivity
       :activity="{
