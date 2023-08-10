@@ -13,18 +13,18 @@ defineEmits(['onClose'])
 <template>
   <Teleport to="body">
     <Transition>
-      <div v-if="showDrawer" transition-opacity duration-250 fixed inset-0>
+      <div v-if="showDrawer" fixed inset-0>
         <div
           absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer of-y-scroll of-x-hidden scrollbar-hide
           overscroll-none @click="$emit('onClose')"
         />
         <div
           class="drawer-panel" absolute rounded-lg bg="zinc-50 @dark:zinc-800" shadow="md @dark:xl" z-10 bottom-5
-          left-2.5 right-2.5 py-2
+          left-2.5 right-2.5 pt-2 pb-4
         >
           <div grid="~ cols-[30px_1fr_30px]" items-center ps-2 pe-2 pb-2>
             <span aria-hidden />
-            <h3 v-if="title" text-base text-center font-bold>
+            <h3 v-if="title" font-bold text="base center">
               {{ title }}
             </h3>
 
