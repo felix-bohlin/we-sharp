@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue"
-import { onClickOutside } from "@vueuse/core"
-import ButtonIcon from "@/components/button/ButtonIcon.vue"
-import MoreDots from "@/components/icons/MoreDots.vue"
+import { ref } from 'vue'
+import { onClickOutside } from '@vueuse/core'
+import ButtonIcon from '@/components/button/ButtonIcon.vue'
+import MoreDots from '@/components/icons/MoreDots.vue'
 
 const showDropdown = ref(false)
 const dropdownRef = ref(null)
@@ -23,21 +23,21 @@ onClickOutside(
   <div class="relative w-full h-full grid items-center">
     <ButtonIcon
       ref="dropdownToggle"
-      @click="showDropdown = !showDropdown"
       text="Menu"
       variant="text"
+      @click="showDropdown = !showDropdown"
     >
       <MoreDots />
     </ButtonIcon>
 
     <Transition>
       <div
+        v-if="showDropdown"
         ref="dropdownRef"
         bg="zinc-50 @dark:zinc-800"
         ring=" 1 slate-500/10 @dark:slate-300/10"
         shadow="md @dark:xl"
         class="rounded p-2 absolute right-0 top-[42px] w-[max(25cqw,150px)]"
-        v-if="showDropdown"
       >
         <slot />
       </div>
