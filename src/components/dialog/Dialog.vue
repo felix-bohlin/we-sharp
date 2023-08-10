@@ -35,7 +35,7 @@ defineExpose({
         class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded text-current overflow-hidden shadow-md @dark:shadow-lg"
         bg="white @dark:zinc-800" p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
-        <div flex justify-between items-center>
+        <div flex justify-between items-center pb-2>
           <h3 v-if="title" text-lg font-bold>
             {{ title }}
           </h3>
