@@ -48,7 +48,7 @@ defineEmits(['onClose'])
 
 <style scoped>
 .drawer-panel {
-  transition: all .3s ease-out;
+  transition: all 2.3s ease-out;
 }
 
 :is(.v-enter-active,
@@ -64,6 +64,7 @@ defineEmits(['onClose'])
 
 :is(.v-enter-from,
   .v-leave-to) {
+  transition: all 2.3s ease-out;
   opacity: 0;
 
 }
