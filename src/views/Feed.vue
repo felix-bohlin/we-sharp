@@ -16,7 +16,7 @@ import CardActivity from '@/components/CardActivity.vue'
         location: 'Stockholm',
         likes: 4,
         date: '08:30',
-        title: 'Morning run',
+        title: 'Morning cycling',
         userId: '1',
       }"
       :user="{
@@ -38,7 +38,7 @@ import CardActivity from '@/components/CardActivity.vue'
         location: 'Stockholm',
         likes: 0,
         date: '08:30',
-        title: 'Morning run',
+        title: 'Evening yoga',
         userId: '1',
       }"
       :user="{
