@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import ButtonIcon from '@/components/button/ButtonIcon.vue';
+import Close from '@/components/icons/Close.vue';
 
-const { minHeight = 300, title = '' } = defineProps(['minHeight', 'title'])
+const { minHeight = 300, showClose = true, title = '' } = defineProps(['minHeight', 'showClose', 'title'])
 
 const dialogMinHeight = `${minHeight}px}`
 
@@ -33,9 +35,16 @@ defineExpose({
         class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded text-current overflow-hidden shadow-md @dark:shadow-lg"
         bg="white @dark:zinc-800" p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
-        <h3 v-if="title" text-lg font-bold>
-          {{ title }}
-        </h3>
+        <div flex justify-between items-center>
+
+          <h3 v-if="title" text-lg font-bold>
+            {{ title }}
+          </h3>
+
+          <ButtonIcon v-if="showClose" @click="close" >
+            <Close/>
+          </ButtonIcon>
+        </div>
 
         <div class="overflow-y-auto">
           <slot />
