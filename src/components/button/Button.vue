@@ -12,7 +12,7 @@ defineEmits(['click'])
 <template>
   <button
     type="button"
-    :class="`${variant ?? 'text'} ${size ?? 'medium'}`"
+    :class="[variant ?? 'text', size ?? 'md']"
     @click="$emit('click')"
   >
     <span>
@@ -42,15 +42,15 @@ button {
     --uno: "bg-transparent ring-0 hover:bg-zinc-200 @dark:hover:bg-zinc-400/10";
   }
 
-  &.small {
+  &.sm {
     --uno: text-sm py-2 ps-3 pe-3;
   }
 
-  &.medium {
+  &.md {
     --uno: text-base py-2 ps-4 pe-4;
   }
 
-  &.large {
+  &.lg {
     --uno: text-lg py-3 ps-6 pe-6;
   }
 }

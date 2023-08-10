@@ -32,15 +32,16 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
         />
 
         <div
+          grid
+          gap-1
           :style="{
-            display: 'grid',
             gridTemplateColumns: commentValue ? '1fr' : '0fr',
             transition: 'grid-template-columns 0.3s ease-out',
           }"
         >
           <Button
             overflow-hidden
-            size="small"
+            size="sm"
             :style="{
               paddingInline: commentValue ? '.75rem' : 'initial',
               pointerEvents: commentValue ? 'all' : 'none',

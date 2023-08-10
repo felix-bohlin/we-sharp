@@ -147,7 +147,7 @@ watchEffect(() => {
     </Card>
   </section>
 
-  <Drawer :show-drawer="showEditComment && !isDesktop" @on-close="commentsCloseAll()">
+  <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
     <!-- pt-1 ps-2 pe-2 -->
     <div grid gap-4 content-start overflow-y-auto>
       <Comment :user="user" />

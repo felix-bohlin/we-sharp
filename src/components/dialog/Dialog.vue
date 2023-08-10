@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ButtonIcon from '@/components/button/ButtonIcon.vue';
-import Close from '@/components/icons/Close.vue';
+import ButtonIcon from '@/components/button/ButtonIcon.vue'
+import Close from '@/components/icons/Close.vue'
 
 const { minHeight = 300, showClose = true, title = '' } = defineProps(['minHeight', 'showClose', 'title'])
 
@@ -36,13 +36,12 @@ defineExpose({
         bg="white @dark:zinc-800" p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
         <div flex justify-between items-center>
-
           <h3 v-if="title" text-lg font-bold>
             {{ title }}
           </h3>
 
-          <ButtonIcon v-if="showClose" @click="close" >
-            <Close/>
+          <ButtonIcon v-if="showClose" rounded variant="filled" size="sm" @click="close">
+            <Close />
           </ButtonIcon>
         </div>
 
