@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CardActivity from '@/components/CardActivity.vue'
+import NavBottom from '@/components/nav/NavBottom.vue'
 </script>
 
 <template>
@@ -50,4 +51,6 @@ import CardActivity from '@/components/CardActivity.vue'
       }"
     />
   </div>
+
+  <NavBottom />
 </template>

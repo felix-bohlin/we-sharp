@@ -25,6 +25,7 @@ onClickOutside(
       ref="dropdownToggle"
       text="Menu"
       variant="text"
+      rounded
       @click="showDropdown = !showDropdown"
     >
       <MoreDots />
