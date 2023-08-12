@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+import { breakpointsTailwind, useBreakpoints, useScrollLock } from '@vueuse/core'
 import { ref, watchEffect } from 'vue'
 import type { TActivity } from '@/types/activity'
 import type { TUser } from '@/types/user'
@@ -29,6 +29,8 @@ const dialog = ref<InstanceType<typeof Dialog>>()
 const showEditComment = ref(false)
 const commentValue = ref('')
 
+const scrollLock = useScrollLock(document.body)
+
 const uiStore = useUiStore()
 
 function commentsShow() {
@@ -38,14 +40,14 @@ function commentsShow() {
 
   else {
     uiStore.toggleModalMode(true)
-    uiStore.toggleGlobalScroll(false)
+    scrollLock.value = true
   }
 }
 
 function commentsCloseAll() {
   showEditComment.value = false
   dialog.value?.close()
-  uiStore.toggleGlobalScroll(true)
+  scrollLock.value = false
   uiStore.toggleModalMode(false)
 }
 
