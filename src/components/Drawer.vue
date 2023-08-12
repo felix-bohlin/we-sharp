@@ -19,7 +19,7 @@ defineEmits(['onClose'])
           overscroll-none @click="$emit('onClose')"
         />
         <div
-          class="drawer-panel" absolute rounded-lg bg="zinc-50 @dark:zinc-800" shadow="md @dark:xl" z-10 bottom-5
+          class="drawer-panel" absolute rounded-lg bg="zinc-50 @dark:zinc-800" shadow="md @dark:xl" z-10 bottom-4
           left-2.5 right-2.5 pt-2 pb-4
         >
           <div grid="~ cols-[30px_1fr_30px]" items-center ps-2 pe-2 pb-2>
