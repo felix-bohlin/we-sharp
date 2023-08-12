@@ -34,17 +34,19 @@ const uiStore = useUiStore()
 function commentsShow() {
   showEditComment.value = true
 
-  if (breakpoints.isGreaterOrEqual('sm'))
-    dialog.value?.show()
+  if (breakpoints.isGreaterOrEqual('sm')) { dialog.value?.show() }
 
-  else
+  else {
+    uiStore.toggleModalMode(true)
     uiStore.toggleGlobalScroll(false)
+  }
 }
 
 function commentsCloseAll() {
   showEditComment.value = false
   dialog.value?.close()
   uiStore.toggleGlobalScroll(true)
+  uiStore.toggleModalMode(false)
 }
 
 function onPost(value: string) {
@@ -54,8 +56,13 @@ function onPost(value: string) {
 }
 
 watchEffect(() => {
-  if (!breakpoints.greaterOrEqual('sm').value)
+  if (breakpoints.greaterOrEqual('sm').value) {
+    if (uiStore.modalModeActive)
+      uiStore.toggleModalMode(false)
+  }
+  else {
     dialog.value?.close()
+  }
 })
 </script>
 

@@ -48,23 +48,23 @@ defineEmits(['onClose'])
 
 <style scoped>
 .drawer-panel {
-  transition: all .3s ease-out;
+  transition: all .2s ease-out;
 }
 
-:is(.v-enter-active,
-  .v-leave-active) {
+:is(.v-enter-to,
+  .v-leave-from) {
   opacity: 1;
 
 }
 
-:is(.v-enter-active,
-  .v-leave-active) .drawer-panel {
+:is(.v-enter-to,
+  .v-leave-from) .drawer-panel {
   translate: 0 0;
 }
 
 :is(.v-enter-from,
   .v-leave-to) {
-  transition: all .3s ease-out;
+  transition: all .2s ease-out;
   opacity: 0;
 
 }

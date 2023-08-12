@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 export const useUiStore = defineStore('ui', () => {
   const globalScroll = ref(true)
+  const modalModeActive = ref(false)
 
   function toggleGlobalScroll(toggleValue?: boolean) {
     const newValue
@@ -13,5 +14,9 @@ export const useUiStore = defineStore('ui', () => {
     document.body.style.height = newValue ? '' : '100vh'
   }
 
-  return { globalScroll, toggleGlobalScroll }
+  function toggleModalMode(toggleValue?: boolean) {
+    modalModeActive.value = toggleValue === undefined ? !modalModeActive.value : toggleValue
+  }
+
+  return { globalScroll, toggleGlobalScroll, modalModeActive, toggleModalMode }
 })
