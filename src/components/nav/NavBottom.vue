@@ -9,32 +9,27 @@ const uiStore = useUiStore()
   <Transition>
     <div v-if="!uiStore.modalModeActive" md:hidden sticky left-0 right-0 bottom-0 z-10 bg-main pb="[env(safe-area-inset-bottom)]" transition="padding 20">
       <nav
-        h-14 border="t zinc-700" flex flex-row of-y-scroll scrollbar-hide overscroll-none
+        h-14 border="t zinc-700" flex flex-row scrollbar-hide overscroll-none
         class="after-content-empty after:h-[calc(100%+0.5px)] after:w-0.1px after:pointer-events-none"
       >
         <div flex-1 grid grid-cols-5 gap-x-2 items-center text-xl>
           <button grid place-items-center text-xs gap-1>
-            <span i-mdi-home text-2xl />
-            Home
+            <span i-mdi-home text-3xl />
           </button>
           <button grid place-items-center text-xs gap-1>
-            <span i-mdi-chart-line text-2xl />
-            Stats
+            <span i-mdi-chart-line text-3xl />
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <span i-mdi-plus-circle text-2xl />
-            Add
+            <span i-mdi-plus-circle text-3xl text-amber-500 />
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <span i-mdi-account-group text-2xl />
-            Group
+            <span i-mdi-account-group text-3xl />
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <Avatar max-w-6 />
-            You
+            <Avatar max-w-8 />
           </button>
         </div>
       </nav>
