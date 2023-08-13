@@ -1,32 +1,21 @@
 <script setup lang="ts">
-import type { TActivityType } from "@/types/activity"
-import Ballsport from "./icons/Ballsport.vue"
-import Bike from "./icons/Bike.vue"
-import Climbing from "./icons/Climbing.vue"
-import Dumbell from "./icons/Dumbell.vue"
-import Golf from "./icons/Golf.vue"
-import MartialArts from "./icons/MartialArts.vue"
-import Run from "./icons/Run.vue"
-import Swim from "./icons/Swim.vue"
-import Tennis from "./icons/Tennis.vue"
-import Walk from "./icons/Walk.vue"
-import Yoga from "./icons/Yoga.vue"
+import type { TActivityType } from '@/types/activity'
 
 defineProps<{
-  icon: TActivityType
+  icon: TActivityType | string
 }>()
 </script>
 
 <template>
-  <Ballsport v-if="icon === 'ballsport'" />
-  <Bike v-else-if="icon === 'bike'" />
-  <Climbing v-else-if="icon === 'climbing'" />
-  <Golf v-else-if="icon === 'golf'" />
-  <Dumbell v-else-if="icon === 'gym'" />
-  <MartialArts v-else-if="icon === 'martialarts'" />
-  <Swim v-else-if="icon === 'swim'" />
-  <Tennis v-else-if="icon === 'tennis'" />
-  <Walk v-else-if="icon === 'walk'" />
-  <Yoga v-else-if="icon === 'yoga'" />
-  <Run v-else />
+  <span v-if="icon === 'ballsport'" i-mdi-soccer />
+  <span v-else-if="icon === 'bike'" i-mdi-bike-fast />
+  <span v-else-if="icon === 'golf'" i-mdi-golf />
+  <span v-else-if="icon === 'gym'" i-mdi-dumbbell />
+  <span v-else-if="icon === 'martialarts'" i-mdi-gymnastics />
+  <span v-else-if="icon === 'swim'" i-mdi-swim />
+  <span v-else-if="icon === 'tennis'" i-mdi-tennis-ball />
+  <span v-else-if="icon === 'walk'" i-mdi-walk />
+  <span v-else-if="icon === 'yoga'" i-mdi-yoga />
+  <span v-else-if="icon === 'run'" i-mdi-run-fast />
+  <span v-else i-mdi-medal />
 </template>

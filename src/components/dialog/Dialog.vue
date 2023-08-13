@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
-import Close from '@/components/icons/Close.vue'
 
 const { minHeight = 300, showClose = true, title = '' } = defineProps(['minHeight', 'showClose', 'title'])
 
@@ -41,7 +40,7 @@ defineExpose({
           </h3>
 
           <ButtonIcon v-if="showClose" rounded variant="filled" size="sm" @click="close">
-            <Close />
+            <span i-mdi-window-close />
           </ButtonIcon>
         </div>
 

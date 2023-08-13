@@ -12,8 +12,6 @@ import ButtonIcon from '@/components/button/ButtonIcon.vue'
 import Comment from '@/components/comment/Comment.vue'
 import EditComment from '@/components/comment/EditComment.vue'
 import Dialog from '@/components/dialog/Dialog.vue'
-import Clap from '@/components/icons/Clap.vue'
-import CommentIcon from '@/components/icons/Comment.vue'
 import Drawer from '@/components/Drawer.vue'
 import { useUiStore } from '@/stores/ui'
 
@@ -140,11 +138,11 @@ watchEffect(() => {
 
           <div class="grid gap-2 grid-cols-[auto_auto]">
             <ButtonIcon text="Cheer" :variant="!activity?.likes ? 'filled' : 'outlined'">
-              <Clap />
+              <span i-mdi-hand-clap />
             </ButtonIcon>
 
             <ButtonIcon text="Comment" variant="outlined" @click="commentsShow">
-              <CommentIcon />
+              <span i-mdi-comment-text-outline />
             </ButtonIcon>
           </div>
         </div>

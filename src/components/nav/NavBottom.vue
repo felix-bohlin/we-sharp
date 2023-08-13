@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Comment from '@/components/icons/Comment.vue'
+import Avatar from '@/components/Avatar.vue'
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
@@ -14,26 +14,26 @@ const uiStore = useUiStore()
       >
         <div flex-1 grid grid-cols-5 gap-x-2 items-center text-xl>
           <button grid place-items-center text-xs gap-1>
-            <Comment text-2xl />
+            <span i-mdi-home text-2xl />
             Home
           </button>
           <button grid place-items-center text-xs gap-1>
-            <Comment text-2xl />
+            <span i-mdi-chart-line text-2xl />
             Stats
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <Comment text-2xl />
+            <span i-mdi-plus-circle text-2xl />
             Add
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <Comment text-2xl />
+            <span i-mdi-account-group text-2xl />
             Group
           </button>
 
           <button grid place-items-center text-xs gap-1>
-            <Comment text-2xl />
+            <Avatar max-w-6 />
             You
           </button>
         </div>

@@ -1,8 +1,8 @@
-import { defineConfig, presetAttributify, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig({
-  presets: [presetUno(), presetAttributify()],
+  presets: [presetUno(), presetAttributify(), presetIcons()],
   transformers: [transformerDirectives()],
   shortcuts: {
     'bg-main': 'bg-slate-50 @dark:bg-zinc-900',

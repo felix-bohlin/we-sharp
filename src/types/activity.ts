@@ -1,17 +1,16 @@
 export type TActivityType =
-  | "ballsport"
-  | "bike"
-  | "climbing"
-  | "golf"
-  | "gym"
-  | "martialarts"
-  | "run"
-  | "swim"
-  | "tennis"
-  | "walk"
-  | "yoga"
+  | 'ballsport'
+  | 'bike'
+  | 'golf'
+  | 'gym'
+  | 'martialarts'
+  | 'run'
+  | 'swim'
+  | 'tennis'
+  | 'walk'
+  | 'yoga'
 
-export type TActivity = {
+export interface TActivity {
   activityType: TActivityType
   comments?: number
   date: string

@@ -27,6 +27,9 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: ^0.40.2
     version: 0.40.2(eslint@8.46.0)(typescript@5.0.4)
+  '@iconify-json/mdi':
+    specifier: ^1.1.54
+    version: 1.1.54
   '@tsconfig/node18':
     specifier: ^2.0.1
     version: 2.0.1
@@ -36,6 +39,9 @@ devDependencies:
   '@types/node':
     specifier: ^18.17.4
     version: 18.17.4
+  '@unocss/preset-icons':
+    specifier: ^0.55.0
+    version: 0.55.0
   '@unocss/transformer-directives':
     specifier: ^0.53.6
     version: 0.53.6
@@ -493,6 +499,12 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iconify-json/mdi@1.1.54:
+    resolution: {integrity: sha512-3QAsxte90EalbN2e8J30OqSSZz9qN2x+kmykQwsPahoW2dOtSvj+BR9YdiUd9A5XKk2nuU4UH5Gj/cq6WZ6CzQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -897,6 +909,10 @@ packages:
     resolution: {integrity: sha512-wuaLjWCzKUisHUxo4pjIdzcimdSmVa2hMHA3V7wVFBiSFX96/s7l0bvhHGFF/gMjbOnvJ+y+lBl3VKqcj9kwbA==}
     dev: true
 
+  /@unocss/core@0.55.0:
+    resolution: {integrity: sha512-TcTugpuhsv6OwMsP3iFIG8FVc9N5JzkojIGNAKF8I2WBftZ//3QcpEHiHc1mH3MlPYfJgUvCcT6/Gad55qmHzg==}
+    dev: true
+
   /@unocss/extractor-arbitrary-variants@0.53.6:
     resolution: {integrity: sha512-5MQD/9pIflZT5LXFx6qFUgPuVszFj+Pyq97UPI1YH4Lf4prDpfUtR4vKrXeMQv0XFvXqKluIWovgG9c6nrpg9w==}
     dependencies:
@@ -935,6 +951,16 @@ packages:
     dependencies:
       '@iconify/utils': 2.1.7
       '@unocss/core': 0.53.6
+      ofetch: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@unocss/preset-icons@0.55.0:
+    resolution: {integrity: sha512-BeseXUz2WFRztLtfblGhpFBJkgKi8k7tKPyEx/QX2I/xhQNsXqfWqeiCEVLxrEI3HxXOZPV1G4idCCbBiZQ3ww==}
+    dependencies:
+      '@iconify/utils': 2.1.7
+      '@unocss/core': 0.55.0
       ofetch: 1.1.1
     transitivePeerDependencies:
       - supports-color

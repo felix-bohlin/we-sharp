@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
-import MoreDots from '@/components/icons/MoreDots.vue'
 
 const showDropdown = ref(false)
 const dropdownRef = ref(null)
@@ -28,7 +27,7 @@ onClickOutside(
       rounded
       @click="showDropdown = !showDropdown"
     >
-      <MoreDots />
+      <span i-mdi-dots-horizontal />
     </ButtonIcon>
 
     <Transition>

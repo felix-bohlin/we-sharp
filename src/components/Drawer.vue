@@ -2,7 +2,6 @@
 import { useScrollLock } from '@vueuse/core'
 import { watch } from 'vue'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
-import Close from '@/components/icons/Close.vue'
 
 const props = defineProps<{
   showDrawer: boolean
@@ -35,7 +34,7 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
             </h3>
 
             <ButtonIcon :style="{ gridColumn: 3 }" size="sm" variant="filled" rounded @click="$emit('onClose')">
-              <Close />
+              <span i-mdi-window-close />
             </ButtonIcon>
           </div>
           <div
