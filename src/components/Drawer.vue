@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import { useScrollLock } from '@vueuse/core'
+import { watch } from 'vue'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
 import Close from '@/components/icons/Close.vue'
 
-const { showDrawer = true, title = '' } = defineProps<{
+const props = defineProps<{
   showDrawer: boolean
   title?: string
 }>()
 
 defineEmits(['onClose'])
+
+const scrollLock = useScrollLock(document.body)
+
+watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
 </script>
 
 <template>
