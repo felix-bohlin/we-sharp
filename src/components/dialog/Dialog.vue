@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useScrollLock } from '@vueuse/core'
 import ButtonIcon from '@/components/button/ButtonIcon.vue'
 
 const { minHeight = 300, showClose = true, title = '' } = defineProps(['minHeight', 'showClose', 'title'])
@@ -8,6 +9,10 @@ const dialogMinHeight = `${minHeight}px}`
 
 const dialog = ref<HTMLDialogElement>()
 const visible = ref(false)
+
+const scrollLock = useScrollLock(document.body)
+
+watch(() => visible, () => scrollLock.value = visible.value)
 
 function close(value?: string) {
   dialog.value?.close(value)
@@ -31,7 +36,7 @@ defineExpose({
     <Transition>
       <dialog
         v-show="visible" ref="dialog" :open="visible"
-        class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded-xl text-current overflow-hidden shadow-md @dark:shadow-lg"
+        class="max-h-[50dvh] grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded-xl text-current overflow-hidden shadow-md @dark:shadow-lg mt-[15vh]"
         bg-main p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
         <div flex justify-between items-center pb-2>
@@ -39,7 +44,7 @@ defineExpose({
             {{ title }}
           </h3>
 
-          <ButtonIcon v-if="showClose" rounded-xl variant="filled" size="sm" @click="close">
+          <ButtonIcon v-if="showClose" rounded variant="filled" size="sm" @click="close">
             <span i-mdi-window-close />
           </ButtonIcon>
         </div>
@@ -56,21 +61,20 @@ defineExpose({
 
 <style scoped>
 dialog {
-  animation: var(--animation-scale-down) forwards;
-  animation-timing-function: var(--ease-squish-3);
-  max-height: 60dvh;
   min-height: v-bind(dialogMinHeight);
   max-inline-size: min(90vw, 65ch);
 }
 
-.v-enter-active,
-.v-leave-active {
+.v-enter-to,
+.v-leave-from {
   opacity: 1;
-  transition: all .15s ease-out;
+  translate: 0 0;
+  transition: all .3s ease-out;
 }
 
 .v-enter-from,
 .v-leave-to {
+  translate: 0 20px;
   opacity: 0;
 }
 </style>

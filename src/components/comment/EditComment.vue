@@ -26,7 +26,8 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
       <div class="grid gap-2 grid-cols-[1fr_auto] items-start">
         <textarea
           v-model="commentValue"
-          class="min-h-15 p-2 text-sm border-zinc-200 @dark:border-zinc-400/10 rounded"
+          border="color-1 rounded"
+          min-h-15 p-2 text-sm
           type="text"
           placeholder="Add a comment"
         />
