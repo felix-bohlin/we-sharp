@@ -4,7 +4,7 @@ import NavBottom from '@/components/nav/NavBottom.vue'
 
 <template>
   <main>
-    <div class="min-h-[calc(100dvh-3.50001rem)]">
+    <div py-4 class="min-h-[calc(100dvh-3.50001rem)]">
       <slot />
     </div>
 

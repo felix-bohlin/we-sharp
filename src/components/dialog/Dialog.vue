@@ -31,15 +31,15 @@ defineExpose({
     <Transition>
       <dialog
         v-show="visible" ref="dialog" :open="visible"
-        class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded text-current overflow-hidden shadow-md @dark:shadow-lg"
-        bg="white @dark:zinc-800" p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
+        class="grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded-xl text-current overflow-hidden shadow-md @dark:shadow-lg"
+        bg-main p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
         <div flex justify-between items-center pb-2>
           <h3 v-if="title" text-lg font-bold>
             {{ title }}
           </h3>
 
-          <ButtonIcon v-if="showClose" rounded variant="filled" size="sm" @click="close">
+          <ButtonIcon v-if="showClose" rounded-xl variant="filled" size="sm" @click="close">
             <span i-mdi-window-close />
           </ButtonIcon>
         </div>

@@ -26,6 +26,7 @@ const isDesktop = breakpoints.greaterOrEqual('sm')
 const dialog = ref<InstanceType<typeof Dialog>>()
 const showEditComment = ref(false)
 const commentValue = ref('')
+const isCheered = ref(false)
 
 const uiStore = useUiStore()
 
@@ -125,7 +126,7 @@ watchEffect(() => {
 
           <img
             src="https://picsum.photos/500"
-            class="h-full w-full max-h-[218px] object-cover col-[1/-1] rounded bg-gradient-to-r from-emerald-700 to-emerald-300"
+            class="h-full w-full max-h-[218px] object-cover col-[1/-1] rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-300"
           >
         </div>
       </div>
@@ -137,7 +138,7 @@ watchEffect(() => {
           </button>
 
           <div class="grid gap-2 grid-cols-[auto_auto]">
-            <ButtonIcon text="Cheer" :variant="!activity?.likes ? 'filled' : 'outlined'">
+            <ButtonIcon text="Cheer" :variant="isCheered ? 'filled' : 'outlined'" @click="isCheered = !isCheered">
               <span i-mdi-hand-clap />
             </ButtonIcon>
 

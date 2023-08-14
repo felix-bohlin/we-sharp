@@ -20,7 +20,7 @@ defineEmits(['click'])
 
 <style scoped>
 button {
-  --uno: "grid place-items-center transition-all rounded text-xl p-0 text-main leading-4";
+  --uno: "grid place-items-center transition-all rounded-xl text-xl p-0 text-main leading-4";
 
   &.filled {
     --uno: "bg-zinc-200 ring-zinc-800 hover:ring-1 @dark:bg-zinc-400/10 @dark:hover:ring-zinc-600";
