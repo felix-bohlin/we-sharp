@@ -53,13 +53,11 @@ function onPost(value: string) {
 }
 
 watchEffect(() => {
-  if (breakpoints.greaterOrEqual('sm').value) {
-    if (uiStore.modalModeActive)
-      uiStore.toggleModalMode(false)
-  }
-  else {
+  uiStore.toggleModalMode(false)
+  if (breakpoints.greaterOrEqual('sm').value)
+    showEditComment.value = false
+  else
     dialog.value?.close()
-  }
 })
 </script>
 
