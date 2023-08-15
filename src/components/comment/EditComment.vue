@@ -26,7 +26,8 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
       <div class="grid gap-2 grid-cols-[1fr_auto] items-start">
         <textarea
           v-model="commentValue"
-          border="color-1 rounded"
+          rounded
+          ring="color-1"
           min-h-15 p-2 text-sm
           type="text"
           placeholder="Add a comment"
@@ -43,6 +44,7 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
           <Button
             overflow-hidden
             size="sm"
+            :tabindex="commentValue ? 0 : -1"
             :style="{
               paddingInline: commentValue ? '.75rem' : 'initial',
               pointerEvents: commentValue ? 'all' : 'none',

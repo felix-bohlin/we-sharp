@@ -63,6 +63,7 @@ defineExpose({
 dialog {
   min-height: v-bind(dialogMinHeight);
   max-inline-size: min(90vw, 65ch);
+  width: 100%;
 }
 
 .v-enter-to,

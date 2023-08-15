@@ -152,30 +152,28 @@ watchEffect(() => {
 
   <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
     <!-- pt-1 ps-2 pe-2 -->
-    <div grid gap-4 content-start overflow-y-auto>
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-    </div>
+    <template v-if="activity?.comments">
+      <div grid gap-4 content-start overflow-y-auto>
+        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+      </div>
+    </template>
+    <p v-else class="text-zinc-600 @dark:text-zinc-500">
+      Let {{ user?.firstName ?? 'people' }} know what you think!
+    </p>
     <div grid content-end>
       <EditComment v-model="commentValue" :user="user" />
     </div>
   </Drawer>
 
   <Dialog ref="dialog" title="Comments">
-    <div grid gap-4 content-start pt-1 ps-2 pe-2>
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-      <Comment :user="user" />
-    </div>
+    <template v-if="activity?.comments">
+      <div grid gap-4 content-start pt-1 ps-2 pe-2>
+        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+      </div>
+    </template>
+    <p v-else class="text-zinc-600 @dark:text-zinc-500">
+      Let {{ user?.firstName ?? 'people' }} know what you think!
+    </p>
 
     <template #bottom>
       <EditComment

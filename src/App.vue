@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import NavBottom from '@/components/nav/NavBottom.vue'
 </script>
 
 <template>
   <RouterView />
+
+  <NavBottom />
 </template>
 
 <style>

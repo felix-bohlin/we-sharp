@@ -44,10 +44,32 @@ import LayoutBase from '@/layouts/LayoutBase.vue'
           userId: '1',
         }"
         :user="{
-          imageUrl: 'https://picsum.photos/500',
+          imageUrl: 'https://picsum.photos/100',
           firstName: 'Felix',
           lastName: 'Bohlin',
           group: 'Quality',
+          profileUrl: '#',
+        }"
+      />
+
+      <CardActivity
+        :activity="{
+          id: '1',
+          activityType: 'gym',
+          comments: 5,
+          description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
+          duration: 120,
+          location: 'Stockholm',
+          likes: 1,
+          date: '08:30',
+          title: 'Gym session',
+          userId: '1',
+        }"
+        :user="{
+          imageUrl: 'https://picsum.photos/200',
+          firstName: 'Superstrong',
+          lastName: 'Personname',
+          group: 'Group with long name',
           profileUrl: '#',
         }"
       />

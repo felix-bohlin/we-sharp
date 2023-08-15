@@ -33,7 +33,7 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
               {{ title }}
             </h3>
 
-            <ButtonIcon :style="{ gridColumn: 3 }" size="sm" variant="filled" rounded-xl @click="$emit('onClose')">
+            <ButtonIcon :style="{ gridColumn: 3 }" size="sm" variant="filled" rounded @click="$emit('onClose')">
               <span i-mdi-window-close />
             </ButtonIcon>
           </div>
