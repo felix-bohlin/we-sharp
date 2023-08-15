@@ -6,27 +6,27 @@ const router = createRouter({
     {
       path: '/',
       name: 'feed',
-      component: () => import('../views/Feed.vue'),
+      component: () => import('../views/feed.vue'),
     },
     {
       path: '/stats',
       name: 'stats',
-      component: () => import('../views/Stats.vue'),
+      component: () => import('../views/stats.vue'),
     },
     {
       path: '/add',
       name: 'add',
-      component: () => import('../views/AddPost.vue'),
+      component: () => import('../views/addPost.vue'),
     },
     {
       path: '/group',
       name: 'group',
-      component: () => import('../views/Group.vue'),
+      component: () => import('../views/group.vue'),
     },
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/Profile.vue'),
+      component: () => import('../views/profile.vue'),
     },
   ],
 })
