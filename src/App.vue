@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import NavBottom from '@/components/nav/NavBottom.vue'
+import '@/styles/default-theme.css'
+
+// import fs from 'fs-extra'
+// import { theme } from '@/scripts/generate-theme'
+
+// fs.writeFile('styles/default-theme.css', `:root {\n${Object.entries(theme).map((([key, value]) => `--${key}: ${value};`)).join('\n')}\n}\n`, { encoding: 'utf-8' })
 </script>
 
 <template>
@@ -33,18 +39,18 @@ components;
   html:has(dialog[open]) {
     height: 100vh;
     overflow: hidden;
-}
+  }
 
   :where(a),
   :is(h1, h2, h3, h4, h5, h6, p):has(a) {
-    --uno: "text-amber-500 hover:text-amber-700";
+    --uno: "text-primary hover:text-primary-active";
   }
 
 }
 
 input,
 textarea {
-  --uno: "ring-zinc-400 @dark:ring-zinc-700 ring-1 bg-slate-50 @dark:bg-zinc-900 text-inherit rounded";
+  --uno: "input-base";
 }
 
 textarea {

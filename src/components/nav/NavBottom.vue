@@ -13,22 +13,22 @@ const uiStore = useUiStore()
         class="after-content-empty after:h-[calc(100%+0.5px)] after:w-0.1px after:pointer-events-none"
       >
         <div flex-1 grid grid-cols-5 gap-x-2 items-center text-xl>
-          <router-link to="/" grid place-items-center text-xs gap-1>
+          <router-link to="/" grid  :active-class="'text-primary'" place-items-center text-xs gap-1>
             <span i-mdi-home text-3xl />
           </router-link>
-          <router-link to="/stats" grid place-items-center text-xs gap-1>
+          <router-link to="/stats" :active-class="'text-primary'"  grid place-items-center text-xs gap-1>
             <span i-mdi-chart-line text-3xl />
           </router-link>
 
-          <router-link to="add" grid place-items-center text-xs gap-1>
-            <span i-mdi-plus-circle text-3xl text-amber-500 />
+          <router-link to="add" :active-class="'text-primary'"  grid place-items-center text-xs gap-1>
+            <span i-mdi-plus-circle text-3xl />
           </router-link>
 
-          <router-link to="/group" grid place-items-center text-xs gap-1>
+          <router-link to="/group" :active-class="'text-primary'"  grid place-items-center text-xs gap-1>
             <span i-mdi-account-group text-3xl />
           </router-link>
 
-          <router-link to="/profile" grid place-items-center text-xs gap-1>
+          <router-link to="/profile" :active-class="'text-primary'"  grid place-items-center text-xs gap-1>
             <Avatar max-w-8 />
           </router-link>
         </div>

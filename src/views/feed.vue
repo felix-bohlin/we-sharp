@@ -6,7 +6,7 @@ import LayoutBase from '@/layouts/LayoutBase.vue'
 <template>
   <LayoutBase>
     <div
-      class="grid grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] gap-4 w-[clamp(30ch,100%,120ch)] ms-auto me-auto ps-4 pe-4"
+      class="grid grid-cols-[repeat(auto-fit,minmax(35ch,1fr))] gap-4 w-[clamp(35ch,100%,120ch)] ms-auto me-auto ps-4 pe-4"
     >
       <CardActivity
         :activity="{

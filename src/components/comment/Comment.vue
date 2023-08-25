@@ -15,7 +15,8 @@ defineProps<{
       <span class="text-xs">
         <a
           :href="user?.profileUrl ?? '#'"
-          class="text-[.875rem] self-start font-medium hover:text-amber-700"
+          un-text="primary hover:primary-active [.875rem]]"
+          class="self-start font-medium "
         >{{ user?.firstName }}</a>
         · <span class="opacity-90 @dark:opacity-60">12h</span>
       </span>

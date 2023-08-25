@@ -68,12 +68,12 @@ watchEffect(() => {
         <div class="items-center grid grid-cols-[40px_1fr_auto] gap-4">
           <Avatar :image="user?.imageUrl" />
 
-          <div>
-            <a :href="user?.profileUrl ?? '#'" un-text="hover:amber-700 [.875rem]" font-medium>
-              {{ user?.firstName ?? "" }} {{ user?.lastName ?? "" }}</a>
+          <div leading-none>
+            <a :href="user?.profileUrl ?? '#'" un-text="primary hover:primary-active [.875rem]" font-medium>
+              {{ user?.firstName ?? user?.lastName ?? "User" }}</a>
             ·
-            <a href="#" un-text="hover:amber-700 [.875rem]" font-medium>
-              {{ user?.group ?? "Group" }}</a>
+            <a href="#" un-text="primary hover:primary-active [.875rem]" font-medium>
+              {{ user?.group ?? "Ungrouped" }}</a>
 
             <p class="m-0 text-xs">
               {{ activity?.date }} · {{ activity?.location }}
