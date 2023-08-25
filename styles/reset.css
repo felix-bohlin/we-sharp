@@ -1,0 +1,7 @@
+  :where(p, ul, ol, dl, h6) {
+    font-size: inherit;
+  }
+
+  :focus-visible {
+    --uno: "outline outline-2 outline-offset-2 outline-amber-500";
+  }

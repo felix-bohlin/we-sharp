@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import type { TUser } from 'types/user'
+
+defineProps<{
+  user: Omit<TUser, 'id'>
+}>()
+
+const emit = defineEmits(['submit'])
+const commentValue = defineModel<string>()
+
+const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '🐎']
+</script>
+
+<template>
+  <div flex justify-center gap-2 p="b-2 t-1 md:y-1" text-xl overflow-x-auto>
+    <button v-for="emoji in emojis" :key="emoji" @click="commentValue = `${commentValue ? `${commentValue} ` : ''}${emoji}`">
+      {{ emoji }}
+    </button>
+  </div>
+  <div class="grid gap-3 grid-cols-[30px_1fr] items-start pb-1">
+    <Avatar :image="user?.imageUrl" />
+
+    <div class="flex flex-col gap-2">
+      <div class="grid gap-2 grid-cols-[1fr_auto] items-start">
+        <textarea
+          v-model="commentValue"
+          rounded
+          ring="color-1"
+          min-h-15 p-2 text-sm
+          type="text"
+          placeholder="Add a comment"
+        />
+
+        <div
+          grid
+          gap-1
+          :style="{
+            gridTemplateColumns: commentValue ? '1fr' : '0fr',
+            transition: 'grid-template-columns 0.3s ease-out',
+          }"
+        >
+          <Button
+            overflow-hidden
+            size="sm"
+            :tabindex="commentValue ? 0 : -1"
+            :style="{
+              paddingInline: commentValue ? '.75rem' : 'initial',
+              pointerEvents: commentValue ? 'all' : 'none',
+            }"
+            variant="filled"
+            @click="emit('submit', commentValue)"
+          >
+            Post
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
