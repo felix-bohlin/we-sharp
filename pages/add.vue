@@ -5,7 +5,5 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
-    add post
-  </NuxtLayout>
+  add post
 </template>
