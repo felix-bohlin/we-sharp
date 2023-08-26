@@ -1,27 +1,36 @@
 <script setup lang="ts">
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+
 const { minHeight = 300, showClose = true, title = '' } = defineProps<{
   minHeight?: number
   showClose?: boolean
   title?: string
 }>()
 
-const dialogMinHeight = `${minHeight}px}`
+const dialogMinHeight = `${minHeight}px`
 
 const dialog = ref<HTMLDialogElement>()
 const visible = ref(false)
 
 const scrollLock = useScrollLock(document.body)
 
+const { activate, deactivate } = useFocusTrap(dialog)
+
 watch(() => visible, () => scrollLock.value = visible.value)
 
 function close(value?: string) {
+  deactivate()
   dialog.value?.close(value)
   visible.value = false
 }
 
-function show() {
+async function show() {
   dialog.value?.showModal()
   visible.value = true
+
+  // https://vueuse.org/integrations/useFocusTrap/#usefocustrap
+  await nextTick()
+  activate()
 }
 
 defineExpose({

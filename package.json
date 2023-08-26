@@ -14,6 +14,8 @@
     "@pinia/nuxt": "^0.4.11",
     "@unocss/reset": "^0.55.3",
     "@vueuse/core": "^10.4.0",
+    "@vueuse/integrations": "^10.4.0",
+    "focus-trap": "^7.5.2",
     "open-props": "^1.5.15",
     "pinia": "^2.1.6"
   },

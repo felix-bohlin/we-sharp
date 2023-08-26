@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component'
+
 const props = defineProps<{
   showDrawer: boolean
   title?: string
 }>()
 
 defineEmits(['onClose'])
+
+const drawer = ref<HTMLElement>()
 
 const scrollLock = useScrollLock(document.body)
 
@@ -14,35 +18,37 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
 <template>
   <Teleport to="body">
     <Transition>
-      <div v-if="showDrawer" fixed inset-0>
-        <div
-          absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer of-y-scroll of-x-hidden scrollbar-hide
-          overscroll-none @click="$emit('onClose')"
-        />
-        <div
-          class="drawer-panel" absolute rounded-lg bg-1 shadow="md @dark:xl" z-10 bottom-4
-          left-2.5 right-2.5 pt-2 pb-4
-        >
-          <div grid="~ cols-[30px_1fr_30px]" items-center ps-2 pe-2 pb-2>
-            <span aria-hidden />
-            <h3 v-if="title" font-bold text="base center">
-              {{ title }}
-            </h3>
-
-            <ButtonIcon :style="{ gridColumn: 3 }" size="sm" variant="filled" rounded @click="$emit('onClose')">
-              <span i-mdi-window-close />
-            </ButtonIcon>
-          </div>
+      <UseFocusTrap v-if="showDrawer">
+        <div ref="drawer" fixed inset-0>
           <div
-            grid gap-4 ps-4 pe-4
-            :style="{
-              height: showDrawer ? '60dvh' : 'auto',
-            }"
+            absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer of-y-scroll of-x-hidden scrollbar-hide
+            overscroll-none @click="$emit('onClose')"
+          />
+          <div
+            class="drawer-panel" absolute rounded-lg bg-1 shadow="md @dark:xl" z-10 bottom-4
+            left-2.5 right-2.5 pt-2 pb-4
           >
-            <slot />
+            <div grid="~ cols-[30px_1fr_30px]" items-center ps-2 pe-2 pb-2>
+              <span aria-hidden />
+              <h3 v-if="title" font-bold text="base center">
+                {{ title }}
+              </h3>
+
+              <ButtonIcon :style="{ gridColumn: 3 }" size="sm" variant="filled" rounded @click="$emit('onClose')">
+                <span i-mdi-window-close />
+              </ButtonIcon>
+            </div>
+            <div
+              grid gap-4 ps-4 pe-4
+              :style="{
+                height: showDrawer ? '60dvh' : 'auto',
+              }"
+            >
+              <slot />
+            </div>
           </div>
         </div>
-      </div>
+      </UseFocusTrap>
     </Transition>
   </Teleport>
 </template>

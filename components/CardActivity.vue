@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import { ref, watchEffect } from 'vue'
-import type { TActivity } from '@/types/activity'
-import type { TUser } from '@/types/user'
-
-import Avatar from '@/components/Avatar.vue'
-import Card from '@/components/Card.vue'
-import Dropdown from '@/components/Dropdown.vue'
-import IconActivity from '@/components/IconActivity.vue'
-import ButtonIcon from '@/components/button/ButtonIcon.vue'
+import type { TActivity } from 'types/activity'
+import type { TUser } from 'types/user'
 import Dialog from '@/components/dialog/Dialog.vue'
 
 defineProps<{
@@ -47,13 +40,13 @@ function onPost(value: string) {
   commentValue.value = ''
 }
 
-watchEffect(() => {
-  uiStore.toggleModalMode(false)
-  if (breakpoints.greaterOrEqual('sm').value)
-    showEditComment.value = false
-  else
-    dialog.value?.close()
-})
+// watchEffect(() => {
+//   uiStore.toggleModalMode(false)
+//   if (breakpoints.greaterOrEqual('sm').value)
+//     showEditComment.value = false
+//   else
+//     dialog.value?.close()
+// })
 </script>
 
 <template>
@@ -147,32 +140,29 @@ watchEffect(() => {
 
   <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
     <!-- pt-1 ps-2 pe-2 -->
-    <template v-if="activity?.comments">
-      <div grid gap-4 content-start overflow-y-auto>
-        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
-      </div>
-    </template>
+    <div v-if="activity?.comments" grid gap-4 content-start overflow-y-auto>
+      <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+    </div>
     <p v-else class="text-zinc-600 @dark:text-zinc-500">
       Let {{ user?.firstName ?? 'people' }} know what you think!
     </p>
+
     <div grid content-end>
-      <EditComment v-model="commentValue" :user="user" />
+      <EditComment v-model="commentValue" :image="user?.imageUrl" />
     </div>
   </Drawer>
 
   <Dialog ref="dialog" title="Comments" :show-close="true">
-    <template v-if="activity?.comments">
-      <div grid gap-4 content-start pt-1 ps-2 pe-2>
-        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
-      </div>
-    </template>
+    <div v-if="activity?.comments" grid gap-4 content-start pt-1 ps-2 pe-2>
+      <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+    </div>
     <p v-else class="text-zinc-600 @dark:text-zinc-500">
       Let {{ user?.firstName ?? 'people' }} know what you think!
     </p>
 
     <template #bottom>
       <EditComment
-        v-model="commentValue" :user="user" @submit="onPost"
+        v-model="commentValue" :image="user?.imageUrl" @submit="onPost"
       />
     </template>
   </Dialog>
