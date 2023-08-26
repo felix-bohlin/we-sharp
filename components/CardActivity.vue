@@ -110,11 +110,11 @@ function onPost(value: string) {
             </li>
           </ul>
 
-          <img
+          <nuxt-img
             src="https://picsum.photos/500"
             loading="lazy"
             class="h-full w-full max-h-[218px] object-cover col-[1/-1] rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-300"
-          >
+          />
         </div>
       </div>
 

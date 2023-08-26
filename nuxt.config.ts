@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
+    '@nuxt/image',
   ],
   vue: {
     defineModel: true,

@@ -47,11 +47,11 @@ const randomGradient = computed(() => {
 </script>
 
 <template>
-  <img
+  <nuxt-img
     v-if="image"
     :src="image"
     class="blob grid place-items-center aspect-square m-0 font-bold w-full"
-  >
+  />
 
   <div
     v-else
