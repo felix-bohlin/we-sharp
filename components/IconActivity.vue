@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TActivityType } from 'types/activity'
+import type { TActivityType } from '@/types/activity'
 
 defineProps<{
   icon: TActivityType | string

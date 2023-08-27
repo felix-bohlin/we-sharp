@@ -23,3 +23,6 @@ export interface TActivity {
   title: string
   userId: string
 }
+
+export type TWeather =
+  'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm'

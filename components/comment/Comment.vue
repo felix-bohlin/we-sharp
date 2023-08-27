@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TUser } from 'types/user'
+import type { TUser } from '@/types/user'
 
 defineProps<{
   user: Omit<TUser, 'id'>

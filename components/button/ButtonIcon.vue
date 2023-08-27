@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TButtonSize, TButtonVariant } from 'types/button'
+import type { TButtonSize, TButtonVariant } from '@/types/button'
 
 defineProps<{
   rounded?: boolean

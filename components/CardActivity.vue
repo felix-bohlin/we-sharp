@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import type { TActivity } from 'types/activity'
-import type { TUser } from 'types/user'
+import type { TActivity } from '@/types/activity'
+import type { TUser } from '@/types/user'
 import Dialog from '@/components/dialog/Dialog.vue'
 
 defineProps<{
@@ -51,16 +51,16 @@ function onPost(value: string) {
 
 <template>
   <section class="@container">
-    <Card class="grid gap-y-2 items-start gap-x-4">
+    <Card class="grid gap-y-3 items-start gap-x-4">
       <div grid gap-2>
-        <div class="items-center grid grid-cols-[40px_1fr_auto] gap-4">
+        <div p="s-4 e-4 md:s-0 md:e-0" grid="~ items-center cols-[40px_1fr_auto] gap-4">
           <Avatar :image="user?.imageUrl" />
 
           <div leading-none>
-            <a :href="user?.profileUrl ?? '#'" un-text="primary hover:primary-active [.875rem]" font-medium>
+            <a :href="user?.profileUrl ?? '#'" un-text="primary hover:primary-active xs" font-medium>
               {{ user?.firstName ?? user?.lastName ?? "User" }}</a>
             ·
-            <a href="#" un-text="primary hover:primary-active [.875rem]" font-medium>
+            <a href="#" un-text="primary hover:primary-active xs" font-medium>
               {{ user?.group ?? "Ungrouped" }}</a>
 
             <p class="m-0 text-xs">
@@ -90,13 +90,13 @@ function onPost(value: string) {
           </Dropdown>
         </div>
 
-        <div class="grid gap-4 items-center grid-cols-[40px_1fr]">
+        <div grid gap-4 items-center p="s-4 e-4 md:s-0 md:e-0" class="grid-cols-[40px_1fr]">
           <span text-3xl flex justify-center>
             <IconActivity :icon="activity?.activityType ?? 'run'" />
           </span>
 
           <div>
-            <h2 class="text-xl font-black inline-flex">
+            <h2 class="md:text-xl font-black inline-flex">
               <a href="#">{{ activity?.title }}</a>
             </h2>
             <p class="my-0 text-sm">
@@ -104,21 +104,30 @@ function onPost(value: string) {
             </p>
           </div>
 
-          <ul grid="~ cols-[repeat(auto-fit,minmax(6ch,1fr))] col-[1/-1] gap-4" m="t-4 i-0 b-0" list-none p-0>
+          <ul grid="~ cols-[repeat(auto-fill,minmax(6ch,1fr))] col-[1/-1] gap-2" m="t-4 i-0 b-0" list-none p-0>
             <li flex flex-col p-0>
-              <span class="text-xs">Time</span> {{ activity?.duration }}
+              <span text-xs opacity-70>Duration</span>
+              <span text-sm>{{ activity?.duration }}m</span>
+            </li>
+            <li flex flex-col p-0>
+              <span text-xs opacity-70>Weather</span>
+              <span text-sm>
+                <IconWeather icon="mixed" />
+              </span>
             </li>
           </ul>
-
-          <nuxt-img
-            src="https://picsum.photos/500"
-            loading="lazy"
-            class="h-full w-full max-h-[218px] object-cover col-[1/-1] rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-300"
-          />
         </div>
+
+        <nuxt-img
+          src="https://picsum.photos/500"
+          :altss="activity?.title"
+          loading="lazy"
+          w-full object-cover md:rounded-xl bg-gradient-to-r from-neutral-700 to-neutral-300
+          class="h-[clamp(200px,50cqw,300px)] col-[1/-1]"
+        />
       </div>
 
-      <div grid gap-4>
+      <div grid gap-4 p="s-4 e-4 md:s-0 md:e-0">
         <div flex="~ items-center gap-2 justify-between">
           <button type="button">
             4 likes
