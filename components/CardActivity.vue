@@ -51,7 +51,7 @@ function onPost(value: string) {
 
 <template>
   <section class="@container">
-    <Card class="grid gap-y-3 items-start gap-x-4">
+    <Card class="grid items-start gap-x-4 gap-y-3">
       <div grid gap-2>
         <div p="s-4 e-4 md:s-0 md:e-0" grid="~ items-center cols-[40px_1fr_auto] gap-4">
           <Avatar :image="user?.imageUrl" />
@@ -69,18 +69,18 @@ function onPost(value: string) {
           </div>
 
           <Dropdown>
-            <ul class="list-none m-0 p-0">
+            <ul class="m-0 list-none p-0">
               <li class="">
                 <button
-                  bg="transparent hover:zinc-200 @dark:hover:zinc-400/10" text="current left" border="rounded 0" m-0
-                  p-1.5 w-full type="button"
+                  bg="transparent hover:zinc-200 @dark:hover:zinc-400/10" text="current left" border="rounded 0"
+                  m-0 w-full p-1.5 type="button"
                 >
                   Edit
                 </button>
               </li>
               <li class="">
                 <button
-                  bg="transparent hover:red-700" text="current left hover:white" border="rounded 0" m-0 p-1.5 w-full
+                  bg="transparent hover:red-700" text="current left hover:white" border="rounded 0" m-0 w-full p-1.5
                   type="button"
                 >
                   Delete
@@ -90,13 +90,13 @@ function onPost(value: string) {
           </Dropdown>
         </div>
 
-        <div grid gap-4 items-center p="s-4 e-4 md:s-0 md:e-0" class="grid-cols-[40px_1fr]">
-          <span text-3xl flex justify-center>
+        <div grid items-center gap-4 p="s-4 e-4 md:s-0 md:e-0" class="grid-cols-[40px_1fr]">
+          <span flex justify-center text-3xl>
             <IconActivity :icon="activity?.activityType ?? 'run'" />
           </span>
 
           <div>
-            <h2 class="md:text-xl font-black inline-flex">
+            <h2 class="inline-flex font-black md:text-xl">
               <a href="#">{{ activity?.title }}</a>
             </h2>
             <p class="my-0 text-sm">
@@ -111,7 +111,7 @@ function onPost(value: string) {
             </li>
             <li flex flex-col p-0>
               <span text-xs opacity-70>Weather</span>
-              <span text-sm>
+              <span flex justify-start text-sm>
                 <IconWeather icon="mixed" />
               </span>
             </li>
@@ -120,10 +120,11 @@ function onPost(value: string) {
 
         <nuxt-img
           src="https://picsum.photos/500"
-          :altss="activity?.title"
+          :alt="activity?.title"
           loading="lazy"
-          w-full object-cover md:rounded-xl bg-gradient-to-r from-neutral-700 to-neutral-300
-          class="h-[clamp(200px,50cqw,300px)] col-[1/-1]"
+          format="webp"
+          w-full object-cover md:rounded-xl
+          class="skeleton-loading-bg col-[1/-1] h-[clamp(200px,50cqw,300px)]"
         />
       </div>
 
@@ -133,7 +134,7 @@ function onPost(value: string) {
             4 likes
           </button>
 
-          <div class="grid gap-2 grid-cols-[auto_auto]">
+          <div class="grid grid-cols-[auto_auto] gap-2">
             <ButtonIcon text="Cheer" :variant="isCheered ? 'filled' : 'outlined'" @click="isCheered = !isCheered">
               <span i-mdi-hand-clap />
             </ButtonIcon>
@@ -149,7 +150,7 @@ function onPost(value: string) {
 
   <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
     <!-- pt-1 ps-2 pe-2 -->
-    <div v-if="activity?.comments" grid gap-4 content-start overflow-y-auto>
+    <div v-if="activity?.comments" grid content-start gap-4 overflow-y-auto>
       <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
     </div>
     <p v-else class="text-zinc-600 @dark:text-zinc-500">
@@ -162,7 +163,7 @@ function onPost(value: string) {
   </Drawer>
 
   <Dialog ref="dialog" title="Comments" :show-close="true">
-    <div v-if="activity?.comments" grid gap-4 content-start pt-1 ps-2 pe-2>
+    <div v-if="activity?.comments" grid content-start gap-4 pe-2 ps-2 pt-1>
       <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
     </div>
     <p v-else class="text-zinc-600 @dark:text-zinc-500">

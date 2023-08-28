@@ -21,14 +21,13 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
       <UseFocusTrap v-if="showDrawer">
         <div ref="drawer" fixed inset-0>
           <div
-            absolute inset-0 z-0 bg-transparent backdrop-blur-sm cursor-pointer of-y-scroll of-x-hidden scrollbar-hide
-            overscroll-none @click="$emit('onClose')"
+            scrollbar-hide absolute inset-0 z-0 cursor-pointer of-x-hidden of-y-scroll overscroll-none bg-transparent backdrop-blur-sm @click="$emit('onClose')"
           />
           <div
-            class="drawer-panel" absolute rounded-lg bg-1 shadow="md @dark:xl" z-10 bottom-4
-            left-2.5 right-2.5 pt-2 pb-4
+            class="drawer-panel" shadow="md @dark:xl"
+            absolute bottom-4 left-2.5 right-2.5 z-10 rounded-lg pb-4 pt-2 bg-1
           >
-            <div grid="~ cols-[30px_1fr_30px]" items-center ps-2 pe-2 pb-2>
+            <div grid="~ cols-[30px_1fr_30px]" items-center pb-2 pe-2 ps-2>
               <span aria-hidden />
               <h3 v-if="title" font-bold text="base center">
                 {{ title }}
@@ -39,7 +38,7 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
               </ButtonIcon>
             </div>
             <div
-              grid gap-4 ps-4 pe-4
+              grid gap-4 pe-4 ps-4
               :style="{
                 height: showDrawer ? '60dvh' : 'auto',
               }"

@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid gap-3 grid-cols-[30px_1fr] items-start">
+  <div class="grid grid-cols-[30px_1fr] items-start gap-3">
     <Avatar :image="user?.imageUrl" />
 
     <div class="flex flex-col gap-2">
@@ -15,7 +15,7 @@ defineProps<{
         <a
           :href="user?.profileUrl ?? '#'"
           un-text="primary hover:primary-active [.875rem]]"
-          class="self-start font-medium "
+          class="self-start font-medium"
         >{{ user?.firstName }}</a>
         · <span class="opacity-90 @dark:opacity-60">12h</span>
       </span>

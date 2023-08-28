@@ -45,10 +45,10 @@ defineExpose({
     <Transition>
       <dialog
         v-show="visible" ref="dialog" :open="visible"
-        class="max-h-[50dvh] grid grid-rows-[auto_1fr_auto] gap-4 backdrop:transition-all backdrop:bg-zinc-800/90 rounded-xl text-current overflow-hidden shadow-md @dark:shadow-lg mt-[15vh]"
+        class="grid grid-rows-[auto_1fr_auto] mt-[15vh] max-h-[50dvh] gap-4 overflow-hidden rounded-xl text-current shadow-md backdrop:bg-zinc-800/90 @dark:shadow-lg backdrop:transition-all"
         bg-main p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
-        <div flex justify-between items-center pb-2>
+        <div flex items-center justify-between pb-2>
           <h3 v-if="title" text-lg font-bold>
             {{ title }}
           </h3>

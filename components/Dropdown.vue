@@ -15,7 +15,7 @@ onClickOutside(
 </script>
 
 <template>
-  <div class="relative w-full h-full grid items-center">
+  <div class="relative grid h-full w-full items-center">
     <ButtonIcon
       ref="dropdownToggle"
       text="Menu"
@@ -33,7 +33,7 @@ onClickOutside(
         bg="zinc-50 @dark:zinc-800"
         ring=" 1 slate-500/10 @dark:slate-300/10"
         shadow="md @dark:xl"
-        rounded p-2 absolute right-0 class="top-[42px] w-[max(25cqw,150px)]"
+        absolute right-0 rounded p-2 class="top-[42px] w-[max(25cqw,150px)]"
       >
         <slot />
       </div>

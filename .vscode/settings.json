@@ -1,5 +1,11 @@
 {
-  "unocss.root": "packages/client",
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "volar.completion.preferredTagNameCase": "pascal",
+  "volar.completion.preferredAttrNameCase": "kebab",
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.validate": [
     "javascript",

@@ -50,16 +50,16 @@ const randomGradient = computed(() => {
   <nuxt-img
     v-if="image"
     :src="image"
-    class="blob grid place-items-center aspect-square m-0 font-bold w-full"
+    class="blob grid m-0 aspect-square w-full place-items-center font-bold"
   />
 
   <div
     v-else
-    class="blob grid place-items-center aspect-square m-0 font-bold w-full"
+    class="blob grid m-0 aspect-square w-full place-items-center font-bold"
   >
     <component
       :is="randomEmoji"
-      class="aspect-square rounded-full h-[80%] w-[80%] drop-shadow"
+      class="aspect-square h-[80%] w-[80%] rounded-full drop-shadow"
     />
   </div>
 </template>

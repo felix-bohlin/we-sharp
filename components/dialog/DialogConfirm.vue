@@ -47,7 +47,7 @@ defineExpose({
 
     <template #bottom>
       <form grid gap-4 method="dialog">
-        <div flex flex-wrap gap-4 justify-end>
+        <div flex flex-wrap justify-end gap-4>
           <Button v-if="showCancel" variant="text" @click="cancel">
             {{ cancelText }}
           </Button>
