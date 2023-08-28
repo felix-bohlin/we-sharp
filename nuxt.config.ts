@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
   css: [
     '@unocss/reset/tailwind.css',
+    'open-props/gradients.min.css',
     '~/styles/reset.css',
     '~/styles/global.css',
     '~/styles/default-theme.css',
