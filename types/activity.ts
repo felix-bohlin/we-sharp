@@ -10,7 +10,7 @@ export type TActivityType =
   | 'walk'
   | 'yoga'
 
-export interface TActivity {
+export type TActivity = {
   activityType: TActivityType
   comments?: number
   date: string
@@ -26,3 +26,5 @@ export interface TActivity {
 
 export type TWeather =
   'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm'
+
+export type TMood = 'horrible' | 'bad' | 'neutral' | 'good' | 'great'

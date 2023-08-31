@@ -35,23 +35,15 @@ function commentsCloseAll() {
   uiStore.toggleModalMode(false)
 }
 
-function onPost(value: string) {
+function onPost() {
   commentsCloseAll()
   commentValue.value = ''
 }
-
-// watchEffect(() => {
-//   uiStore.toggleModalMode(false)
-//   if (breakpoints.greaterOrEqual('sm').value)
-//     showEditComment.value = false
-//   else
-//     dialog.value?.close()
-// })
 </script>
 
 <template>
   <section class="@container">
-    <Card class="grid items-start gap-x-4 gap-y-3">
+    <Card grid items-start gap-x-4 gap-y-3>
       <div grid gap-2>
         <div p="s-4 e-4 md:s-0 md:e-0" grid="~ items-center cols-[40px_1fr_auto] gap-4">
           <Avatar :image="user?.imageUrl" />
@@ -63,7 +55,7 @@ function onPost(value: string) {
             <a href="#" un-text="primary hover:primary-active xs" font-medium>
               {{ user?.group ?? "Ungrouped" }}</a>
 
-            <p class="m-0 text-xs">
+            <p m-0 text-xs opacity-70>
               {{ activity?.date }} · {{ activity?.location }}
             </p>
           </div>
@@ -96,22 +88,33 @@ function onPost(value: string) {
           </span>
 
           <div>
-            <h2 class="inline-flex font-black md:text-xl">
+            <h2 inline-flex font-black md:text-xl>
               <a href="#">{{ activity?.title }}</a>
             </h2>
-            <p class="my-0 text-sm">
-              <IconsWeather inline-flex icon="mixed" /> {{ activity?.description }}
+            <p my-0 text-sm>
+              {{ activity?.description }}
             </p>
           </div>
 
-          <ul grid="~ cols-[repeat(auto-fill,minmax(6ch,1fr))] col-[1/-1] gap-2" m="t-4 i-0 b-0" list-none p-0>
+          <ul grid="~ cols-[repeat(auto-fill,minmax(6ch,1fr))] col-span-full gap-2" m-0 list-none p-0>
             <li flex flex-col p-0>
               <span text-xs opacity-70>Duration</span>
               <span text-sm>{{ activity?.duration }}m</span>
             </li>
+            <li flex flex-col p-0>
+              <span text-xs opacity-70>Distance</span>
+              <span text-sm>25km</span>
+            </li>
+            <li flex flex-col p-0>
+              <span text-xs opacity-70>Weather</span>
+              <IconsWeather text-xl icon="rainy" />
+            </li>
+            <li flex flex-col p-0>
+              <span text-xs opacity-70>Mood</span>
+              <IconsMood icon="good" />
+            </li>
           </ul>
         </div>
-
         <nuxt-img
           src="https://picsum.photos/500"
           :alt="activity?.title"

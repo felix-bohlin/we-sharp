@@ -26,7 +26,7 @@ const uiStore = useUiStore()
           </NuxtLink>
 
           <NuxtLink to="/profile" active-class="text-primary" grid place-items-center gap-1 text-xs>
-            <Avatar max-w-8 />
+            <Avatar class="max-w-[30px]" />
           </NuxtLink>
         </div>
       </nav>
