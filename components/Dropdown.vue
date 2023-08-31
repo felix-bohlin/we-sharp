@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component'
+
 const showDropdown = ref(false)
 const dropdownRef = ref(null)
 const dropdownToggle = ref(null)
@@ -27,7 +29,7 @@ onClickOutside(
     </ButtonIcon>
 
     <Transition>
-      <div
+      <UseFocusTrap
         v-if="showDropdown"
         ref="dropdownRef"
         bg="zinc-50 @dark:zinc-800"
@@ -36,7 +38,7 @@ onClickOutside(
         absolute right-0 rounded p-2 class="top-[42px] w-[max(25cqw,150px)]"
       >
         <slot />
-      </div>
+      </UseFocusTrap>
     </Transition>
   </div>
 </template>

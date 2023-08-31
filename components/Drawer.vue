@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component'
 
-const props = defineProps<{
+defineProps<{
   showDrawer: boolean
   title?: string
 }>()
@@ -12,7 +12,9 @@ const drawer = ref<HTMLElement>()
 
 const scrollLock = useScrollLock(document.body)
 
-watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
+onMounted(() => scrollLock.value = true)
+onUnmounted(() => scrollLock.value = false)
+// watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
 </script>
 
 <template>
