@@ -1,4 +1,4 @@
-export interface TUser {
+export type TUser = {
   id: string
   imageUrl: string
   firstName: string

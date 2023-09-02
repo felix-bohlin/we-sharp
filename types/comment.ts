@@ -1,4 +1,4 @@
-export interface TComment {
+export type TComment = {
   activityId: string
   id: string
   text: string

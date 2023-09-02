@@ -1,6 +1,6 @@
 {
   "extends": ["@antfu", "@unocss"],
   "rules": {
-    "@typescript-eslint/consistent-type-definitions": "type"
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   }
 }

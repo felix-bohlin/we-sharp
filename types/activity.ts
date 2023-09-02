@@ -18,10 +18,12 @@ export type TActivity = {
   duration?: number
   id: string
   images?: string[]
-  location?: string
   likes?: number
+  location?: string
+  mood?: TMood
   title: string
   userId: string
+  weather?: TWeather
 }
 
 export type TWeather =
