@@ -8,13 +8,18 @@ useHead({
   <div
     grid="~ md:cols-[repeat(auto-fit,minmax(35ch,1fr))] gap-4" m="s-auto e-auto" p="md:s-4 md:e-4" class="md:w-[clamp(35ch,100%,120ch)]"
   >
-    <CardActivity
+    <ActivityCard
       :activity="{
         id: '1',
-        activityType: 'cycling',
+        type: 'cycling',
         comments: 2,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
-        duration: 30,
+        data: {
+          duration: 60,
+          distance: 30,
+          weather: 'thunderstorm',
+          mood: 'bad',
+        },
         location: 'Stockholm',
         likes: 4,
         date: '08:30',
@@ -22,6 +27,7 @@ useHead({
         userId: '1',
       }"
       :user="{
+        id: '1',
         imageUrl: '',
         firstName: 'Felix',
         lastName: 'Bohlin',
@@ -30,13 +36,15 @@ useHead({
       }"
     />
 
-    <CardActivity
+    <ActivityCard
       :activity="{
         id: '2',
-        activityType: 'yoga',
+        type: 'yoga',
         comments: 0,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
-        duration: 30,
+        data: {
+          duration: 56,
+        },
         location: 'Stockholm',
         likes: 0,
         date: '08:30',
@@ -44,6 +52,7 @@ useHead({
         userId: '1',
       }"
       :user="{
+        id: '1',
         imageUrl: 'https://picsum.photos/100',
         firstName: 'Felix',
         lastName: 'Bohlin',
@@ -52,13 +61,19 @@ useHead({
       }"
     />
 
-    <CardActivity
+    <ActivityCard
       :activity="{
         id: '1',
-        activityType: 'gym',
+        type: 'golf',
         comments: 5,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
-        duration: 120,
+        data: {
+          duration: 240,
+          holes: 18,
+          score: 72,
+          weather: 'rainy',
+          mood: 'great',
+        },
         location: 'Stockholm',
         likes: 1,
         date: '08:30',
@@ -66,6 +81,7 @@ useHead({
         userId: '1',
       }"
       :user="{
+        id: '4',
         imageUrl: 'https://picsum.photos/200',
         firstName: 'Superstrong',
         lastName: 'Personname',

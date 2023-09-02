@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import type { TActivityType, TBaseActivity, TCycling, TGolf, TRun, TWalk } from '@/types/activity'
+import type { TActivity } from '@/types/activity'
 import type { TUser } from '@/types/user'
 import Dialog from '@/components/dialog/Dialog.vue'
 
 defineProps<{
-  activity: TCycling | TGolf | TRun | TWalk | TBaseActivity<TActivityType>
+  activity: TActivity
   user: TUser
 }>()
 
@@ -43,7 +43,7 @@ function onPost() {
 
 <template>
   <section class="@container">
-    <Card grid items-start gap-x-4 gap-y-3>
+    <Card class="grid items-start gap-x-4 gap-y-3">
       <div grid gap-2>
         <div p="s-4 e-4 md:s-0 md:e-0" grid="~ items-center cols-[40px_1fr_auto] gap-4">
           <Avatar :image="user?.imageUrl" />
@@ -84,7 +84,7 @@ function onPost() {
 
         <div grid items-center gap-4 p="s-4 e-4 md:s-0 md:e-0" class="grid-cols-[40px_1fr]">
           <span flex justify-center text-3xl>
-            <IconsActivity :icon="activity?.activityType ?? 'run'" />
+            <ActivityTypeIcons :icon="activity?.type ?? 'run'" />
           </span>
 
           <div>
@@ -96,24 +96,7 @@ function onPost() {
             </p>
           </div>
 
-          <ul grid="~ cols-[repeat(auto-fill,minmax(6ch,1fr))] col-span-full gap-2" m-0 list-none p-0>
-            <li flex flex-col p-0>
-              <span text-xs opacity-70>Duration</span>
-              <span text-sm>{{ activity?.duration }}m</span>
-            </li>
-            <li flex flex-col p-0>
-              <span text-xs opacity-70>Distance</span>
-              <span text-sm>25km</span>
-            </li>
-            <li flex flex-col p-0>
-              <span text-xs opacity-70>Weather</span>
-              <IconsWeather text-xl icon="rainy" />
-            </li>
-            <li flex flex-col p-0>
-              <span text-xs opacity-70>Mood</span>
-              <IconsMood icon="good" />
-            </li>
-          </ul>
+          <ActivityInfoList :activity="activity" />
         </div>
         <nuxt-img
           src="https://picsum.photos/500"
