@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <span v-if="icon === 'ballsport'" i-mdi-soccer />
-  <span v-else-if="icon === 'bike'" i-mdi-bike-fast />
+  <span v-else-if="icon === 'cycling'" i-mdi-bike-fast />
   <span v-else-if="icon === 'golf'" i-mdi-golf />
   <span v-else-if="icon === 'gym'" i-mdi-dumbbell />
   <span v-else-if="icon === 'martialarts'" i-mdi-gymnastics />
