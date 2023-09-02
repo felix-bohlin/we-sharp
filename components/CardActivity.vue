@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
-import type { TActivity } from '@/types/activity'
+import type { TActivityType, TBaseActivity, TCycling, TGolf, TRun, TWalk } from '@/types/activity'
 import type { TUser } from '@/types/user'
 import Dialog from '@/components/dialog/Dialog.vue'
 
 defineProps<{
-  activity: TActivity
-  user: Omit<TUser, 'id'>
+  activity: TCycling | TGolf | TRun | TWalk | TBaseActivity<TActivityType>
+  user: TUser
 }>()
 
 const breakpoints = useBreakpoints(breakpointsTailwind)

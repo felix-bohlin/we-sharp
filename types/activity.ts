@@ -1,6 +1,6 @@
 export type TActivityType =
   | 'ballsport'
-  | 'bike'
+  | 'cycling'
   | 'golf'
   | 'gym'
   | 'martialarts'
@@ -10,8 +10,8 @@ export type TActivityType =
   | 'walk'
   | 'yoga'
 
-export type TActivity = {
-  activityType: TActivityType
+export type TBaseActivity<T extends TActivityType> = {
+  activityType: T
   comments?: number
   date: string
   description?: string
@@ -24,6 +24,25 @@ export type TActivity = {
   title: string
   userId: string
   weather?: TWeather
+}
+
+export type TGolf = TBaseActivity<'golf'> & {
+  holes?: number
+  score?: number
+}
+
+export type TCycling = TBaseActivity<'cycling'> & {
+  avgSpeed?: number
+  distance?: number
+}
+
+export type TRun = TBaseActivity<'run'> & {
+  distance?: number
+  pace?: number
+}
+
+export type TWalk = TBaseActivity<'walk'> & {
+  steps?: number
 }
 
 export type TWeather =

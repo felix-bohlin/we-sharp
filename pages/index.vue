@@ -11,7 +11,7 @@ useHead({
     <CardActivity
       :activity="{
         id: '1',
-        activityType: 'bike',
+        activityType: 'cycling',
         comments: 2,
         description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
         duration: 30,
