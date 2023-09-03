@@ -51,24 +51,23 @@ export type TGolf = TActivityBase & {
 export type TRun = TActivityBase & {
   data: TActivityData & {
     distance?: number
-    pace?: number
   }
 }
 
 export type TSwim = TActivityBase & {
   data: TActivityData & {
     distance?: number
-    pace?: number
   }
 }
 
 export type TWalk = TActivityBase & {
   data: TActivityData & {
+    distance?: number
     steps?: number
   }
 }
 
 export type TWeather =
-  'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm'
+  'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm' | 'mixed'
 
 export type TMood = 'terrible' | 'bad' | 'neutral' | 'good' | 'great'

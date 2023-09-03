@@ -90,5 +90,89 @@ useHead({
         profileUrl: '#',
       }"
     />
+
+    <ActivityCard
+      :activity="{
+        id: '1',
+        type: 'run',
+        comments: 5,
+        description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
+        data: {
+          duration: 56.54,
+          distance: 10.81,
+          weather: 'cloudy',
+          mood: 'great',
+        },
+        location: 'Södermalm',
+        likes: 1,
+        date: '14:23',
+        title: 'Afternoon run',
+        userId: '1',
+      }"
+      :user="{
+        id: '4',
+        imageUrl: 'https://picsum.photos/200',
+        firstName: 'Superstrong',
+        lastName: 'Personname',
+        group: 'Group with long name',
+        profileUrl: '#',
+      }"
+    />
+
+    <ActivityCard
+      :activity="{
+        id: '1',
+        type: 'swim',
+        comments: 0,
+        description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
+        data: {
+          duration: 23,
+          distance: 1.2,
+          weather: 'thunderstorm',
+          mood: 'great',
+        },
+        location: 'Södermalm',
+        likes: 1,
+        date: '14:23',
+        title: 'Afternoon swim',
+        userId: '1',
+      }"
+      :user="{
+        id: '4',
+        imageUrl: 'https://picsum.photos/200',
+        firstName: 'Superstrong',
+        lastName: 'Personname',
+        group: 'Group with long name',
+        profileUrl: '#',
+      }"
+    />
+
+    <ActivityCard
+      :activity="{
+        id: '1',
+        type: 'walk',
+        comments: 0,
+        description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
+        data: {
+          duration: 23,
+          distance: 1.2,
+          weather: 'mixed',
+          mood: 'great',
+        },
+        location: 'Södermalm',
+        likes: 1,
+        date: '14:23',
+        title: 'Lunch powerwalk',
+        userId: '1',
+      }"
+      :user="{
+        id: '4',
+        imageUrl: 'https://picsum.photos/200',
+        firstName: 'Superstrong',
+        lastName: 'Personname',
+        group: 'Group with long name',
+        profileUrl: '#',
+      }"
+    />
   </div>
 </template>
