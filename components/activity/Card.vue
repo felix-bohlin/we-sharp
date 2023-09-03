@@ -88,7 +88,7 @@ function onPost() {
           </span>
 
           <div>
-            <h2 inline-flex font-black md:text-xl>
+            <h2 inline-flex font-black class="@md:text-xl">
               <a href="#">{{ activity?.title }}</a>
             </h2>
             <p my-0 text-sm>

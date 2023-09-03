@@ -14,7 +14,7 @@ defineProps<{
       {{ description }}
     </dd>
     <template v-else>
-      <span inline-flex>
+      <span inline-flex text-xl>
         <slot />
       </span>
     </template>

@@ -71,4 +71,4 @@ export type TWalk = TActivityBase & {
 export type TWeather =
   'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm'
 
-export type TMood = 'horrible' | 'bad' | 'neutral' | 'good' | 'great'
+export type TMood = 'terrible' | 'bad' | 'neutral' | 'good' | 'great'
