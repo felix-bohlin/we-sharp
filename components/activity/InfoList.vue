@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { format } from 'node:path'
-import type { TActivity, TActivityDefault, TCycling, TGolf, TRun, TSwim, TWalk } from '@/types/activity'
+import type { TActivityDefault, TCycling, TGolf, TRun, TSwim, TWalk } from '@/types/activity'
 
 const props = defineProps<{
   activity: TActivityDefault | TGolf | TCycling | TRun | TSwim | TWalk
