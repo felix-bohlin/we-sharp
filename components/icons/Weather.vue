@@ -7,11 +7,11 @@ defineProps<{
 </script>
 
 <template>
-  <span v-if="icon === 'cloudy'" i-mdi-weather-cloudy />
-  <span v-else-if="icon === 'rainy'" i-mdi-weather-rainy />
-  <span v-else-if="icon === 'sunny'" i-mdi-weather-sunny />
+  <span v-if="icon === 'cloudy'" i-bi-cloud-fill />
+  <span v-else-if="icon === 'rainy'" i-bi-cloud-drizzle-fill />
+  <span v-else-if="icon === 'sunny'" i-bi-sun-fill />
   <span v-else-if="icon === 'windy'" i-mdi-weather-windy />
-  <span v-else-if="icon === 'snowy'" i-mdi-weather-snowy />
-  <span v-else-if="icon === 'thunderstorm'" i-mdi-weather-lightning />
-  <span v-else-if="icon === 'mixed'" i-mdi-weather-partly-cloudy />
+  <span v-else-if="icon === 'snowy'" i-bi-cloud-snow-fill />
+  <span v-else-if="icon === 'thunderstorm'" i-bi-cloud-lightning-fill />
+  <span v-else-if="icon === 'mixed'" i-bi-cloud-sun-fill />
 </template>

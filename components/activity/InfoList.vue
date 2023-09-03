@@ -29,12 +29,15 @@ const averageSpeed = computed(() => {
     <ActivityInfoListItem term="Duration" :description="`${activity?.data?.duration}min`" />
 
     <template v-if="activity.type === 'cycling'">
-      <ActivityInfoListItem v-if="activity?.data?.distance" term="Distance" :description="`${activity?.data?.distance}km`" />
+      <ActivityInfoListItem v-if="activity.data.distance" term="Distance" :description="`${activity.data.distance}km`" />
 
       <ActivityInfoListItem v-if="activity?.data?.distance && activity.data.duration" term="Avg" :description="`${averageSpeed}km/h`" />
     </template>
 
-    <template v-if="activity.type === 'golf'" />
+    <template v-if="activity.type === 'golf'">
+      <ActivityInfoListItem v-if="activity.data.holes" term="Holes" :description="activity.data.holes" />
+      <ActivityInfoListItem v-if="activity.data.score" term="Score" :description="activity.data.score" />
+    </template>
     <template v-if="activity.type === 'run'" />
     <template v-if="activity.type === 'swim'" />
     <template v-if="activity.type === 'walk'" />

@@ -75,10 +75,10 @@ useHead({
           weather: 'rainy',
           mood: 'great',
         },
-        location: 'Stockholm',
+        location: 'Upplands Väsby',
         likes: 1,
-        date: '08:30',
-        title: 'Gym session',
+        date: '44:44',
+        title: 'Nice golf with friends',
         userId: '1',
       }"
       :user="{

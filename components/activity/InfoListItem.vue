@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div>
+  <div grid gap-.5>
     <dt text-xs opacity-70>
       {{ term || 'Label' }}
     </dt>
