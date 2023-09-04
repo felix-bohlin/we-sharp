@@ -8,12 +8,14 @@ defineProps<{
 </script>
 
 <template>
-  <Card rounded-xl p-4>
-    <div grid place-items-center>
-      <span flex text-3xl>
-        <IconsActivity :icon="type" />
-      </span>
-      <span font-bold>{{ title }}</span>
-    </div>
+  <Card p="0 md:0" grid aspect-square place-items-center rounded-xl hover:text-primary>
+    <button grid h-full w-full place-items-center>
+      <div grid place-items-center gap-2>
+        <span inline-flex text-4xl>
+          <IconsActivity :icon="type" />
+        </span>
+        <span text-lg md:text-xl>{{ title }}</span>
+      </div>
+    </button>
   </Card>
 </template>

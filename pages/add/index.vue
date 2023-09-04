@@ -10,16 +10,16 @@ useHead({
       New activity
     </h1>
 
-    <div grid="~ cols-2  gap-2 md:gap-4">
-      <NewCard title="Ballsport" type="ballsport" />
-      <NewCard title="Cycling" type="cycling" />
-      <NewCard title="Golf" type="golf" />
-      <NewCard title="Gym" type="gym" />
-      <NewCard title="Martial arts" type="martialarts" />
-      <NewCard title="" />
-      <NewCard />
-      <NewCard />
-      <NewCard />
+    <div grid="~ cols-2  gap-2 md:cols-3 md:gap-4">
+      <CardNew title="Ballsport" type="ballsport" />
+      <CardNew title="Cycling" type="cycling" />
+      <CardNew title="Golf" type="golf" />
+      <CardNew title="Gym" type="gym" />
+      <CardNew title="Martial arts" type="martialarts" />
+      <CardNew title="Running" type="run" />
+      <CardNew title="Swimming" type="swim" />
+      <CardNew title="Walking" type="walk" />
+      <CardNew title="Yoga" type="yoga" />
     </div>
   </div>
 </template>

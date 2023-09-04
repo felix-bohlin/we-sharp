@@ -6,7 +6,6 @@ export type TActivityType =
   | 'martialarts'
   | 'run'
   | 'swim'
-  | 'tennis'
   | 'walk'
   | 'yoga'
 
