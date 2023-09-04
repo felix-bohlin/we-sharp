@@ -143,7 +143,7 @@ function onPost() {
     </Drawer>
 
     <Dialog ref="dialog" title="Comments" :show-close="true">
-      <div v-if="activity?.comments" grid content-start gap-4 pe-2 ps-2 pt-1>
+      <div v-if="activity?.comments" grid content-start gap-4 pt-1>
         <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
       </div>
       <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">

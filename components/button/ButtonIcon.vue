@@ -5,6 +5,7 @@ defineProps<{
   rounded?: boolean
   size?: TButtonSize
   text?: string
+  title?: string
   variant?: TButtonVariant
 }>()
 
@@ -12,7 +13,7 @@ defineEmits(['click'])
 </script>
 
 <template>
-  <button type="button" :class="[variant ?? 'text', rounded ? 'rounded' : '', size ?? 'md']" @click="$emit('click')">
+  <button type="button" :class="[variant ?? 'text', rounded ? 'rounded' : '', size ?? 'md']" :title="title || text || ''" @click="$emit('click')">
     <slot />
     <span v-if="text" class="hidden">{{ text }}</span>
   </button>

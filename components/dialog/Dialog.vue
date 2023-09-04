@@ -58,7 +58,7 @@ defineExpose({
           </ButtonIcon>
         </div>
 
-        <div class="overflow-y-auto">
+        <div overflow-y-auto p-1 m="-1">
           <slot />
         </div>
 

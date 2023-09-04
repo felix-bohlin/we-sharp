@@ -36,7 +36,7 @@ function modalCloseAll() {
 </script>
 
 <template>
-  <div w-page m-page p-page>
+  <div m-page w-page p-page>
     <h1 text-2xl font-black>
       New activity
     </h1>
@@ -55,12 +55,49 @@ function modalCloseAll() {
   </div>
 
   <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
-    {{ activeType }}
+    <div grid content-start gap-4>
+      <input placeholder="Duration (minutes)" type="number" class="w-1/2">
+
+      <div>
+        <h3 opacity-75>
+          How did you feel during the activity?
+        </h3>
+        <div mt-1 flex gap-2>
+          <ButtonIcon variant="outlined" title="Terrible!">
+            <IconsMood icon="terrible" />
+          </ButtonIcon>
+
+          <ButtonIcon variant="outlined" title="Not so good">
+            <IconsMood icon="bad" />
+          </ButtonIcon>
+
+          <ButtonIcon variant="outlined" title="Ok">
+            <IconsMood icon="neutral" />
+          </ButtonIcon>
+
+          <ButtonIcon variant="outlined" title="Good">
+            <IconsMood icon="good" />
+          </ButtonIcon>
+
+          <ButtonIcon variant="outlined" title="Super!">
+            <IconsMood icon="great" />
+          </ButtonIcon>
+        </div>
+      </div>
+
+      <div v-if="activeType === 'cycling'">
+        <input class="w-1/2" type="number" placeholder="Distance (km)">
+      </div>
+    </div>
+
+    <div grid content-end justify-end>
+      <Button variant="filled" @click="modalCloseAll()">
+        Save
+      </Button>
+    </div>
   </Drawer>
 
   <Dialog ref="dialog" title="New activity" :show-close="true">
-    {{ activeType }}
-
     <template #bottom>
       bottom
     </template>
