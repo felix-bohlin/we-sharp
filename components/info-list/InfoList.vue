@@ -58,49 +58,49 @@ const swimAverageSpeed = computed(() => {
 
 <template>
   <dl grid="~ cols-[repeat(auto-fill,minmax(6ch,1fr))] col-span-full gap-2" m-0 list-none p-0>
-    <ActivityInfoListItem term="Duration" :description="`${Math.round(activity?.data?.duration)}min`" />
+    <InfoListItem term="Duration" :description="`${Math.round(activity?.data?.duration)}min`" />
 
     <!-- Cycling -->
     <template v-if="activity.type === 'cycling'">
-      <ActivityInfoListItem v-if="activity.data.distance" term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
+      <InfoListItem v-if="activity.data.distance" term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
 
-      <ActivityInfoListItem v-if="activity?.data?.distance && activity.data.duration" term="Avg" :description="`${cyclingAverageSpeed}km/h`" />
+      <InfoListItem v-if="activity?.data?.distance && activity.data.duration" term="Avg" :description="`${cyclingAverageSpeed}km/h`" />
     </template>
 
     <!-- Golf -->
     <template v-if="activity.type === 'golf'">
-      <ActivityInfoListItem v-if="activity.data.holes" term="Holes" :description="activity.data.holes" />
-      <ActivityInfoListItem v-if="activity.data.score" term="Score" :description="activity.data.score" />
+      <InfoListItem v-if="activity.data.holes" term="Holes" :description="activity.data.holes" />
+      <InfoListItem v-if="activity.data.score" term="Score" :description="activity.data.score" />
     </template>
 
     <!-- Run -->
     <template v-if="activity.type === 'run'">
       <template v-if="activity.data.distance">
-        <ActivityInfoListItem term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
-        <ActivityInfoListItem term="Pace" :description="`${runAverageSpeed}/km`" />
+        <InfoListItem term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
+        <InfoListItem term="Pace" :description="`${runAverageSpeed}/km`" />
       </template>
     </template>
 
     <!-- Swim -->
     <template v-if="activity.type === 'swim'">
       <template v-if="activity.data.distance">
-        <ActivityInfoListItem term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
-        <ActivityInfoListItem term="Pace" :description="`${swimAverageSpeed}m/s`" />
+        <InfoListItem term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
+        <InfoListItem term="Pace" :description="`${swimAverageSpeed}m/s`" />
       </template>
     </template>
 
     <!-- Walk -->
     <template v-if="activity.type === 'walk'">
-      <ActivityInfoListItem v-if="activity.data.distance" term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
-      <ActivityInfoListItem v-if="activity.data.steps" term="Steps" :description="`${activity.data.steps}`" />
+      <InfoListItem v-if="activity.data.distance" term="Distance" :description="`${activity.data.distance.toFixed(1)}km`" />
+      <InfoListItem v-if="activity.data.steps" term="Steps" :description="`${activity.data.steps}`" />
     </template>
 
-    <ActivityInfoListItem v-if="activity?.data?.weather" term="Weather">
+    <InfoListItem v-if="activity?.data?.weather" term="Weather">
       <IconsWeather text-xl :icon="activity.data.weather" />
-    </ActivityInfoListItem>
+    </InfoListItem>
 
-    <ActivityInfoListItem v-if="activity?.data?.mood" term="Mood">
+    <InfoListItem v-if="activity?.data?.mood" term="Mood">
       <IconsMood :icon="activity.data.mood" />
-    </ActivityInfoListItem>
+    </InfoListItem>
   </dl>
 </template>

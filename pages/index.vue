@@ -8,7 +8,7 @@ useHead({
   <div
     grid="~ md:cols-[repeat(auto-fit,minmax(38ch,1fr))] gap-4" m-page md:p-page md:w-page
   >
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '1',
         type: 'cycling',
@@ -36,7 +36,7 @@ useHead({
       }"
     />
 
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '2',
         type: 'yoga',
@@ -62,7 +62,7 @@ useHead({
       }"
     />
 
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '1',
         type: 'golf',
@@ -91,7 +91,7 @@ useHead({
       }"
     />
 
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '1',
         type: 'run',
@@ -119,7 +119,7 @@ useHead({
       }"
     />
 
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '1',
         type: 'swim',
@@ -147,7 +147,7 @@ useHead({
       }"
     />
 
-    <ActivityCard
+    <CardActivity
       :activity="{
         id: '1',
         type: 'walk',
