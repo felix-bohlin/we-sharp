@@ -12,9 +12,6 @@ const drawer = ref<HTMLElement>()
 
 const scrollLock = useScrollLock(document.body)
 
-// onMounted(() => scrollLock.value = true)
-// onUnmounted(() => scrollLock.value = false)
-
 watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
 </script>
 

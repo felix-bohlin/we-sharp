@@ -128,32 +128,33 @@ function onPost() {
     </Card>
   </section>
 
-  <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
-    <!-- pt-1 ps-2 pe-2 -->
-    <div v-if="activity?.comments" grid content-start gap-4 overflow-y-auto>
-      <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
-    </div>
-    <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">
-      Let {{ user?.firstName ?? 'people' }} know what you think!
-    </p>
+  <ClientOnly>
+    <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
+      <div v-if="activity?.comments" grid content-start gap-4 overflow-y-auto>
+        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+      </div>
+      <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">
+        Let {{ user?.firstName ?? 'people' }} know what you think!
+      </p>
 
-    <div grid content-end>
-      <CommentEdit v-model="commentValue" :image="user?.imageUrl" />
-    </div>
-  </Drawer>
+      <div grid content-end>
+        <CommentEdit v-model="commentValue" :image="user?.imageUrl" />
+      </div>
+    </Drawer>
 
-  <Dialog ref="dialog" title="Comments" :show-close="true">
-    <div v-if="activity?.comments" grid content-start gap-4 pe-2 ps-2 pt-1>
-      <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
-    </div>
-    <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">
-      Let {{ user?.firstName ?? 'people' }} know what you think!
-    </p>
+    <Dialog ref="dialog" title="Comments" :show-close="true">
+      <div v-if="activity?.comments" grid content-start gap-4 pe-2 ps-2 pt-1>
+        <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
+      </div>
+      <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">
+        Let {{ user?.firstName ?? 'people' }} know what you think!
+      </p>
 
-    <template #bottom>
-      <CommentEdit
-        v-model="commentValue" :image="user?.imageUrl" @submit="onPost"
-      />
-    </template>
-  </Dialog>
+      <template #bottom>
+        <CommentEdit
+          v-model="commentValue" :image="user?.imageUrl" @submit="onPost"
+        />
+      </template>
+    </Dialog>
+  </ClientOnly>
 </template>
