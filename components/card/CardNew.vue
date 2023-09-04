@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <Card p="0 md:0" grid aspect-square place-items-center rounded-xl hover:text-primary>
+  <Card p="y-6 " grid place-items-center rounded-xl hover:text-primary>
     <button grid h-full w-full place-items-center>
       <div grid place-items-center gap-2>
         <span inline-flex text-4xl>
