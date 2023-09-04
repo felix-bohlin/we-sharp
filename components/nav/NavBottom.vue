@@ -4,7 +4,7 @@ const uiStore = useUiStore()
 
 <template>
   <Transition>
-    <footer v-if="!uiStore.modalModeActive" pb="[env(safe-area-inset-bottom)]" transition="padding 20" p="s-2 e-2" sticky bottom-2 left-0 right-0 z-10 class="md:w-[clamp(38ch,100%,80ch)]" m="s-auto e-auto">
+    <footer v-if="!uiStore.modalModeActive" p="s-2 e-2" class="md:w-[clamp(38ch,100%,80ch)]" m="s-auto e-auto" fixed bottom-2 left-0 right-0 z-10>
       <nav
         scrollbar-hide h-14 flex flex-row items-center overscroll-none rounded-xl shadow-xl md:h-auto md:py-2 class="bg-slate-50 @dark:bg-zinc-900/95"
       >

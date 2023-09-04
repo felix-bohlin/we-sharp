@@ -11,7 +11,7 @@ const emojis = ['😆', '😍', '🙌', '✨', '🚀', '🍤', '🎉', '🏆', '
 </script>
 
 <template>
-  <div flex justify-center p="b-2 t-1 md:y-1" gap-2 overflow-x-auto text-xl>
+  <div flex justify-center p="b-2 t-1 md:y-1" gap-2 overflow-x-hidden text-xl>
     <button v-for="emoji in emojis" :key="emoji" @click="commentValue = `${commentValue ? `${commentValue} ` : ''}${emoji}`">
       {{ emoji }}
     </button>
