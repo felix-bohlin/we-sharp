@@ -41,7 +41,7 @@ function modalCloseAll() {
       New activity
     </h1>
 
-    <div grid="~ cols-2  gap-2 md:cols-3 md:gap-4" mt-6>
+    <div grid="~ cols-2 gap-2 md:cols-3 md:gap-4" mt-6>
       <CardNew title="Ballsport" type="ballsport" @on-click="modalShow('ballsport')" />
       <CardNew title="Cycling" type="cycling" @on-click="modalShow('cycling')" />
       <CardNew title="Golf" type="golf" @on-click="modalShow('golf')" />
