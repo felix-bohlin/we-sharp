@@ -25,6 +25,12 @@ export default defineConfig({
     'input-base-focus': 'focus:outline-none focus:ring-color-1-hover',
     'input-base-disabled': 'disabled:pointer-events-none disabled:bg-gray-500/5 disabled:text-gray-500/50',
     'input-base': 'p2 rounded w-full ring-zinc-400 @dark:ring-zinc-700 ring-1 bg-2 text-inherit rounded input-base-focus input-base-disabled',
+
+    // utils
+    'w-page': 'md:w-[clamp(38ch,100%,120ch)]',
+    'p-page': 'ps-4 pe-4',
+    'm-page': 'ms-auto me-auto',
+
   },
 
   theme: {

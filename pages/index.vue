@@ -6,7 +6,7 @@ useHead({
 
 <template>
   <div
-    grid="~ md:cols-[repeat(auto-fit,minmax(38ch,1fr))] gap-4" m="s-auto e-auto" p="md:s-4 md:e-4" class="md:w-[clamp(38ch,100%,120ch)]"
+    grid="~ md:cols-[repeat(auto-fit,minmax(38ch,1fr))] gap-4" w-page m-page md:p-page
   >
     <ActivityCard
       :activity="{

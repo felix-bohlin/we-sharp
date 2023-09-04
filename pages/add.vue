@@ -5,5 +5,7 @@ useHead({
 </script>
 
 <template>
-  add post
+  <div w-page m-page p-page>
+    <h1>Add</h1>
+  </div>
 </template>
