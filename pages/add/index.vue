@@ -45,7 +45,7 @@ function modalCloseAll() {
       <CardNew title="Ballsport" type="ballsport" @on-click="modalShow('ballsport')" />
       <CardNew title="Cycling" type="cycling" @on-click="modalShow('cycling')" />
       <CardNew title="Golf" type="golf" @on-click="modalShow('golf')" />
-      <CardNew title="Gym" type="gym" @on-click="modalShow('gym')" />
+      <CardNew title="Strength" type="strength" @on-click="modalShow('strength')" />
       <CardNew title="Martial arts" type="martialarts" @on-click="modalShow('martialarts')" />
       <CardNew title="Running" type="run" @on-click="modalShow('run')" />
       <CardNew title="Swimming" type="swim" @on-click="modalShow('swim')" />

@@ -2,7 +2,7 @@ export type TActivityType =
   | 'ballsport'
   | 'cycling'
   | 'golf'
-  | 'gym'
+  | 'strength'
   | 'martialarts'
   | 'run'
   | 'swim'
