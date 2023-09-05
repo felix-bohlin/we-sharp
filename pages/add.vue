@@ -57,37 +57,54 @@ function modalCloseAll() {
 
   <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
     <div grid content-start gap-4>
-      <input placeholder="Duration (minutes)" type="number" class="w-1/2">
+      <Input
+        placeholder="Title"
+      />
+      <textarea placeholder="How'd it go?" />
 
-      <div>
-        <h3 opacity-75>
-          How did you feel during the activity?
-        </h3>
-        <div mt-1 flex gap-2>
-          <ButtonIcon variant="outlined" title="Terrible!">
-            <IconsMood icon="terrible" />
-          </ButtonIcon>
+      <Input type="number" placeholder="Duration (minutes)" />
+      <div v-if="activeType === 'cycling' || activeType === 'run' || activeType === 'swim' || activeType === 'walk'">
+        <Input type="number" placeholder="Distance (km)" />
 
-          <ButtonIcon variant="outlined" title="Not so good">
-            <IconsMood icon="bad" />
-          </ButtonIcon>
-
-          <ButtonIcon variant="outlined" title="Ok">
-            <IconsMood icon="neutral" />
-          </ButtonIcon>
-
-          <ButtonIcon variant="outlined" title="Good">
-            <IconsMood icon="good" />
-          </ButtonIcon>
-
-          <ButtonIcon variant="outlined" title="Super!">
-            <IconsMood icon="great" />
-          </ButtonIcon>
-        </div>
+        <Input>
+          <div i-mdi-cloud absolute bottom-0 left-2 top="1/2" un-translate="y-[-50%]" />
+        </Input>
       </div>
 
-      <div v-if="activeType === 'cycling'">
-        <input class="w-1/2" type="number" placeholder="Distance (km)">
+      <div v-if="activeType === 'golf'" grid gap-4>
+        <Input type="number" placeholder="Holes played" />
+        <Input type="number" placeholder="Score" />
+      </div>
+
+      <div v-if="activeType === 'walk'">
+        <Input type="number" placeholder="Steps" />
+      </div>
+    </div>
+
+    <div>
+      <h3 opacity-75>
+        How did your activity feel?
+      </h3>
+      <div mt-1 flex gap-2>
+        <ButtonIcon variant="outlined" title="Terrible!">
+          <IconsMood icon="terrible" />
+        </ButtonIcon>
+
+        <ButtonIcon variant="outlined" title="Not so good">
+          <IconsMood icon="bad" />
+        </ButtonIcon>
+
+        <ButtonIcon variant="outlined" title="Ok">
+          <IconsMood icon="neutral" />
+        </ButtonIcon>
+
+        <ButtonIcon variant="outlined" title="Good">
+          <IconsMood icon="good" />
+        </ButtonIcon>
+
+        <ButtonIcon variant="outlined" title="Super!">
+          <IconsMood icon="great" />
+        </ButtonIcon>
       </div>
     </div>
 
