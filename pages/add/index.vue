@@ -45,11 +45,12 @@ function modalCloseAll() {
       <CardNew title="Ballsport" type="ballsport" @on-click="modalShow('ballsport')" />
       <CardNew title="Cycling" type="cycling" @on-click="modalShow('cycling')" />
       <CardNew title="Golf" type="golf" @on-click="modalShow('golf')" />
-      <CardNew title="Strength" type="strength" @on-click="modalShow('strength')" />
       <CardNew title="Martial arts" type="martialarts" @on-click="modalShow('martialarts')" />
       <CardNew title="Running" type="run" @on-click="modalShow('run')" />
+      <CardNew title="Strength" type="strength" @on-click="modalShow('strength')" />
       <CardNew title="Swimming" type="swim" @on-click="modalShow('swim')" />
       <CardNew title="Walking" type="walk" @on-click="modalShow('walk')" />
+      <CardNew title="Workout" type="workout" @on-click="modalShow('workout')" />
       <CardNew title="Yoga" type="yoga" @on-click="modalShow('yoga')" />
     </div>
   </div>

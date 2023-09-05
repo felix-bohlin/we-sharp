@@ -2,11 +2,12 @@ export type TActivityType =
   | 'ballsport'
   | 'cycling'
   | 'golf'
-  | 'strength'
   | 'martialarts'
   | 'run'
+  | 'strength'
   | 'swim'
   | 'walk'
+  | 'workout'
   | 'yoga'
 
 export type TActivity = TActivityDefault | TGolf | TCycling | TRun | TSwim | TWalk

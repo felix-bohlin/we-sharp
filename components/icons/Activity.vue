@@ -10,10 +10,11 @@ defineProps<{
   <span v-if="icon === 'ballsport'" i-mdi-soccer />
   <span v-else-if="icon === 'cycling'" i-mdi-bike-fast />
   <span v-else-if="icon === 'golf'" i-mdi-golf />
-  <span v-else-if="icon === 'strength'" i-mdi-dumbbell />
-  <span v-else-if="icon === 'martialarts'" i-mdi-gymnastics />
+  <span v-else-if="icon === 'strength'" i-mdi-arm-flex />
+  <span v-else-if="icon === 'martialarts'" i-mdi-karate />
   <span v-else-if="icon === 'swim'" i-mdi-swim />
   <span v-else-if="icon === 'walk'" i-mdi-walk />
+  <span v-else-if="icon === 'workout'" i-mdi-human-handsup />
   <span v-else-if="icon === 'yoga'" i-mdi-yoga />
   <span v-else-if="icon === 'run'" i-mdi-run-fast />
   <span v-else i-mdi-medal />
