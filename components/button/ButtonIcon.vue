@@ -3,6 +3,7 @@ import type { TButtonSize, TButtonVariant } from '@/types/button'
 
 defineProps<{
   icon?: string
+  modifier?: 'success' | 'warning' | 'danger' | 'info'
   squared?: boolean
   size?: TButtonSize
   text?: string
@@ -14,7 +15,7 @@ defineEmits(['click'])
 </script>
 
 <template>
-  <button type="button" text-secondary :class="[variant ?? 'text', squared ? 'squared' : '', size ?? 'md']" :title="title || text || ''" @click="$emit('click')">
+  <button type="button" :class="[variant ?? 'text', squared ? 'squared' : '', size ?? 'md', modifier ?? 'text-secondary']" :title="title || text || ''" @click="$emit('click')">
     <div v-if="icon && !$slots.default" :class="icon" />
     <slot />
     <span v-if="text" class="hidden">{{ text }}</span>
@@ -23,10 +24,26 @@ defineEmits(['click'])
 
 <style scoped>
 button {
-  --uno: "grid place-items-center transition-all  text-xl p-0 leading-4 select-none rounded-full";
+  --uno: "grid place-items-center transition-all text-xl p-0 leading-4 select-none rounded-full";
 
   &.filled {
-    --uno: "bg-2 ring-color-1 hover:ring-1 hover:ring-color-1-hover";
+    --uno: 'bg-2 ring-color-1 hover:ring-1 hover:ring-color-1-hover';
+
+    &.success {
+      --uno: 'text-green/40 bg-green/10 hover:bg-green/20 hover:ring-green/20';
+    }
+
+    &.warning {
+      --uno: 'text-yellow/40 bg-yellow/10 hover:bg-yellow/20 hover:ring-yellow/20';
+    }
+
+    &.danger {
+      --uno: 'text-red/40 bg-red/10 hover:bg-red/20 hover:ring-red/20';
+    }
+
+    &.info {
+      --uno: 'text-blue/40 bg-blue/10 hover:bg-blue/20 hover:ring-blue/20';
+    }
   }
 
   &.outlined {
@@ -35,6 +52,22 @@ button {
 
   &.text {
     --uno: "bg-transparent ring-0 hover:bg-2";
+
+    &.success {
+      --uno: '';
+    }
+
+    &.warning {
+      --uno: 'text-yellow/40 hover:bg-yellow/30 hover:ring-yellow/30';
+    }
+
+    &.danger {
+      --uno: '';
+    }
+
+    &.info {
+      --uno: '';
+    }
   }
 
   &.sm {

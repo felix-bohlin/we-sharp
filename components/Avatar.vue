@@ -7,6 +7,7 @@ import UpsideDown from '@/components/icons/emoji/UpsideDown.vue'
 import WithSunglasses from '@/components/icons/emoji/WithSunglasses.vue'
 
 defineProps<{
+  hideBlob?: boolean
   image?: string
 }>()
 
@@ -50,12 +51,12 @@ const randomGradient = computed(() => {
   <nuxt-img
     v-if="image"
     :src="image"
-    class="blob grid m-0 aspect-square w-full place-items-center font-bold"
+    :class="hideBlob ? '' : 'blob'" class="grid m-0 aspect-square w-full place-items-center font-bold"
   />
 
   <div
     v-else
-    class="blob grid m-0 aspect-square w-full place-items-center font-bold"
+    :class="hideBlob ? '' : 'blob'" class="grid m-0 aspect-square w-full place-items-center font-bold"
   >
     <component
       :is="randomEmoji"

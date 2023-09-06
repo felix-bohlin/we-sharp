@@ -82,23 +82,23 @@ function modalCloseAll() {
         How did your activity feel?
       </h3>
       <div mt-1 flex gap-2>
-        <ButtonIcon variant="outlined" title="Terrible!">
+        <ButtonIcon modifier="danger" variant="filled" title="Terrible!">
           <IconsMood icon="terrible" />
         </ButtonIcon>
 
-        <ButtonIcon variant="outlined" title="Not so good">
+        <ButtonIcon modifier="warning" variant="filled" title="Not so good">
           <IconsMood icon="bad" />
         </ButtonIcon>
 
-        <ButtonIcon variant="outlined" title="Ok">
+        <ButtonIcon variant="filled" title="Ok">
           <IconsMood icon="neutral" />
         </ButtonIcon>
 
-        <ButtonIcon variant="outlined" title="Good">
+        <ButtonIcon modifier="info" variant="filled" title="Good">
           <IconsMood icon="good" />
         </ButtonIcon>
 
-        <ButtonIcon variant="outlined" title="Super!">
+        <ButtonIcon modifier="success" variant="filled" title="Super!">
           <IconsMood icon="great" />
         </ButtonIcon>
       </div>
