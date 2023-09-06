@@ -56,52 +56,8 @@ function modalCloseAll() {
   </div>
 
   <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
-    <div grid content-start gap-4>
-      <Input
-        placeholder="Title"
-      />
-      <textarea placeholder="How'd it go?" />
-
-      <Input type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
-      <div v-if="activeType === 'cycling' || activeType === 'run' || activeType === 'swim' || activeType === 'walk'">
-        <Input type="number" placeholder="Distance (km)" pre-icon="i-mdi-ruler" />
-      </div>
-
-      <div v-if="activeType === 'golf'" grid gap-4>
-        <Input type="number" placeholder="Holes played" />
-        <Input type="number" placeholder="Score" />
-      </div>
-
-      <div v-if="activeType === 'walk'">
-        <Input type="number" placeholder="Steps" />
-      </div>
-    </div>
-
-    <div>
-      <h3 opacity-75>
-        How did your activity feel?
-      </h3>
-      <div mt-1 flex gap-2>
-        <ButtonIcon modifier="danger" variant="filled" title="Terrible!">
-          <IconsMood icon="terrible" />
-        </ButtonIcon>
-
-        <ButtonIcon modifier="warning" variant="filled" title="Not so good">
-          <IconsMood icon="bad" />
-        </ButtonIcon>
-
-        <ButtonIcon variant="filled" title="Ok">
-          <IconsMood icon="neutral" />
-        </ButtonIcon>
-
-        <ButtonIcon modifier="info" variant="filled" title="Good">
-          <IconsMood icon="good" />
-        </ButtonIcon>
-
-        <ButtonIcon modifier="success" variant="filled" title="Super!">
-          <IconsMood icon="great" />
-        </ButtonIcon>
-      </div>
+    <div grid content-start gap-4 overflow-y-auto>
+      <ActivityCreate :active-type="activeType" />
     </div>
 
     <div grid content-end justify-end>
@@ -112,6 +68,10 @@ function modalCloseAll() {
   </Drawer>
 
   <Dialog ref="dialog" title="New activity" :show-close="true">
+    <div grid gap-4 overflow-y-auto>
+      <ActivityCreate :active-type="activeType" />
+    </div>
+
     <template #bottom>
       bottom
     </template>
