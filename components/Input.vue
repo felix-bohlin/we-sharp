@@ -10,6 +10,6 @@ defineProps<{
 <template>
   <div relative>
     <slot />
-    <input :p="$slots.default ? 's-8 2' : '2'" :type="type ?? 'text'" :placeholder="placeholder" :pattern="type === 'number' ? '\d*' : ''">
+    <input :p="$slots.default ? 's-8 2' : '2'" :type="type ?? 'text'" :placeholder="placeholder" :inputmode="type === 'number' ? 'numeric' : 'none'">
   </div>
 </template>
