@@ -24,6 +24,9 @@ export default defineNuxtConfig({
       title: 'WeSharp Fitness',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
+      htmlAttrs: {
+        lang: 'en',
+      },
       bodyAttrs: {
         class: 'md:h-auto bg-main text-primary',
       },
