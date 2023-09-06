@@ -2,8 +2,6 @@
 const uiStore = useUiStore()
 
 const route = useRoute()
-
-console.log(route.value)
 </script>
 
 <template>
@@ -33,7 +31,7 @@ console.log(route.value)
           </NuxtLink>
 
           <NuxtLink to="/profile" active-class="text-main" grid place-items-center gap-.5 text-xs>
-            <Avatar :hide-blob="false" class="max-w-[30px]" />
+            <Avatar :hide-blob="route.name !== 'profile'" class="max-w-[30px]" />
             <span hidden md:block>You</span>
           </NuxtLink>
         </div>
