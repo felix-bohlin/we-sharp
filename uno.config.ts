@@ -22,13 +22,14 @@ export default defineConfig({
     'bg-2': 'bg-zinc-200 @dark:bg-zinc-400/10',
 
     // text
-    'text-main': 'text-zinc-800 @dark:text-zinc-200',
+    'text-primary': 'text-zinc-800 @dark:text-zinc-200',
+    'text-secondary': 'text-zinc-500 @dark:text-zinc-500',
 
     // border
     'border-color-1': 'border-zinc-200 @dark:border-zinc-400/10',
 
     // ring
-    'ring-color-1': 'ring-zinc-200 @dark:ring-zinc-400/10',
+    'ring-color-1': 'ring-zinc-500 @dark:ring-zinc-500',
     'ring-color-1-hover': 'ring-zinc-800 @dark:ring-zinc-600',
 
     // input
@@ -45,9 +46,9 @@ export default defineConfig({
 
   theme: {
     colors: {
-      primary: {
-        DEFAULT: 'var(--c-primary)',
-        active: 'var(--c-primary-active)',
+      main: {
+        DEFAULT: 'var(--c-main)',
+        active: 'var(--c-main-active)',
       },
     },
   },

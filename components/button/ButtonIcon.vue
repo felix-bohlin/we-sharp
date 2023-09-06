@@ -2,6 +2,7 @@
 import type { TButtonSize, TButtonVariant } from '@/types/button'
 
 defineProps<{
+  icon?: string
   rounded?: boolean
   size?: TButtonSize
   text?: string
@@ -14,6 +15,7 @@ defineEmits(['click'])
 
 <template>
   <button type="button" :class="[variant ?? 'text', rounded ? 'rounded' : '', size ?? 'md']" :title="title || text || ''" @click="$emit('click')">
+    <div v-if="icon && !$slots.default" text-secondary :class="icon" />
     <slot />
     <span v-if="text" class="hidden">{{ text }}</span>
   </button>
@@ -21,14 +23,14 @@ defineEmits(['click'])
 
 <style scoped>
 button {
-  --uno: "grid place-items-center transition-all rounded-xl text-xl p-0 text-main leading-4 select-none";
+  --uno: "grid place-items-center transition-all rounded-xl text-xl p-0 leading-4 select-none";
 
   &.filled {
     --uno: "bg-2 ring-color-1 hover:ring-1 hover:ring-color-1-hover";
   }
 
   &.outlined {
-    --uno: "bg-transparent ring-1 ring-solid ring-zinc-600 hover:bg-zinc-400/10";
+    --uno: "bg-transparent ring-1 ring-solid ring-zinc-500 hover:bg-zinc-400/10";
   }
 
   &.text {

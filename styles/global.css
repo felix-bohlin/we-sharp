@@ -12,69 +12,6 @@ html {
     background-color: var(--c-bg-selection);
   } */
 
-  .content-rich {
-    overflow-wrap: break-word;
-
-    a {
-      --uno: 'text-primary hover:underline hover:text-primary-active';
-      .invisible {
-        --uno: 'hidden';
-      }
-      .ellipsis {
-        --uno: 'line-clamp-1 ws-pre-wrap break-all inline';
-        &::after {
-          content: '…';
-        }
-      }
-    }
-    b,
-    strong {
-      --uno: font-bold;
-    }
-    p {
-      --uno: my-2;
-    }
-    p:first-child {
-      --uno: mt-1;
-    }
-    p:last-child {
-      --uno: mb-1;
-    }
-    /* code {
-      --uno: bg-code text-code px1 py0.5 rounded text-0.875em leading-0.8em;
-    }
-    pre code {
-      --uno: bg-transparent px0 py0 rounded-none leading-1.6em;
-    } */
-    /* ol {
-      --uno: list-decimal my-3 pl-6 ml-2;
-    }
-    ul {
-      --uno: list-disc my-3 pl-6 ml-2;
-    } */
-    li {
-      --uno: mt-1 mb-1;
-      &:empty {
-        --uno: hidden;
-      }
-    }
-    ol > li {
-      --uno: pl-2;
-    }
-    ul > li {
-      --uno: pl-2;
-    }
-    /* .code-block {
-      --uno: bg-code text-0.875em p3 mt-2 rounded overflow-auto
-        leading-1.6em;
-
-      .shiki {
-        background: transparent !important;
-      }
-    } */
-  }
-
-
   .skeleton-loading-bg {
     background: linear-gradient(
       90deg,
@@ -108,9 +45,9 @@ html {
     overflow: hidden;
   }
 
-  :where(a),
+  :is(a),
     :is(h1, h2, h3, h4, h5, h6, p):has(a) {
-      --uno: "text-primary hover:text-primary-active";
+      --uno: "text-main hover:text-main-active";
     }
 
   html:not(.enable-pinch-to-zoom) body {

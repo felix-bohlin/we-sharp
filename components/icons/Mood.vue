@@ -7,9 +7,9 @@ defineProps<{
 </script>
 
 <template>
-  <span v-if="icon === 'terrible'" i-mdi-emoticon-dead />
-  <span v-else-if="icon === 'bad'" i-mdi-emoticon-confused />
-  <span v-else-if="icon === 'neutral'" i-mdi-emoticon-neutral />
-  <span v-else-if="icon === 'good'" i-mdi-emoticon-happy />
-  <span v-else-if="icon === 'great'" i-mdi-emoticon-cool />
+  <span v-if="icon === 'terrible'" text-secondary i-mdi-emoticon-dead />
+  <span v-else-if="icon === 'bad'" text-secondary i-mdi-emoticon-confused />
+  <span v-else-if="icon === 'neutral'" text-secondary i-mdi-emoticon-neutral />
+  <span v-else-if="icon === 'good'" text-secondary i-mdi-emoticon-happy />
+  <span v-else-if="icon === 'great'" text-secondary i-mdi-emoticon-cool />
 </template>

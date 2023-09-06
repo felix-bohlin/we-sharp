@@ -115,13 +115,9 @@ function onPost() {
           </button>
 
           <div class="grid grid-cols-[auto_auto] gap-2">
-            <ButtonIcon text="Cheer" :variant="isCheered ? 'filled' : 'outlined'" @click="isCheered = !isCheered">
-              <span i-mdi-hand-clap />
-            </ButtonIcon>
+            <ButtonIcon rounded icon="i-mdi-hand-clap" :variant="isCheered ? 'filled' : 'text'" :class="isCheered ? '!bg-green/10 !hover:bg-green/30 !hover:ring-green/30' : ''" text="Cheer" @click="isCheered = !isCheered" />
 
-            <ButtonIcon text="Comment" variant="outlined" @click="commentsShow">
-              <span i-mdi-comment-text-outline />
-            </ButtonIcon>
+            <ButtonIcon icon="i-mdi-comment-text-outline" text="Comment" variant="outlined" @click="commentsShow" />
           </div>
         </div>
       </div>

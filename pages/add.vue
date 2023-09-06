@@ -62,13 +62,9 @@ function modalCloseAll() {
       />
       <textarea placeholder="How'd it go?" />
 
-      <Input type="number" placeholder="Duration (minutes)" />
+      <Input type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
       <div v-if="activeType === 'cycling' || activeType === 'run' || activeType === 'swim' || activeType === 'walk'">
-        <Input type="number" placeholder="Distance (km)" />
-
-        <Input>
-          <div i-mdi-cloud absolute bottom-0 left-2 top="1/2" un-translate="y-[-50%]" />
-        </Input>
+        <Input type="number" placeholder="Distance (km)" pre-icon="i-mdi-ruler" />
       </div>
 
       <div v-if="activeType === 'golf'" grid gap-4>

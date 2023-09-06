@@ -21,10 +21,9 @@ onClickOutside(
       text="Menu"
       variant="text"
       rounded
+      icon="i-mdi-dots-horizontal"
       @click="showDropdown = !showDropdown"
-    >
-      <span i-mdi-dots-horizontal />
-    </ButtonIcon>
+    />
 
     <Transition>
       <div

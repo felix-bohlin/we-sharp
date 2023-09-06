@@ -1,5 +1,5 @@
   :root {
-    --c-primary: oklch(0.77 0.12 229.21);
-    --c-primary-active: oklch(0.67 0.12 229.21);
-    --c-bg-selection: var(--c-primary);
+    --c-main: oklch(0.77 0.12 229.21);
+    --c-main-active: oklch(0.67 0.12 229.21);
+    --c-bg-selection: var(--c-main);
   }
