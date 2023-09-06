@@ -45,7 +45,7 @@ html {
     overflow: hidden;
   }
 
-  :is(a),
+  :where(a),
     :is(h1, h2, h3, h4, h5, h6, p):has(a) {
       --uno: "text-main hover:text-main-active";
     }

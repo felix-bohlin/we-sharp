@@ -20,7 +20,6 @@ onClickOutside(
       ref="dropdownToggle"
       text="Menu"
       variant="text"
-      rounded
       icon="i-mdi-dots-horizontal"
       @click="showDropdown = !showDropdown"
     />

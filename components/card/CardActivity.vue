@@ -111,13 +111,13 @@ function onPost() {
       <div grid gap-4 p="s-4 e-4 md:s-0 md:e-0">
         <div flex="~ items-center gap-2 justify-between">
           <button type="button">
-            4 likes
+            4 medals
           </button>
 
           <div class="grid grid-cols-[auto_auto] gap-2">
-            <ButtonIcon rounded icon="i-mdi-hand-clap" :variant="isCheered ? 'filled' : 'text'" :class="isCheered ? '!bg-green/10 !hover:bg-green/30 !hover:ring-green/30' : ''" text="Cheer" @click="isCheered = !isCheered" />
+            <ButtonIcon :icon="isCheered ? 'i-mdi-medal' : 'i-mdi-medal-outline'" :variant="isCheered ? 'filled' : 'text'" :class="isCheered ? '!text-yellow/40 !bg-yellow/10 !hover:bg-yellow/30 !hover:ring-yellow/30' : '!hover:bg-yellow/10'" text="Cheer" @click="isCheered = !isCheered" />
 
-            <ButtonIcon icon="i-mdi-comment-text-outline" text="Comment" variant="outlined" @click="commentsShow" />
+            <ButtonIcon icon="i-mdi-comment-text-outline" text="Comment" @click="commentsShow" />
           </div>
         </div>
       </div>

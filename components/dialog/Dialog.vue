@@ -53,7 +53,7 @@ defineExpose({
             {{ title }}
           </h3>
 
-          <ButtonIcon v-if="showClose" icon="i-mdi-window-close" rounded variant="filled" size="sm" @click="close" />
+          <ButtonIcon v-if="showClose" icon="i-mdi-window-close" variant="filled" size="sm" @click="close" />
         </div>
 
         <div overflow-y-auto p-1 m="-1">

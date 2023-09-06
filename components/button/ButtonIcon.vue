@@ -3,7 +3,7 @@ import type { TButtonSize, TButtonVariant } from '@/types/button'
 
 defineProps<{
   icon?: string
-  rounded?: boolean
+  squared?: boolean
   size?: TButtonSize
   text?: string
   title?: string
@@ -14,8 +14,8 @@ defineEmits(['click'])
 </script>
 
 <template>
-  <button type="button" :class="[variant ?? 'text', rounded ? 'rounded' : '', size ?? 'md']" :title="title || text || ''" @click="$emit('click')">
-    <div v-if="icon && !$slots.default" text-secondary :class="icon" />
+  <button type="button" text-secondary :class="[variant ?? 'text', squared ? 'squared' : '', size ?? 'md']" :title="title || text || ''" @click="$emit('click')">
+    <div v-if="icon && !$slots.default" :class="icon" />
     <slot />
     <span v-if="text" class="hidden">{{ text }}</span>
   </button>
@@ -23,7 +23,7 @@ defineEmits(['click'])
 
 <style scoped>
 button {
-  --uno: "grid place-items-center transition-all rounded-xl text-xl p-0 leading-4 select-none";
+  --uno: "grid place-items-center transition-all  text-xl p-0 leading-4 select-none rounded-full";
 
   &.filled {
     --uno: "bg-2 ring-color-1 hover:ring-1 hover:ring-color-1-hover";
@@ -38,23 +38,24 @@ button {
   }
 
   &.sm {
-    --uno: h-[26.25px] w-[30px];
+    --uno: h-[30px] w-[30px];
   }
 
   &.md {
-    --uno: h-[35px] w-[40px];
+    --uno: h-[40px] w-[40px];
   }
 
-  &.rounded {
-    --uno: rounded-full;
+  &.squared {
+    --uno: rounded-xl;
 
     &.sm {
-      --uno: h-[30px] w-[30px];
+      --uno: h-[26.25px] w-[30px];
     }
 
     &.md {
-      --uno: h-[40px] w-[40px];
+      --uno: h-[35px] w-[40px];
     }
+
   }
 }
 </style>
