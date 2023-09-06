@@ -1,8 +1,18 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts } from 'unocss'
 import transformerDirectives from '@unocss/transformer-directives'
 
 export default defineConfig({
-  presets: [presetUno(), presetAttributify(), presetIcons()],
+  presets: [presetUno(), presetAttributify(), presetIcons(), presetWebFonts({
+    provider: 'google',
+    fonts: {
+      mukta: {
+        name: 'Mukta',
+        weights: ['400', '600', '700'],
+        italic: true,
+      },
+
+    },
+  })],
   transformers: [transformerDirectives()],
 
   shortcuts: {
