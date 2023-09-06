@@ -126,16 +126,16 @@ function onPost() {
 
   <ClientOnly>
     <Drawer :show-drawer="showEditComment && !isDesktop" title="Comments" @on-close="commentsCloseAll()">
-      <div v-if="activity?.comments" grid content-start gap-4 overflow-y-auto>
+      <div v-if="activity?.comments" grid gap-4>
         <Comment v-for="(comment, index) in activity?.comments" :key="index" :user="user" />
       </div>
       <p v-else class="text-sm leading-normal text-zinc-600 @dark:text-zinc-500">
         Let {{ user?.firstName ?? 'people' }} know what you think!
       </p>
 
-      <div grid content-end>
+      <template #bottom>
         <CommentEdit v-model="commentValue" :image="user?.imageUrl" />
-      </div>
+      </template>
     </Drawer>
 
     <Dialog ref="dialog" title="Comments" :show-close="true">

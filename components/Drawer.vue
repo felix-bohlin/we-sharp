@@ -36,12 +36,18 @@ watch(() => props.showDrawer, () => scrollLock.value = props.showDrawer)
               <ButtonIcon icon="i-mdi-window-close" :style="{ gridColumn: 3 }" size="sm" variant="filled" @click="$emit('onClose')" />
             </div>
             <div
-              grid gap-4 pe-4 ps-4
+              flex flex-col justify-between gap-4 pe-4 ps-4
               :style="{
                 height: showDrawer ? '60dvh' : 'auto',
               }"
             >
-              <slot />
+              <div overflow-y-auto>
+                <div border-1 border-transparent>
+                  <slot />
+                </div>
+              </div>
+
+              <slot name="bottom" />
             </div>
           </div>
         </div>

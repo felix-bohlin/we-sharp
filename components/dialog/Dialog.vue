@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 
-const { minHeight = 300, showClose = true, title = '' } = defineProps<{
+const { minHeight = 300, showClose = true, size = 'md', title = '' } = defineProps<{
   minHeight?: number
   showClose?: boolean
   title?: string
+  size?: 'sm' | 'md' | 'lg'
 }>()
 
 const dialogMinHeight = `${minHeight}px`
@@ -44,7 +45,7 @@ defineExpose({
   <Teleport to="body">
     <Transition>
       <dialog
-        v-show="visible" ref="dialog" :open="visible"
+        v-show="visible" ref="dialog" :open="visible" :class="size"
         class="grid grid-rows-[auto_1fr_auto] mt-[15vh] max-h-[50dvh] gap-4 overflow-hidden rounded-xl text-current shadow-md backdrop:bg-zinc-800/90 @dark:shadow-lg backdrop:transition-all"
         bg-main p="y-3 s-4 e-4 @sm:y-4 @sm:s-6 @sm:e-6"
       >
@@ -56,8 +57,10 @@ defineExpose({
           <ButtonIcon v-if="showClose" icon="i-mdi-window-close" variant="filled" size="sm" @click="close" />
         </div>
 
-        <div overflow-y-auto p-1 m="-1">
-          <slot />
+        <div overflow-y-auto>
+          <div border-1 border-transparent>
+            <slot />
+          </div>
         </div>
 
         <slot name="bottom" />
@@ -69,8 +72,16 @@ defineExpose({
 <style scoped>
 dialog {
   min-height: v-bind(dialogMinHeight);
-  max-inline-size: min(90vw, 65ch);
+  max-inline-size: min(90vw,60ch);
   width: 100%;
+
+  &.sm {
+    max-inline-size: min(90vw,45ch);
+  }
+
+  &.lg {
+    max-inline-size: 90vw;
+  }
 }
 
 .v-enter-to,
