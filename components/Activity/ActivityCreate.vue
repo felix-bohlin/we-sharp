@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <Input
+  <TextField
     placeholder="Title"
   />
   <textarea placeholder="How'd it go?" />
@@ -15,18 +15,18 @@ defineProps<{
   <h2 mt-3>
     Activity stats
   </h2>
-  <Input type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
+  <TextField type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
   <div v-if="activeType === 'cycling' || activeType === 'run' || activeType === 'swim' || activeType === 'walk'">
-    <Input type="number" placeholder="Distance (km)" pre-icon="i-mdi-ruler" />
+    <TextField type="number" placeholder="Distance (km)" pre-icon="i-mdi-ruler" />
   </div>
 
   <div v-if="activeType === 'golf'" grid gap-4>
-    <Input pre-icon="i-mdi-golf" type="number" placeholder="Holes played" />
-    <Input pre-icon="i-mdi-list-box" type="number" placeholder="Score" />
+    <TextField pre-icon="i-mdi-golf" type="number" placeholder="Holes played" />
+    <TextField pre-icon="i-mdi-list-box" type="number" placeholder="Score" />
   </div>
 
   <div v-if="activeType === 'walk'">
-    <Input pre-icon="i-mdi-shoe-print" type="number" placeholder="Steps" />
+    <TextField pre-icon="i-mdi-shoe-print" type="number" placeholder="Steps" />
   </div>
 
   <div>

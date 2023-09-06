@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { TInputType } from '~/types/input'
-
 defineProps<{
   placeholder?: string
   preIcon?: string
-  type?: TInputType
+  type?: 'text' | 'number'
+  value?: string
 }>()
 </script>
 

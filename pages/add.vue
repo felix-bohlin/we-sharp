@@ -56,11 +56,6 @@ function modalCloseAll() {
   </div>
 
   <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
-    <!-- <div content-start overflow-y-auto>
-      <div grid gap-4 border-1 border-transparent>
-
-      </div>
-    </div> -->
     <div grid gap-4>
       <ActivityCreate :active-type="activeType" />
     </div>
@@ -69,16 +64,12 @@ function modalCloseAll() {
         Save
       </Button>
     </template>
-    <!-- <div grid content-end justify-end>
-
-    </div> -->
   </Drawer>
 
   <Dialog ref="dialog" title="New activity" :show-close="true" size="sm">
     <div grid gap-4>
       <ActivityCreate :active-type="activeType" />
     </div>
-
     <template #bottom>
       <div grid content-end justify-end>
         <Button variant="filled" @click="modalCloseAll()">
