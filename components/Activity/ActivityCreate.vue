@@ -36,12 +36,13 @@ const title = computed(() => {
     placeholder="Title"
     :value="title"
   />
-  <textarea placeholder="How'd it go?" />
+  <TextField type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
 
   <h2 mt-3>
-    Activity stats
+    Optional stats
   </h2>
-  <TextField type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
+
+  <textarea placeholder="How'd it go?" />
 
   <!-- Cycling | Run | Swim | Walk -->
   <div v-if="activeType === activityData.cycling.id || activeType === activityData.run.id || activeType === activityData.swim.id || activeType === activityData.walk.id">
