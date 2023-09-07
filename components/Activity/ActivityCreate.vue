@@ -18,7 +18,7 @@ const title = computed(() => {
   else if (hour >= 11 && hour < 14)
     timeOfDay = 'Lunch'
 
-  else if (hour >= 14 && hour < 18)
+  else if (hour >= 14 && hour < 17)
     timeOfDay = 'Afternoon'
 
   else if (hour >= 18 && hour < 22)
