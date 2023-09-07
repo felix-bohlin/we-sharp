@@ -74,7 +74,7 @@ export type TMood = 'terrible' | 'bad' | 'neutral' | 'good' | 'great'
 
 export type TActivityData = Record<string, {
   icon: string
-  id: string
+  id: TActivityId | 'default'
   newActivityTitle: string
   name: string
 }>

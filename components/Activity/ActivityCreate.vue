@@ -42,19 +42,24 @@ const title = computed(() => {
     Activity stats
   </h2>
   <TextField type="number" placeholder="Duration (minutes)" pre-icon="i-mdi-clock" />
-  <div v-if="activeType === 'cycling' || activeType === 'run' || activeType === 'swim' || activeType === 'walk'">
+
+  <!-- Cycling | Run | Swim | Walk -->
+  <div v-if="activeType === activityData.cycling.id || activeType === activityData.run.id || activeType === activityData.swim.id || activeType === activityData.walk.id">
     <TextField type="number" placeholder="Distance (km)" pre-icon="i-mdi-ruler" />
   </div>
 
-  <div v-if="activeType === 'golf'" grid gap-4>
+  <!-- Golf -->
+  <div v-if="activeType === activityData.golf.id" grid gap-4>
     <TextField pre-icon="i-mdi-golf" type="number" placeholder="Holes played" />
     <TextField pre-icon="i-mdi-list-box" type="number" placeholder="Score" />
   </div>
 
-  <div v-if="activeType === 'walk'">
+  <!-- Walk -->
+  <div v-if="activeType === activityData.walk.id">
     <TextField pre-icon="i-mdi-shoe-print" type="number" placeholder="Steps" />
   </div>
 
+  <!-- Mood -->
   <div>
     <h3 opacity-75>
       How did your activity feel?
