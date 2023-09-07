@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import Dialog from '@/components/dialog/Dialog.vue'
-import type { TActivityType } from '~/types/activity'
+import type { TActivityId } from '~/types/activity'
 
 useHead({
-  title: 'Add | WeSharp',
+  title: 'New activity | WeSharp',
 })
 
 const dialog = ref<InstanceType<typeof Dialog>>()
 const showModal = ref(false)
-const activeType = ref<null | TActivityType>(null)
+
+const selectedActivity = ref<TActivityId | null>(null)
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isDesktop = breakpoints.greaterOrEqual('sm')
 
 const uiStore = useUiStore()
 
-function modalShow(type: TActivityType) {
+function modalShow(id: TActivityId) {
   showModal.value = true
-  activeType.value = type
+  selectedActivity.value = id
 
   if (breakpoints.isGreaterOrEqual('sm'))
     dialog.value?.show()
@@ -28,7 +29,7 @@ function modalShow(type: TActivityType) {
 }
 
 function modalCloseAll() {
-  activeType.value = null
+  selectedActivity.value = null
   showModal.value = false
   dialog.value?.close()
   uiStore.toggleModalMode(false)
@@ -42,40 +43,42 @@ function modalCloseAll() {
     </h1>
 
     <div grid="~ cols-2 gap-2 md:cols-3 md:gap-4" mt-6>
-      <CardNew title="Ballsport" type="ballsport" @on-click="modalShow('ballsport')" />
-      <CardNew title="Cycling" type="cycling" @on-click="modalShow('cycling')" />
-      <CardNew title="Golf" type="golf" @on-click="modalShow('golf')" />
-      <CardNew title="Martial arts" type="martialarts" @on-click="modalShow('martialarts')" />
-      <CardNew title="Running" type="run" @on-click="modalShow('run')" />
-      <CardNew title="Strength" type="strength" @on-click="modalShow('strength')" />
-      <CardNew title="Swimming" type="swim" @on-click="modalShow('swim')" />
-      <CardNew title="Walking" type="walk" @on-click="modalShow('walk')" />
-      <CardNew title="Workout" type="workout" @on-click="modalShow('workout')" />
-      <CardNew title="Yoga" type="yoga" @on-click="modalShow('yoga')" />
+      <CardNew id="ballsport" title="Ballsport" @on-click="modalShow('ballsport')" />
+      <CardNew id="cycling" title="Cycling" @on-click="modalShow('cycling')" />
+      <CardNew id="golf" title="Golf" @on-click="modalShow('golf')" />
+      <CardNew id="martialArts" title="Martial arts" @on-click="modalShow('martialArts')" />
+      <CardNew id="run" title="Running" @on-click="modalShow('run')" />
+      <CardNew id="strength" title="Strength" @on-click="modalShow('strength')" />
+      <CardNew id="swim" title="Swimming" @on-click="modalShow('swim')" />
+      <CardNew id="walk" title="Walking" @on-click="modalShow('walk')" />
+      <CardNew id="workout" title="Workout" @on-click="modalShow('workout')" />
+      <CardNew id="yoga" title="Yoga" @on-click="modalShow('yoga')" />
     </div>
   </div>
 
-  <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
-    <div grid gap-4>
-      <ActivityCreate :active-type="activeType" />
-    </div>
-    <template #bottom>
-      <Button self-end variant="filled" @click="modalCloseAll()">
-        Save
-      </Button>
-    </template>
-  </Drawer>
-
-  <Dialog ref="dialog" title="New activity" :show-close="true" size="sm">
-    <div grid gap-4>
-      <ActivityCreate :active-type="activeType" />
-    </div>
-    <template #bottom>
-      <div grid content-end justify-end>
-        <Button variant="filled" @click="modalCloseAll()">
+  <ClientOnly>
+    <Drawer :show-drawer="showModal && !isDesktop" title="New activity" @on-close="modalCloseAll()">
+      <div grid gap-4>
+        <ActivityCreate :active-type="selectedActivity" />
+      </div>
+      <template #bottom>
+        <Button self-end variant="filled" @click="modalCloseAll()">
           Save
         </Button>
+      </template>
+    </Drawer>
+
+    <Dialog ref="dialog" title="New activity" :show-close="true" size="sm">
+      <div grid gap-4>
+        <ActivityCreate :active-type="selectedActivity" />
       </div>
-    </template>
-  </Dialog>
+      <template #bottom>
+        <div grid content-end justify-end>
+          <Button variant="filled" @click="modalCloseAll()">
+            Save
+          </Button>
+        </div>
+      </template>
+    </Dialog>
+  </ClientOnly>
 </template>

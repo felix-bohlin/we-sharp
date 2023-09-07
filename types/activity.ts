@@ -1,8 +1,8 @@
-export type TActivityType =
+export type TActivityId =
   | 'ballsport'
   | 'cycling'
   | 'golf'
-  | 'martialarts'
+  | 'martialArts'
   | 'run'
   | 'strength'
   | 'swim'
@@ -12,7 +12,7 @@ export type TActivityType =
 
 export type TActivity = TActivityDefault | TGolf | TCycling | TRun | TSwim | TWalk
 
-type TActivityData = {
+type TActivityBaseData = {
   duration: number
   mood?: TMood
   weather?: TWeather
@@ -27,41 +27,41 @@ export type TActivityBase = {
   likes?: number
   location?: string
   title: string
-  type: TActivityType
+  type: TActivityId
   userId: string
 }
 
 export type TActivityDefault = TActivityBase & {
-  data: TActivityData
+  data: TActivityBaseData
 }
 
 export type TCycling = TActivityBase & {
-  data: TActivityData & {
+  data: TActivityBaseData & {
     distance?: number
   }
 }
 
 export type TGolf = TActivityBase & {
-  data: TActivityData & {
+  data: TActivityBaseData & {
     holes?: number
     score?: number
   }
 }
 
 export type TRun = TActivityBase & {
-  data: TActivityData & {
+  data: TActivityBaseData & {
     distance?: number
   }
 }
 
 export type TSwim = TActivityBase & {
-  data: TActivityData & {
+  data: TActivityBaseData & {
     distance?: number
   }
 }
 
 export type TWalk = TActivityBase & {
-  data: TActivityData & {
+  data: TActivityBaseData & {
     distance?: number
     steps?: number
   }
@@ -71,3 +71,10 @@ export type TWeather =
   'cloudy' | 'rainy' | 'sunny' | 'windy' | 'snowy' | 'thunderstorm' | 'mixed'
 
 export type TMood = 'terrible' | 'bad' | 'neutral' | 'good' | 'great'
+
+export type TActivityData = Record<string, {
+  icon: string
+  id: string
+  newActivityTitle: string
+  name: string
+}>

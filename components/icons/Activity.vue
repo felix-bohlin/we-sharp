@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import type { TActivityType } from '@/types/activity'
+import type { TActivityId } from '@/types/activity'
 
 defineProps<{
-  icon: TActivityType | string
+  icon: TActivityId | string
 }>()
 </script>
 
 <template>
-  <span v-if="icon === 'ballsport'" i-mdi-soccer text-secondary />
-  <span v-else-if="icon === 'cycling'" i-mdi-bike-fast text-secondary />
-  <span v-else-if="icon === 'golf'" i-mdi-golf text-secondary />
-  <span v-else-if="icon === 'strength'" i-mdi-arm-flex text-secondary />
-  <span v-else-if="icon === 'martialarts'" i-mdi-karate text-secondary />
-  <span v-else-if="icon === 'swim'" i-mdi-swim text-secondary />
-  <span v-else-if="icon === 'walk'" i-mdi-walk text-secondary />
-  <span v-else-if="icon === 'workout'" i-mdi-human-handsup text-secondary />
-  <span v-else-if="icon === 'yoga'" i-mdi-yoga text-secondary />
-  <span v-else-if="icon === 'run'" i-mdi-run-fast text-secondary />
+  <span v-if="icon === activityData.ballsport.id" :class="activityData.ballsport.icon" text-secondary />
+  <span v-else-if="icon === activityData.cycling.id" :class="activityData.cycling.icon" text-secondary />
+  <span v-else-if="icon === activityData.golf.id" :class="activityData.golf.icon" text-secondary />
+  <span v-else-if="icon === activityData.strength.id" :class="activityData.strength.icon" text-secondary />
+  <span v-else-if="icon === activityData.martialArts.id" :class="activityData.martialArts.icon" text-secondary />
+  <span v-else-if="icon === activityData.swim.id" :class="activityData.swim.icon" text-secondary />
+  <span v-else-if="icon === activityData.walk.id" :class="activityData.walk.icon" text-secondary />
+  <span v-else-if="icon === activityData.workout.id" :class="activityData.workout.icon" text-secondary />
+  <span v-else-if="icon === activityData.yoga.id" :class="activityData.yoga.icon" text-secondary />
+  <span v-else-if="icon === activityData.run.id" :class="activityData.run.icon" text-secondary />
   <span v-else i-mdi-medal text-secondary />
 </template>

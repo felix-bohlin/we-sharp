@@ -1,14 +1,40 @@
 <script setup lang="ts">
-import type { TActivityType } from '~/types/activity'
+import type { TActivityId } from '~/types/activity'
 
-defineProps<{
-  activeType: TActivityType | null
+const props = defineProps<{
+  activeType: TActivityId | null
 }>()
+
+const activitySuffix = computed(() => activityData[props.activeType || 'default'].newActivityTitle)
+
+const title = computed(() => {
+  const hour = new Date().getHours()
+
+  let timeOfDay = ''
+
+  if (hour >= 5 && hour < 11)
+    timeOfDay = 'Morning'
+
+  else if (hour >= 11 && hour < 14)
+    timeOfDay = 'Lunch'
+
+  else if (hour >= 14 && hour < 18)
+    timeOfDay = 'Afternoon'
+
+  else if (hour >= 18 && hour < 22)
+    timeOfDay = 'Evening'
+
+  else
+    timeOfDay = 'Night'
+
+  return `${timeOfDay} ${activitySuffix.value}`
+})
 </script>
 
 <template>
   <TextField
     placeholder="Title"
+    :value="title"
   />
   <textarea placeholder="How'd it go?" />
 
