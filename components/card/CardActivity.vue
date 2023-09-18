@@ -84,7 +84,7 @@ function onPost() {
 
         <div grid items-center gap-4 p="s-4 e-4 md:s-0 md:e-0" class="grid-cols-[40px_1fr]">
           <span flex justify-center text-3xl>
-            <IconsActivity :icon="activity?.type ?? 'run'" />
+            <IconsActivity :id="activity?.type ?? 'run'" />
           </span>
 
           <div>

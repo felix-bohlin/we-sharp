@@ -34,6 +34,6 @@
     "@unocss/transformer-directives": "^0.55.3",
     "@vueuse/nuxt": "^10.4.0",
     "eslint": "^8.47.0",
-    "nuxt": "^3.7.0"
+    "nuxt": "^3.7.3"
   }
 }

@@ -43,16 +43,16 @@ function modalCloseAll() {
     </h1>
 
     <div grid="~ cols-2 gap-2 md:cols-3 md:gap-4" mt-6>
-      <CardNew id="ballsport" title="Ballsport" @on-click="modalShow('ballsport')" />
-      <CardNew id="cycling" title="Cycling" @on-click="modalShow('cycling')" />
-      <CardNew id="golf" title="Golf" @on-click="modalShow('golf')" />
-      <CardNew id="martialArts" title="Martial arts" @on-click="modalShow('martialArts')" />
-      <CardNew id="run" title="Running" @on-click="modalShow('run')" />
-      <CardNew id="strength" title="Strength" @on-click="modalShow('strength')" />
-      <CardNew id="swim" title="Swimming" @on-click="modalShow('swim')" />
-      <CardNew id="walk" title="Walking" @on-click="modalShow('walk')" />
-      <CardNew id="workout" title="Workout" @on-click="modalShow('workout')" />
-      <CardNew id="yoga" title="Yoga" @on-click="modalShow('yoga')" />
+      <CardNew id="ballsport" :title="activityData.ballsport.name" @on-click="modalShow('ballsport')" />
+      <CardNew id="cycling" :title="activityData.cycling.name" @on-click="modalShow('cycling')" />
+      <CardNew id="golf" :title="activityData.golf.name" @on-click="modalShow('golf')" />
+      <CardNew id="martialArts" :title="activityData.martialArts.name" @on-click="modalShow('martialArts')" />
+      <CardNew id="run" :title="activityData.run.name" @on-click="modalShow('run')" />
+      <CardNew id="strength" :title="activityData.strength.name" @on-click="modalShow('strength')" />
+      <CardNew id="swim" :title="activityData.swim.name" @on-click="modalShow('swim')" />
+      <CardNew id="walk" :title="activityData.walk.name" @on-click="modalShow('walk')" />
+      <CardNew id="workout" :title="activityData.workout.name" @on-click="modalShow('workout')" />
+      <CardNew id="yoga" :title="activityData.yoga.name" @on-click="modalShow('yoga')" />
     </div>
   </div>
 

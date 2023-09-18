@@ -1,6 +1,7 @@
 export type TActivityId =
   | 'ballsport'
   | 'cycling'
+  | 'default'
   | 'golf'
   | 'martialArts'
   | 'run'
@@ -74,7 +75,7 @@ export type TMood = 'terrible' | 'bad' | 'neutral' | 'good' | 'great'
 
 export type TActivityData = Record<string, {
   icon: string
-  id: TActivityId | 'default'
+  id: TActivityId
   newActivityTitle: string
   name: string
 }>

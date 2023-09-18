@@ -14,7 +14,7 @@ defineEmits(['onClick'])
     <button type="button" grid h-full w-full md:place-items-center @click="$emit('onClick')">
       <div flex items-center gap-2 md:grid md:place-items-center>
         <span inline-flex text-3xl md:text-4xl>
-          <IconsActivity :icon="id" />
+          <IconsActivity :id="id" />
         </span>
         <span text-lg md:text-xl>{{ title }}</span>
       </div>
